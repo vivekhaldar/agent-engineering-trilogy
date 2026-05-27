@@ -4,6 +4,31 @@
 
 This repo is a static curriculum artifact for the Agent Engineering Trilogy. The main source file is `harness-engineering-curriculum.html`.
 
+## Production Site
+
+- Intended production domain: `harnesscourse.com`
+- Hosting target: GitHub Pages, deployed from the root of `main`
+- Root entrypoint: `index.html`, which redirects to `harness-engineering-curriculum.html`
+- GitHub Pages custom-domain file: `CNAME`
+
+Porkbun registration status as of 2026-05-27: API registration for `harnesscourse.com` was attempted with the verified $11.08 price but failed with `INSUFFICIENT_FUNDS`; the Porkbun API spends account credit. Complete the domain purchase by adding account credit or using web checkout, then configure DNS.
+
+Expected Porkbun DNS records after purchase:
+
+```text
+ALIAS  @    vivekhaldar.github.io
+CNAME  www  vivekhaldar.github.io
+```
+
+If ALIAS flattening cannot be used, configure the GitHub Pages apex A records:
+
+```text
+A  @  185.199.108.153
+A  @  185.199.109.153
+A  @  185.199.110.153
+A  @  185.199.111.153
+```
+
 ## Working Rules
 
 - Treat the HTML file as the product. Keep it directly openable in a browser.
@@ -12,6 +37,7 @@ This repo is a static curriculum artifact for the Agent Engineering Trilogy. The
 - Prefer inline links to stable primary sources. Bibliography-only links are not enough when the prose names a specific paper, article, or project.
 - Preserve the existing visual language and typography unless the task is explicitly a redesign.
 - Make edits in small, logical commits and stage files by name.
+- After deployment-related edits, verify that `CNAME` still contains exactly `harnesscourse.com`.
 
 ## Verification
 
@@ -25,6 +51,7 @@ if rg -n "TODO|FIXME|Google search|Graduate Curriculum" harness-engineering-curr
 else
   echo "content scan ok"
 fi
+test "$(cat CNAME)" = "harnesscourse.com"
 ```
 
 For JavaScript or table-of-contents behavior edits, also validate the inline script syntax:
