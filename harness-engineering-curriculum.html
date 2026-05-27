@@ -198,6 +198,25 @@
     max-width: 14ch;
   }
 
+  .hero .byline {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 14px;
+    line-height: 1.4;
+    color: var(--ink-faint);
+    margin: -6px 0 24px 0;
+  }
+
+  .hero .byline a {
+    color: var(--ink-soft);
+    text-decoration-color: var(--rule);
+    text-underline-offset: 3px;
+  }
+
+  .hero .byline a:hover {
+    color: var(--ink);
+    text-decoration-color: var(--ink-faint);
+  }
+
   .hero .subtitle {
     font-size: 22px;
     line-height: 1.4;
@@ -815,6 +834,7 @@
     <header class="hero">
       <p class="eyebrow">Three-Volume Curriculum</p>
       <h1>The Agent Engineering Trilogy</h1>
+      <p class="byline"><a href="https://vivekhaldar.com" target="_blank" rel="noopener noreferrer">Vivek Haldar</a> / <a href="https://enchiridionlabs.online/" target="_blank" rel="noopener noreferrer">Enchiridion Labs</a></p>
       <p class="subtitle">Three nested layers around an LLM call &mdash; prompt, context, harness &mdash; and what their composition produces. This is not three independent courses; it is one argument about where AI engineering leverage has moved.</p>
       <div class="meta ui">
         <div><strong>Format:</strong> Three one-semester graduate courses + capstone</div>
