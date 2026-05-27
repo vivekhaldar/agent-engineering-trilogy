@@ -11,11 +11,21 @@ This repo is a static curriculum artifact for the Agent Engineering Trilogy. The
 - Root entrypoint: `index.html`, which redirects to `harness-engineering-curriculum.html`
 - GitHub Pages custom-domain file: `CNAME`
 
-Porkbun registration status as of 2026-05-27: API registration for `harnesscourse.com` was attempted with the verified $11.08 price but failed with `INSUFFICIENT_FUNDS`; the Porkbun API spends account credit. Complete the domain purchase by adding account credit or using web checkout, then configure DNS.
+Porkbun registration status as of 2026-05-27: `harnesscourse.com` was registered via the Porkbun API.
+
+- Order ID: `10483845`
+- Registration cost: `$11.08`
+- Expiration: `2027-05-27 21:16:00`
+- Auto-renew: enabled
+- WHOIS privacy: enabled
+- API access: enabled
+- DNS records: none configured yet
+
+Do not configure DNS while GitHub Pages is unavailable for this repository; pointing the domain at Pages before the custom domain is claimed creates an avoidable dangling-DNS risk.
 
 GitHub Pages status as of 2026-05-27: enabling Pages for this private repository failed with `422 Your current plan does not support GitHub Pages for this repository`. Do not claim the site is live until one of these is done: make the repo public, use a plan/account that supports private-repo Pages, or deploy the static files to another public hosting target.
 
-Expected Porkbun DNS records after purchase:
+Expected Porkbun DNS records after GitHub Pages is enabled and configured with the custom domain:
 
 ```text
 ALIAS  @    vivekhaldar.github.io

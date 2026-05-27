@@ -21,7 +21,16 @@ The repo is configured for GitHub Pages from the root of `main`:
 - `index.html` redirects the site root to the curriculum page.
 - `harness-engineering-curriculum.html` is the canonical curriculum artifact.
 
-Operational note: the Porkbun API registration attempt for `harnesscourse.com` returned `INSUFFICIENT_FUNDS` because API purchases spend account credit. Add Porkbun account credit or complete web checkout, then configure DNS to GitHub Pages.
+Porkbun registration status: `harnesscourse.com` was registered on 2026-05-27 via the Porkbun API.
+
+- Order ID: `10483845`
+- Registration cost: `$11.08`
+- Expiration: `2027-05-27 21:16:00`
+- Auto-renew: enabled
+- WHOIS privacy: enabled
+- API access: enabled
+
+DNS status: Porkbun currently has no DNS records for the domain. Leave DNS unconfigured until the hosting target is enabled and has claimed the custom domain.
 
 GitHub Pages note: enabling Pages for this private repository returned `422 Your current plan does not support GitHub Pages for this repository`. To publish from this repo on GitHub Pages, either make the repository public, use an account/plan that supports private-repo Pages, or move the static site to a public hosting repository.
 
@@ -52,7 +61,7 @@ Expected GitHub Pages settings:
 - Folder: `/`
 - Custom domain: `harnesscourse.com`
 
-Expected Porkbun DNS records after the domain is registered:
+Expected Porkbun DNS records after GitHub Pages is enabled and configured with the custom domain:
 
 ```text
 ALIAS  @    vivekhaldar.github.io
