@@ -411,6 +411,25 @@
     color: var(--ink);
   }
 
+  .framings a,
+  .capstone-body a,
+  .module .framing a,
+  .course-header a {
+    color: var(--ink);
+    text-decoration: underline;
+    text-decoration-color: var(--rule);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+
+  .framings a:hover,
+  .capstone-body a:hover,
+  .module .framing a:hover,
+  .course-header a:hover {
+    color: var(--ink-soft);
+    text-decoration-color: var(--ink-soft);
+  }
+
   /* Modules */
   .module {
     margin: 48px 0;
@@ -897,8 +916,8 @@
 
       <div class="framings prompt">
         <p class="framings-title ui">Two framing readings for lecture one</p>
-        <p><em class="label">The canonical survey</em> &mdash; Schulhoff et al., <em>The Prompt Report: A Systematic Survey of Prompt Engineering Techniques</em> &mdash; is a PRISMA-style review of 1,565 papers, producing a vocabulary of 33 terms and a taxonomy of 58 text-only techniques (plus 40 multimodal). It's the single most useful reference document for the syllabus and worth assigning early as a map of the territory. The companion site is the navigation aid.</p>
-        <p><em class="label">The historical framing</em> &mdash; Schluntz &amp; Zhang's <em>Building Effective Agents</em> and Anthropic's <em>Effective context engineering for AI agents</em> (revisited from the other two courses) &mdash; together make the case that prompt engineering is the natural progression's first layer, not a destination. Students should leave week one understanding why the discipline exists and why its scope has shifted.</p>
+        <p><em class="label">The canonical survey</em> &mdash; Schulhoff et al., <em><a href="https://arxiv.org/abs/2406.06608" target="_blank" rel="noopener noreferrer">The Prompt Report: A Systematic Survey of Prompt Engineering Techniques</a></em> &mdash; is a PRISMA-style review of 1,565 papers, producing a vocabulary of 33 terms and a taxonomy of 58 text-only techniques (plus 40 multimodal). It's the single most useful reference document for the syllabus and worth assigning early as a map of the territory. The <a href="https://www.promptingguide.ai/" target="_blank" rel="noopener noreferrer">companion site</a> is the navigation aid.</p>
+        <p><em class="label">The historical framing</em> &mdash; Schluntz &amp; Zhang's <em><a href="https://www.anthropic.com/engineering/building-effective-agents" target="_blank" rel="noopener noreferrer">Building Effective Agents</a></em> and Anthropic's <em><a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents" target="_blank" rel="noopener noreferrer">Effective context engineering for AI agents</a></em> (revisited from the other two courses) &mdash; together make the case that prompt engineering is the natural progression's first layer, not a destination. Students should leave week one understanding why the discipline exists and why its scope has shifted.</p>
       </div>
 
       <article class="module prompt" id="p1">
@@ -1130,8 +1149,8 @@
 
       <div class="framings context">
         <p class="framings-title ui">Two cross-cutting framings for lecture one</p>
-        <p><em class="label">The finite-resource frame</em> &mdash; Anthropic's <em>Effective context engineering for AI agents</em> &mdash; treats every token in the window as competing for finite attention, with the engineering question being which configuration of those tokens most reliably produces the desired behavior.</p>
-        <p><em class="label">The theoretical frame</em> &mdash; Mei et al., <em>A Survey of Context Engineering for Large Language Models</em> &mdash; gives the field a formal taxonomy across retrieval/generation, processing, and management, and grounds the discipline as something distinct from prompt engineering. The companion repo, <em>Awesome-Context-Engineering</em>, is the running bibliography for the rest of the course.</p>
+        <p><em class="label">The finite-resource frame</em> &mdash; Anthropic's <em><a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents" target="_blank" rel="noopener noreferrer">Effective context engineering for AI agents</a></em> &mdash; treats every token in the window as competing for finite attention, with the engineering question being which configuration of those tokens most reliably produces the desired behavior.</p>
+        <p><em class="label">The theoretical frame</em> &mdash; Mei et al., <em><a href="https://arxiv.org/abs/2507.13334" target="_blank" rel="noopener noreferrer">A Survey of Context Engineering for Large Language Models</a></em> &mdash; gives the field a formal taxonomy across retrieval/generation, processing, and management, and grounds the discipline as something distinct from prompt engineering. The companion repo, <em><a href="https://github.com/Meirtz/Awesome-Context-Engineering" target="_blank" rel="noopener noreferrer">Awesome-Context-Engineering</a></em>, is the running bibliography for the rest of the course.</p>
       </div>
 
       <article class="module context" id="c1">
@@ -1362,8 +1381,8 @@
 
       <div class="framings harness">
         <p class="framings-title ui">Two cross-cutting framings for lecture one</p>
-        <p><em class="label">The externalization frame</em> &mdash; Zhou et al.'s recent survey, <em>Externalization in LLM Agents</em> &mdash; treats memory, skills, protocols, and the harness as cognitive artifacts that offload internal model burden onto deterministic infrastructure. This is the cleanest theoretical lens for the whole course.</p>
-        <p><em class="label">The harness-as-product frame</em> &mdash; Anthropic's <em>Building Effective Agents</em> (Schluntz &amp; Zhang, with reference implementations), MongoDB's <em>The Agent Harness</em>, and LangChain's <em>The Anatomy of an Agent Harness</em> &mdash; establishes that the LLM is a small fraction of any deployed system and that the surrounding code is a first-class engineering artifact.</p>
+        <p><em class="label">The externalization frame</em> &mdash; Zhou et al.'s recent survey, <em><a href="https://arxiv.org/abs/2604.08224" target="_blank" rel="noopener noreferrer">Externalization in LLM Agents</a></em> &mdash; treats memory, skills, protocols, and the harness as cognitive artifacts that offload internal model burden onto deterministic infrastructure. This is the cleanest theoretical lens for the whole course.</p>
+        <p><em class="label">The harness-as-product frame</em> &mdash; Anthropic's <em><a href="https://www.anthropic.com/engineering/building-effective-agents" target="_blank" rel="noopener noreferrer">Building Effective Agents</a></em> (Schluntz &amp; Zhang, with reference implementations), MongoDB's <em><a href="https://www.mongodb.com/company/blog/technical/agent-harness-why-llm-is-smallest-part-of-your-agent-system" target="_blank" rel="noopener noreferrer">The Agent Harness</a></em>, and LangChain's <em><a href="https://www.langchain.com/blog/the-anatomy-of-an-agent-harness" target="_blank" rel="noopener noreferrer">The Anatomy of an Agent Harness</a></em> &mdash; establishes that the LLM is a small fraction of any deployed system and that the surrounding code is a first-class engineering artifact.</p>
       </div>
 
       <article class="module harness" id="h1">
@@ -1561,7 +1580,7 @@
           <span class="module-num ui">Module 12</span>
           <h3>Case Study and Frontier: Claude Code and Self-Optimizing Harnesses</h3>
         </div>
-        <p class="framing">End with two contemporary anchors. The Claude Code source exposure (March 2026) made a production harness publicly readable; the Meta-Harness paper raised the harness itself to a first-class optimization target.</p>
+        <p class="framing">End with two contemporary anchors. The Claude Code source exposure (March 2026) made a production harness publicly readable; the <a href="https://arxiv.org/abs/2603.28052" target="_blank" rel="noopener noreferrer">Meta-Harness paper</a> raised the harness itself to a first-class optimization target.</p>
         <div class="readings">
           <p class="readings-title ui">Canonical readings</p>
           <ol>
@@ -1602,9 +1621,9 @@
 
         <p>Everything in the three courses has been preparation for understanding why that definition is non-trivial. The model is what the prompt engineering course studied: a fixed function from a context to a distribution over next tokens. The harness is what the harness engineering course studied: a program that wraps that function in a loop, with tools, memory, control flow, and termination logic. The environment is whatever the harness reaches into through its tools &mdash; a file system, a browser, a database, an API surface, a human collaborator. The context engineering course studied the interface between model and harness: how the harness assembles, manages, and refreshes the token sequence the model sees on every step.</p>
 
-        <p>Notice what this definition implies and what it doesn't. It implies that "agent" is not a property of the model. A frontier model dropped into the wrong harness produces a worse agent than a weaker model in a well-designed one; the <em>Meta-Harness</em> paper's six-fold same-model performance gap is the empirical anchor for that claim. It implies the environment is constitutive, not incidental: changing the environment changes what the agent <em>is</em>, not just what it <em>does</em>. And it implies that you can't make an agent more capable purely by improving any one of the three components &mdash; the composition has dynamics that none of the parts have alone.</p>
+        <p>Notice what this definition implies and what it doesn't. It implies that "agent" is not a property of the model. A frontier model dropped into the wrong harness produces a worse agent than a weaker model in a well-designed one; the <em><a href="https://arxiv.org/abs/2603.28052" target="_blank" rel="noopener noreferrer">Meta-Harness</a></em> paper's six-fold same-model performance gap is the empirical anchor for that claim. It implies the environment is constitutive, not incidental: changing the environment changes what the agent <em>is</em>, not just what it <em>does</em>. And it implies that you can't make an agent more capable purely by improving any one of the three components &mdash; the composition has dynamics that none of the parts have alone.</p>
 
-        <p>The clearest theoretical articulation of this composition is <strong>Sumers et al., Cognitive Architectures for Language Agents (CoALA)</strong> (2024), which formalizes language agents in terms of memory modules, action space, and decision procedure. Assign it as the integrative reading and structure the lecture around its diagrams. Pair with <strong>Russell &amp; Norvig's chapter on intelligent agents</strong> (Chapter 2 of <em>Artificial Intelligence: A Modern Approach</em>), which long predates LLMs but provides the percept-action-environment vocabulary the field eventually rediscovered.</p>
+        <p>The clearest theoretical articulation of this composition is <strong><a href="https://arxiv.org/abs/2309.02427" target="_blank" rel="noopener noreferrer">Sumers et al., Cognitive Architectures for Language Agents (CoALA)</a></strong> (2024), which formalizes language agents in terms of memory modules, action space, and decision procedure. Assign it as the integrative reading and structure the lecture around its diagrams. Pair with <strong><a href="https://aima.cs.berkeley.edu/" target="_blank" rel="noopener noreferrer">Russell &amp; Norvig's chapter on intelligent agents</a></strong> (Chapter 2 of <em>Artificial Intelligence: A Modern Approach</em>), which long predates LLMs but provides the percept-action-environment vocabulary the field eventually rediscovered.</p>
 
         <h3 id="cap-arc">The historical arc: scaffold to harness</h3>
         <p>The terminological shift from "scaffold" to "harness" is the field's most legible signal that its understanding of what it's building has changed. It's worth tracing carefully because the shift encodes a real intellectual claim, not just a preference.</p>
@@ -1615,9 +1634,9 @@
 
         <p>The <strong>harness era</strong> is what we're now in. The metaphor is permanent apparatus that channels a powerful thing toward useful work: you harness a horse, an engine, a reactor. The connotation reverses scaffolding's: better models <em>raise</em> the leverage of good harness design rather than dissolve it. The same physical artifact &mdash; a loop, a tool registry, a memory store, a context manager &mdash; gets reinterpreted as the thing being built rather than as a workaround. This is the point of the <em>Externalization</em> survey: memory, skills, protocols, and the harness itself are cognitive artifacts that offload internal model burden onto deterministic infrastructure, and that offloading is a permanent design feature, not a temporary fix.</p>
 
-        <p>A useful close reading: Anthropic's <em>Building Effective Agents</em> almost never uses the word "scaffold," uses "agent" carefully and narrowly, and treats the surrounding code as the locus of design decisions. Compare against AutoGPT's original README and you can read the shift directly off the prose.</p>
+        <p>A useful close reading: Anthropic's <em><a href="https://www.anthropic.com/engineering/building-effective-agents" target="_blank" rel="noopener noreferrer">Building Effective Agents</a></em> almost never uses the word "scaffold," uses "agent" carefully and narrowly, and treats the surrounding code as the locus of design decisions. Compare against <a href="https://github.com/Significant-Gravitas/AutoGPT" target="_blank" rel="noopener noreferrer">AutoGPT's original README</a> and you can read the shift directly off the prose.</p>
 
-        <p>There's an open empirical question worth posing to students: <em>was the scaffold framing wrong, or was it premature?</em> The Meta-Harness result and the harness-engineering literature suggest scaffolds do not dissolve at any capability level seen so far. But it's at least possible that some capability threshold exists past which a model would no longer benefit from external memory, external tools, or external control flow &mdash; past which the harness would in fact become a confound. No one has produced compelling evidence either way. The honest answer is that we don't know, and that the harness framing is currently winning because it matches the data we have. Have students argue both sides.</p>
+        <p>There's an open empirical question worth posing to students: <em>was the scaffold framing wrong, or was it premature?</em> The <a href="https://arxiv.org/abs/2603.28052" target="_blank" rel="noopener noreferrer">Meta-Harness result</a> and the harness-engineering literature suggest scaffolds do not dissolve at any capability level seen so far. But it's at least possible that some capability threshold exists past which a model would no longer benefit from external memory, external tools, or external control flow &mdash; past which the harness would in fact become a confound. No one has produced compelling evidence either way. The honest answer is that we don't know, and that the harness framing is currently winning because it matches the data we have. Have students argue both sides.</p>
 
         <h3 id="cap-layers">How the three layers compose into an agent</h3>
         <p>This is the integrative move the trilogy was building toward. Set it out explicitly:</p>
@@ -1633,7 +1652,7 @@
         <ul>
           <li><strong>Trajectory-dependence.</strong> The same agent on the same task can take different paths through the environment depending on stochastic choices, environmental responses, and which retrieved or compacted artifacts the context policy surfaced. Reliability becomes a distribution, not a value &mdash; which is why τ-bench's pass^k metric is the right way to measure production agents.</li>
           <li><strong>Closed-loop failure modes.</strong> Agents exhibit pathologies that don't exist at the level of single inferences: loops, goal drift, capability erosion under context rot, sub-agent cascade failures. None of these are visible in a prompt, a context window, or a static harness diagram. They emerge from the dynamics of the composition.</li>
-          <li><strong>Emergent capability above the parts.</strong> The Manus team's observation that they "rebuilt the framework four times" while keeping the model fixed is evidence that agent capability is largely a harness-and-context property, not a model property. The Meta-Harness six-fold gap is the same observation, formalized.</li>
+          <li><strong>Emergent capability above the parts.</strong> The Manus team's observation that they "rebuilt the framework four times" while keeping the model fixed is evidence that agent capability is largely a harness-and-context property, not a model property. The <a href="https://arxiv.org/abs/2603.28052" target="_blank" rel="noopener noreferrer">Meta-Harness</a> six-fold gap is the same observation, formalized.</li>
         </ul>
 
         <p>The clearest single reading on this synthesis is <strong>Lilian Weng's LLM-Powered Autonomous Agents</strong> (2023), now somewhat dated but still the cleanest narrative bridge from "LLM" to "agent" in the literature. Pair with <strong>Wang et al., A Survey on Large Language Model based Autonomous Agents</strong> (2024), for breadth, and <strong>Wang et al., Voyager: An Open-Ended Embodied Agent with Large Language Models</strong> (2024), as the cleanest case study of an agent that does the integrative thing &mdash; accumulating skills the harness can later retrieve, blurring the line between context, harness, and model.</p>
@@ -1641,7 +1660,7 @@
         <h3 id="cap-frontier">Where the frontier is heading</h3>
         <p>Three live questions worth ending the course on.</p>
 
-        <p><strong>First, the convergence of the three layers under automated optimization.</strong> Meta-Harness suggests harnesses can be optimized end-to-end. GEPA and DSPy suggest prompts can be. ACE and Dynamic Cheatsheet suggest contexts can. The natural endpoint is a co-optimized stack where the boundaries between layers blur because all three are being adjusted to a shared task signal. The Anthropic skills framing &mdash; SKILL.md files loaded by the harness on demand &mdash; is one production-grade instantiation: a skill is simultaneously a prompt fragment, a context-loading policy, and a piece of harness behavior. Students who internalize this stop seeing prompt/context/harness as separable disciplines and start seeing them as a single optimization surface.</p>
+        <p><strong>First, the convergence of the three layers under automated optimization.</strong> <a href="https://arxiv.org/abs/2603.28052" target="_blank" rel="noopener noreferrer">Meta-Harness</a> suggests harnesses can be optimized end-to-end. <a href="https://arxiv.org/abs/2507.19457" target="_blank" rel="noopener noreferrer">GEPA</a> and <a href="https://arxiv.org/abs/2310.03714" target="_blank" rel="noopener noreferrer">DSPy</a> suggest prompts can be. <a href="https://arxiv.org/abs/2510.04618" target="_blank" rel="noopener noreferrer">ACE</a> and <a href="https://arxiv.org/abs/2504.07952" target="_blank" rel="noopener noreferrer">Dynamic Cheatsheet</a> suggest contexts can. The natural endpoint is a co-optimized stack where the boundaries between layers blur because all three are being adjusted to a shared task signal. The <a href="https://www.anthropic.com/engineering/equipping-agents-with-skills" target="_blank" rel="noopener noreferrer">Anthropic skills</a> framing &mdash; SKILL.md files loaded by the harness on demand &mdash; is one production-grade instantiation: a skill is simultaneously a prompt fragment, a context-loading policy, and a piece of harness behavior. Students who internalize this stop seeing prompt/context/harness as separable disciplines and start seeing them as a single optimization surface.</p>
 
         <p><strong>Second, agents in environments that contain other agents.</strong> Almost every reading in the trilogy assumes the environment is passive &mdash; a file system, an API, a webpage. As multi-agent systems become routine, the environment increasingly contains other agents whose harnesses are pursuing their own goals. The classical multi-agent systems literature (<em>Wooldridge, An Introduction to MultiAgent Systems</em>, 2009) is suddenly relevant again, and the harness designs that worked against passive environments often misbehave against active ones. This is one of the most likely sources of the next round of "harness engineering" failure modes.</p>
 
