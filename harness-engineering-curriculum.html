@@ -717,20 +717,20 @@
     </div>
 
     <div class="toc-section">
-      <div class="toc-section-head"><span class="swatch harness"></span> Harness Engineering</div>
+      <div class="toc-section-head"><span class="swatch prompt"></span> Prompt Engineering</div>
       <ol class="modules">
-        <li><a href="#h1">Foundations: Prompt → Context → Harness</a></li>
-        <li><a href="#h2">The Agent Loop: ReAct &amp; Descendants</a></li>
-        <li><a href="#h3">Tool Use as the Action Space</a></li>
-        <li><a href="#h4">Planning &amp; Orchestration Patterns</a></li>
-        <li><a href="#h5">Memory &amp; State Externalization</a></li>
-        <li><a href="#h6">Context Engineering Inside the Harness</a></li>
-        <li><a href="#h7">Reflection &amp; Self-Correction</a></li>
-        <li><a href="#h8">Safety, Sandboxing &amp; Permissions</a></li>
-        <li><a href="#h9">Human-in-the-Loop &amp; Approval</a></li>
-        <li><a href="#h10">Observability &amp; Tracing</a></li>
-        <li><a href="#h11">Evaluation &amp; Benchmarks</a></li>
-        <li><a href="#h12">Claude Code &amp; Self-Optimizing Harnesses</a></li>
+        <li><a href="#p1">Foundations: The Original Interface</a></li>
+        <li><a href="#p2">In-Context Learning as Substrate</a></li>
+        <li><a href="#p3">Few-Shot Prompting &amp; Exemplar Design</a></li>
+        <li><a href="#p4">Chain-of-Thought</a></li>
+        <li><a href="#p5">Zero-Shot Reasoning &amp; Decomposition</a></li>
+        <li><a href="#p6">Self-Consistency, Sampling, Ensembles</a></li>
+        <li><a href="#p7">System Prompts, Roles &amp; Formatting</a></li>
+        <li><a href="#p8">Structured Output &amp; Constrained Decoding</a></li>
+        <li><a href="#p9">Adversarial Prompting</a></li>
+        <li><a href="#p10">Automatic Prompt Optimization</a></li>
+        <li><a href="#p11">Multimodal Prompting</a></li>
+        <li><a href="#p12">Coda: After Prompt Engineering</a></li>
       </ol>
     </div>
 
@@ -753,20 +753,20 @@
     </div>
 
     <div class="toc-section">
-      <div class="toc-section-head"><span class="swatch prompt"></span> Prompt Engineering</div>
+      <div class="toc-section-head"><span class="swatch harness"></span> Harness Engineering</div>
       <ol class="modules">
-        <li><a href="#p1">Foundations: The Original Interface</a></li>
-        <li><a href="#p2">In-Context Learning as Substrate</a></li>
-        <li><a href="#p3">Few-Shot Prompting &amp; Exemplar Design</a></li>
-        <li><a href="#p4">Chain-of-Thought</a></li>
-        <li><a href="#p5">Zero-Shot Reasoning &amp; Decomposition</a></li>
-        <li><a href="#p6">Self-Consistency, Sampling, Ensembles</a></li>
-        <li><a href="#p7">System Prompts, Roles &amp; Formatting</a></li>
-        <li><a href="#p8">Structured Output &amp; Constrained Decoding</a></li>
-        <li><a href="#p9">Adversarial Prompting</a></li>
-        <li><a href="#p10">Automatic Prompt Optimization</a></li>
-        <li><a href="#p11">Multimodal Prompting</a></li>
-        <li><a href="#p12">Coda: After Prompt Engineering</a></li>
+        <li><a href="#h1">Foundations: Prompt → Context → Harness</a></li>
+        <li><a href="#h2">The Agent Loop: ReAct &amp; Descendants</a></li>
+        <li><a href="#h3">Tool Use as the Action Space</a></li>
+        <li><a href="#h4">Planning &amp; Orchestration Patterns</a></li>
+        <li><a href="#h5">Memory &amp; State Externalization</a></li>
+        <li><a href="#h6">Context Engineering Inside the Harness</a></li>
+        <li><a href="#h7">Reflection &amp; Self-Correction</a></li>
+        <li><a href="#h8">Safety, Sandboxing &amp; Permissions</a></li>
+        <li><a href="#h9">Human-in-the-Loop &amp; Approval</a></li>
+        <li><a href="#h10">Observability &amp; Tracing</a></li>
+        <li><a href="#h11">Evaluation &amp; Benchmarks</a></li>
+        <li><a href="#h12">Claude Code &amp; Self-Optimizing Harnesses</a></li>
       </ol>
     </div>
 
@@ -903,238 +903,239 @@
     </section>
 
     <!-- ============================== -->
-    <!-- VOLUME I: HARNESS ENGINEERING  -->
+    <!-- VOLUME I: PROMPT ENGINEERING -->
     <!-- ============================== -->
-    <section id="harness-course">
-      <div class="course-header harness">
+    <section id="prompt-course">
+      <div class="course-header prompt">
         <p class="eyebrow">Volume I</p>
-        <h2>A Graduate Curriculum in Harness Engineering</h2>
-        <p class="lede">A twelve-module curriculum that builds from first principles to the current research frontier, scoped to a one-semester graduate course. Each module is sized for roughly a week (one lecture on theory, one on a paper or codebase, one lab). The readings are ordered by priority &mdash; the first one or two in each list are the canonical entry points; the rest extend the discussion.</p>
+        <h2>A Graduate Curriculum in Prompt Engineering</h2>
+        <p class="lede">The completing volume of the trilogy. The same one-semester scope and graduate-level pacing, but with a different relationship to its subject than the other two courses. Prompt engineering is older, more empirical, more saturated with folk knowledge, and &mdash; as the field has matured &mdash; increasingly absorbed into the layers above it. A modern course can't just be a tour of techniques; it has to teach what those techniques were responses to, which ones survived the move to capable models, and where the discipline goes once context and harness engineering own most of the leverage. Treat that arc as the spine of the course.</p>
       </div>
 
-      <div class="framings harness">
-        <p class="framings-title ui">Two cross-cutting framings for lecture one</p>
-        <p><em class="label">The externalization frame</em> &mdash; Zhou et al.'s recent survey, <em>Externalization in LLM Agents</em> &mdash; treats memory, skills, protocols, and the harness as cognitive artifacts that offload internal model burden onto deterministic infrastructure. This is the cleanest theoretical lens for the whole course.</p>
-        <p><em class="label">The harness-as-product frame</em> &mdash; Anthropic's <em>Building Effective Agents</em> (Schluntz &amp; Zhang, with reference implementations), MongoDB's <em>The Agent Harness</em>, and LangChain's <em>The Anatomy of an Agent Harness</em> &mdash; establishes that the LLM is a small fraction of any deployed system and that the surrounding code is a first-class engineering artifact.</p>
+      <div class="framings prompt">
+        <p class="framings-title ui">Two framing readings for lecture one</p>
+        <p><em class="label">The canonical survey</em> &mdash; Schulhoff et al., <em>The Prompt Report: A Systematic Survey of Prompt Engineering Techniques</em> &mdash; is a PRISMA-style review of 1,565 papers, producing a vocabulary of 33 terms and a taxonomy of 58 text-only techniques (plus 40 multimodal). It's the single most useful reference document for the syllabus and worth assigning early as a map of the territory. The companion site is the navigation aid.</p>
+        <p><em class="label">The historical framing</em> &mdash; Schluntz &amp; Zhang's <em>Building Effective Agents</em> and Anthropic's <em>Effective context engineering for AI agents</em> (revisited from the other two courses) &mdash; together make the case that prompt engineering is the natural progression's first layer, not a destination. Students should leave week one understanding why the discipline exists and why its scope has shrunk.</p>
       </div>
 
-      <article class="module harness" id="h1">
+      <article class="module prompt" id="p1">
         <div class="module-header">
           <span class="module-num ui">Module 01</span>
-          <h3>Foundations: From Prompt to Context to Harness</h3>
+          <h3>Foundations: Prompting as the Original Interface</h3>
         </div>
-        <p class="framing">Establish the three layers, the agent definition, the workflow/agent distinction, and the scaffold-vs-harness terminological shift. Set up the throughline: as model capability rises, leverage shifts up the stack.</p>
+        <p class="framing">Define what a prompt is, what it isn't, and how the field arrived at the term. Cover the pre-GPT-3 prompting literature (cloze prompts, PET) briefly, then the discontinuity introduced by in-context learning.</p>
         <div class="readings">
           <p class="readings-title ui">Canonical readings</p>
           <ol>
-            <li><a href="https://www.anthropic.com/engineering/building-effective-agents" class="citation" target="_blank" rel="noopener noreferrer">Schluntz &amp; Zhang, Building Effective Agents</a>, Anthropic (2024). <span class="note">The single best entry point.</span></li>
-            <li><a href="https://simonwillison.net/2024/Dec/20/building-effective-agents/" class="citation" target="_blank" rel="noopener noreferrer">Simon Willison, Notes on Building Effective Agents</a> (2024). <span class="note">Useful gloss on the terminology question.</span></li>
-            <li><a href="https://www.google.com/search?q=Zhou%20et%20al.%2C%20Externalization%20in%20LLM%20Agents" class="citation" target="_blank" rel="noopener noreferrer">Zhou et al., Externalization in LLM Agents</a> (2026). <span class="note">Theoretical framing for the course.</span></li>
-            <li><a href="https://karpathy.medium.com/software-2-0-a64152b37c35" class="citation" target="_blank" rel="noopener noreferrer">Karpathy, Software 2.0</a> (2017) <span class="note">&mdash; assigned for the historical analogy: ML code is a tiny fraction of a production ML system. Pair with Sculley et al., Hidden Technical Debt in Machine Learning Systems (NeurIPS 2015).</span></li>
+            <li><a href="https://arxiv.org/abs/2406.06608" class="citation" target="_blank" rel="noopener noreferrer">Schulhoff et al., The Prompt Report.</a> <span class="note">Vocabulary and taxonomy chapters.</span></li>
+            <li><a href="https://arxiv.org/abs/2107.13586" class="citation" target="_blank" rel="noopener noreferrer">Liu et al., Pre-train, Prompt, and Predict: A Systematic Survey of Prompting Methods in NLP</a> (2021). <span class="note">The pre-GPT-3 survey, useful for showing that prompting started as a fine-tuning alternative, not an end-user practice.</span></li>
+            <li><a href="https://arxiv.org/abs/2001.07676" class="citation" target="_blank" rel="noopener noreferrer">Schick &amp; Schütze, Exploiting Cloze Questions for Few-Shot Text Classification and Natural Language Inference (PET)</a>, EACL 2021. <span class="note">Assigned for historical grounding.</span></li>
+            <li><a href="https://www.promptingguide.ai/" class="citation" target="_blank" rel="noopener noreferrer">DAIR.AI, Prompt Engineering Guide</a> <span class="note">&mdash; the field's most-used practitioner reference, useful as continuous background.</span></li>
           </ol>
         </div>
       </article>
 
-      <article class="module harness" id="h2">
+      <article class="module prompt" id="p2">
         <div class="module-header">
           <span class="module-num ui">Module 02</span>
-          <h3>The Agent Loop: ReAct and Its Descendants</h3>
+          <h3>In-Context Learning as the Substrate</h3>
         </div>
-        <p class="framing">The canonical perception-action loop. Cover the original formulation, its few-shot prompting roots, and the move to tool-call APIs as first-class loop primitives.</p>
+        <p class="framing">Prompt engineering only works because of in-context learning, so the discipline's possibilities and limits track ICL's properties. Cover the founding empirical observation, the mechanistic theory, and the unsettling results about what makes ICL work (which is often not what practitioners assume).</p>
         <div class="readings">
           <p class="readings-title ui">Canonical readings</p>
           <ol>
-            <li><a href="https://arxiv.org/abs/2210.03629" class="citation" target="_blank" rel="noopener noreferrer">Yao et al., ReAct: Synergizing Reasoning and Acting in Language Models</a>, ICLR 2023. <span class="note">The foundational paper.</span></li>
-            <li><a href="https://arxiv.org/abs/2312.04511" class="citation" target="_blank" rel="noopener noreferrer">Kim et al., An LLM Compiler for Parallel Function Calling</a>, ICML 2024. <span class="note">Plan-and-execute as a DAG, with reported ~3.6&times; speedup over sequential ReAct.</span></li>
-            <li><a href="https://arxiv.org/abs/2305.10601" class="citation" target="_blank" rel="noopener noreferrer">Yao et al., Tree of Thoughts: Deliberate Problem Solving with Large Language Models</a>, NeurIPS 2023. <span class="note">The branching generalization.</span></li>
+            <li><a href="https://arxiv.org/abs/2005.14165" class="citation" target="_blank" rel="noopener noreferrer">Brown et al., Language Models are Few-Shot Learners</a>, NeurIPS 2020. <span class="note">The GPT-3 paper.</span></li>
+            <li><a href="https://arxiv.org/abs/2202.12837" class="citation" target="_blank" rel="noopener noreferrer">Min et al., Rethinking the Role of Demonstrations: What Makes In-Context Learning Work?</a>, EMNLP 2022. <span class="note">Required critical reading &mdash; the result that label correctness in demonstrations matters less than label distribution changes how you think about every few-shot prompt.</span></li>
+            <li><a href="https://transformer-circuits.pub/2022/in-context-learning-and-induction-heads/index.html" class="citation" target="_blank" rel="noopener noreferrer">Olsson et al., In-context Learning and Induction Heads</a> (Anthropic, 2022). <span class="note">The mechanistic account.</span></li>
+            <li><a href="https://arxiv.org/abs/2111.02080" class="citation" target="_blank" rel="noopener noreferrer">Xie et al., An Explanation of In-Context Learning as Implicit Bayesian Inference</a>, ICLR 2022.</li>
           </ol>
         </div>
-        <div class="lab"><span class="lab-tag ui">Lab</span><span class="lab-body">Implement a minimal ReAct loop in ~100 lines, no framework. The point is for students to see that the loop is short and the harness is everything around it.</span></div>
       </article>
 
-      <article class="module harness" id="h3">
+      <article class="module prompt" id="p3">
         <div class="module-header">
           <span class="module-num ui">Module 03</span>
-          <h3>Tool Use as the Action Space</h3>
+          <h3>Few-Shot Prompting and Exemplar Design</h3>
         </div>
-        <p class="framing">Tool calls are the agent's action interface; their design dominates reliability. Cover schema design, description-as-prompt, error contracts, tool catalog scaling, and the MCP shift from static tools to dynamic discovery.</p>
+        <p class="framing">The most-used technique in the entire syllabus. Cover exemplar selection, ordering effects, the calibration problem, and the diminishing-but-not-zero returns as models improve.</p>
         <div class="readings">
           <p class="readings-title ui">Canonical readings</p>
           <ol>
-            <li><a href="https://docs.anthropic.com/en/docs/build-with-claude/tool-use" class="citation" target="_blank" rel="noopener noreferrer">Anthropic, Tool Use Overview</a> (current docs).</li>
-            <li><a href="https://martinfowler.com/articles/function-call-LLM.html" class="citation" target="_blank" rel="noopener noreferrer">Martin Fowler / Unmesh Joshi, Function calling using LLMs</a> (2025). <span class="note">Best concise treatment, including MCP.</span></li>
-            <li><a href="https://modelcontextprotocol.io/" class="citation" target="_blank" rel="noopener noreferrer">Model Context Protocol specification.</a> <span class="note">The protocol itself.</span></li>
-            <li><a href="https://www.google.com/search?q=Bala%20Priya%20C%2C%20The%20Roadmap%20to%20Mastering%20Tool%20Calling%20in%20AI%20Agents" class="citation" target="_blank" rel="noopener noreferrer">Bala Priya C, The Roadmap to Mastering Tool Calling in AI Agents</a> (2026). <span class="note">Failure modes and catalog scaling.</span></li>
+            <li><a href="https://arxiv.org/abs/2104.08786" class="citation" target="_blank" rel="noopener noreferrer">Lu et al., Fantastically Ordered Prompts and Where to Find Them: Overcoming Few-Shot Prompt Order Sensitivity</a>, ACL 2022. <span class="note">The order-sensitivity result: the same exemplars in different orders can swing accuracy by tens of points.</span></li>
+            <li><a href="https://arxiv.org/abs/2102.09690" class="citation" target="_blank" rel="noopener noreferrer">Zhao et al., Calibrate Before Use: Improving Few-Shot Performance of Language Models</a>, ICML 2021. <span class="note">The recency, majority-label, and common-token biases that few-shot prompts induce, and how to correct for them.</span></li>
+            <li><a href="https://arxiv.org/abs/2101.06660" class="citation" target="_blank" rel="noopener noreferrer">Liu et al., What Makes Good In-Context Examples for GPT-3?</a> (2021). <span class="note">The retrieval-based exemplar selection paper.</span></li>
           </ol>
         </div>
-        <div class="lab"><span class="lab-tag ui">Lab</span><span class="lab-body">Build a tool registry with three failure modes (bad args, missing resource, timeout) and observe how error message phrasing affects recovery.</span></div>
+        <div class="lab"><span class="lab-tag ui">Lab</span><span class="lab-body">Replicate a small order-sensitivity experiment on a current model. The result is usually weaker than it was in 2022, which is itself a lesson in how the field has evolved.</span></div>
       </article>
 
-      <article class="module harness" id="h4">
+      <article class="module prompt" id="p4">
         <div class="module-header">
           <span class="module-num ui">Module 04</span>
-          <h3>Planning and Orchestration Patterns</h3>
+          <h3>Chain-of-Thought: The Technique That Reshaped the Field</h3>
         </div>
-        <p class="framing">The taxonomy of how multiple model calls compose. The Anthropic patterns (prompt chaining, routing, parallelization, orchestrator-workers, evaluator-optimizer) give you the vocabulary; the multi-agent research paper shows them in production.</p>
+        <p class="framing">CoT is the canonical example of a prompt technique that unlocks a model capability rather than just tweaking it. Cover the original paper, the scaling result that gave it weight, and the close-reading of why it works.</p>
         <div class="readings">
           <p class="readings-title ui">Canonical readings</p>
           <ol>
-            <li><a href="https://www.anthropic.com/engineering/multi-agent-research-system" class="citation" target="_blank" rel="noopener noreferrer">Anthropic, How we built our multi-agent research system</a> (2025). <span class="note">Required.</span></li>
-            <li><a href="https://www.anthropic.com/engineering/building-effective-agents" class="citation" target="_blank" rel="noopener noreferrer">Schluntz &amp; Zhang patterns</a> <span class="note">(revisit Module 1 reading with focus on the pattern catalog).</span></li>
-            <li><a href="https://github.com/anthropics/anthropic-cookbook/tree/main/patterns/agents" class="citation" target="_blank" rel="noopener noreferrer">Reference implementations:</a> <span class="note">anthropic-cookbook/patterns/agents and the Pydantic AI port.</span></li>
-            <li><a href="https://www.google.com/search?q=Fountaincity%2C%20Anthropic%27s%20Multi-Agent%20Blueprint%3A%20What%20Production%20Adds" class="citation" target="_blank" rel="noopener noreferrer">Fountaincity, Anthropic's Multi-Agent Blueprint: What Production Adds</a> (2026). <span class="note">The cost and SLA realities the original post elides.</span></li>
+            <li><a href="https://arxiv.org/abs/2201.11903" class="citation" target="_blank" rel="noopener noreferrer">Wei et al., Chain-of-Thought Prompting Elicits Reasoning in Large Language Models</a>, NeurIPS 2022. <span class="note">The founding paper.</span></li>
+            <li><a href="https://arxiv.org/abs/2212.10001" class="citation" target="_blank" rel="noopener noreferrer">Wang et al., Towards Understanding Chain-of-Thought Prompting: An Empirical Study of What Matters</a>, ACL 2023. <span class="note">The decomposition of CoT's contribution into "what part of the prompt actually matters."</span></li>
+            <li><a href="https://arxiv.org/abs/2209.07686" class="citation" target="_blank" rel="noopener noreferrer">Madaan &amp; Yazdanbakhsh, Text and Patterns: For Effective Chain of Thought, It Takes Two to Tango</a> (2022). <span class="note">Adjacent critical reading.</span></li>
           </ol>
         </div>
       </article>
 
-      <article class="module harness" id="h5">
+      <article class="module prompt" id="p5">
         <div class="module-header">
           <span class="module-num ui">Module 05</span>
-          <h3>Memory and State Externalization</h3>
+          <h3>Zero-Shot Reasoning and Decomposition</h3>
         </div>
-        <p class="framing">The harness is responsible for everything the model cannot remember. Cover the cognitive-science-inspired typology (working / episodic / semantic / procedural), retrieval policies, and the recent push beyond static RAG toward continuum memory.</p>
+        <p class="framing">Once CoT showed exemplars weren't strictly necessary, a small zoo of zero-shot reasoning techniques followed. Treat them as a family: each is a different prompted control structure over the model's reasoning trajectory.</p>
         <div class="readings">
           <p class="readings-title ui">Canonical readings</p>
           <ol>
-            <li><a href="https://arxiv.org/abs/2304.03442" class="citation" target="_blank" rel="noopener noreferrer">Park et al., Generative Agents: Interactive Simulacra of Human Behavior</a>, UIST 2023. <span class="note">The reference architecture: memory stream + reflection + retrieval scoring.</span></li>
-            <li><a href="https://arxiv.org/abs/2309.02427" class="citation" target="_blank" rel="noopener noreferrer">Sumers et al., Cognitive Architectures for Language Agents (CoALA)</a> (2024). <span class="note">The clearest theoretical taxonomy.</span></li>
-            <li><a href="https://www.google.com/search?q=Continuum%20Memory%20Architectures%20for%20Long-Horizon%20LLM%20Agents" class="citation" target="_blank" rel="noopener noreferrer">Continuum Memory Architectures for Long-Horizon LLM Agents</a> (2026). <span class="note">Critique of stateless RAG.</span></li>
-            <li><a href="https://arxiv.org/abs/2310.08560" class="citation" target="_blank" rel="noopener noreferrer">Packer et al., MemGPT: Towards LLMs as Operating Systems</a> (2024). <span class="note">Memory hierarchy via virtual context management.</span></li>
+            <li><a href="https://arxiv.org/abs/2205.11916" class="citation" target="_blank" rel="noopener noreferrer">Kojima et al., Large Language Models are Zero-Shot Reasoners</a>, NeurIPS 2022. <span class="note">"Let's think step by step."</span></li>
+            <li><a href="https://arxiv.org/abs/2205.10625" class="citation" target="_blank" rel="noopener noreferrer">Zhou et al., Least-to-Most Prompting Enables Complex Reasoning in Large Language Models</a>, ICLR 2023. <span class="note">Decomposition before solving.</span></li>
+            <li><a href="https://arxiv.org/abs/2305.04091" class="citation" target="_blank" rel="noopener noreferrer">Wang et al., Plan-and-Solve Prompting</a>, ACL 2023. <span class="note">The zero-shot upgrade.</span></li>
+            <li><a href="https://arxiv.org/abs/2305.10601" class="citation" target="_blank" rel="noopener noreferrer">Yao et al., Tree of Thoughts: Deliberate Problem Solving with Large Language Models</a>, NeurIPS 2023. <span class="note">Branching over linear CoT.</span></li>
+            <li><a href="https://arxiv.org/abs/2308.09687" class="citation" target="_blank" rel="noopener noreferrer">Besta et al., Graph of Thoughts</a> (2023). <span class="note">For completeness; assign as optional.</span></li>
           </ol>
         </div>
       </article>
 
-      <article class="module harness" id="h6">
+      <article class="module prompt" id="p6">
         <div class="module-header">
           <span class="module-num ui">Module 06</span>
-          <h3>Context Engineering Inside the Harness</h3>
+          <h3>Self-Consistency, Sampling, and Ensembles</h3>
         </div>
-        <p class="framing">Context engineering as the per-step subroutine of the harness. Compaction, just-in-time loading, tool-description budgeting, progressive disclosure, skill loading.</p>
+        <p class="framing">When one sampled trajectory isn't reliable, the next move is to draw many and aggregate. This module is where prompt engineering starts pressing against the boundary with harness engineering &mdash; the techniques here are inference-time control structures around the same prompt, not different prompts.</p>
         <div class="readings">
           <p class="readings-title ui">Canonical readings</p>
           <ol>
-            <li><a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents" class="citation" target="_blank" rel="noopener noreferrer">Anthropic, Effective context engineering for AI agents</a> <span class="note">(and follow-up posts on context rot and skill systems).</span></li>
-            <li><a href="https://blog.langchain.com/context-engineering-for-agents/" class="citation" target="_blank" rel="noopener noreferrer">Lance Martin / LangChain, Context Engineering for Agents</a>. <span class="note">The clearest practitioner taxonomy (write / select / compress / isolate).</span></li>
-            <li><a href="https://www.anthropic.com/engineering/writing-tools-for-agents" class="citation" target="_blank" rel="noopener noreferrer">Anthropic Engineering, Writing effective tools for AI agents</a> <span class="note">&mdash; including the observation that ~58 tools can consume ~55k tokens, which forces routing-before-loading.</span></li>
+            <li><a href="https://arxiv.org/abs/2203.11171" class="citation" target="_blank" rel="noopener noreferrer">Wang et al., Self-Consistency Improves Chain-of-Thought Reasoning in Language Models</a>, ICLR 2023. <span class="note">The canonical paper; majority-vote over sampled CoT trajectories.</span></li>
+            <li><a href="https://arxiv.org/abs/2303.17651" class="citation" target="_blank" rel="noopener noreferrer">Madaan et al., Self-Refine: Iterative Refinement with Self-Feedback</a>, NeurIPS 2023. <span class="note">Same-model critique-and-revise as a prompting pattern.</span></li>
+            <li><a href="https://arxiv.org/abs/2310.01798" class="citation" target="_blank" rel="noopener noreferrer">Huang et al., Large Language Models Cannot Self-Correct Reasoning Yet</a>, ICLR 2024. <span class="note">The critical counterpoint; without external feedback, self-refinement often degrades.</span></li>
           </ol>
         </div>
-        <div class="lab"><span class="lab-tag ui">Lab</span><span class="lab-body">Implement progressive tool disclosure with a router model selecting from N tool clusters before the main agent sees descriptions.</span></div>
+        <div class="lab"><span class="lab-tag ui">Lab</span><span class="lab-body">Implement self-consistency on a small reasoning benchmark, vary the sample count, and plot the accuracy/cost curve. Students should leave with a real sense of when ensembling is and isn't worth the bill.</span></div>
       </article>
 
-      <article class="module harness" id="h7">
+      <article class="module prompt" id="p7">
         <div class="module-header">
           <span class="module-num ui">Module 07</span>
-          <h3>Reflection, Self-Correction, and Inner Loops</h3>
+          <h3>System Prompts, Roles, and Formatting</h3>
         </div>
-        <p class="framing">Inner loops that revise outputs before the harness commits them. Pair with critical readings: self-correction without external feedback often fails, so the harness usually needs verifiers.</p>
+        <p class="framing">The "stylistic" half of prompt engineering: how role assignments, output-format directives, delimiter conventions, and structural cues shape behavior. Empirically real, often overstated by practitioners.</p>
         <div class="readings">
           <p class="readings-title ui">Canonical readings</p>
           <ol>
-            <li><a href="https://arxiv.org/abs/2303.11366" class="citation" target="_blank" rel="noopener noreferrer">Shinn et al., Reflexion: Language Agents with Verbal Reinforcement Learning</a>, NeurIPS 2023.</li>
-            <li><a href="https://arxiv.org/abs/2303.17651" class="citation" target="_blank" rel="noopener noreferrer">Madaan et al., Self-Refine: Iterative Refinement with Self-Feedback</a>, NeurIPS 2023.</li>
-            <li><a href="https://arxiv.org/abs/2310.01798" class="citation" target="_blank" rel="noopener noreferrer">Huang et al., Large Language Models Cannot Self-Correct Reasoning Yet</a>, ICLR 2024. <span class="note">The critical counterpoint &mdash; assigned together with Reflexion.</span></li>
-            <li><a href="https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-2-reflection/" class="citation" target="_blank" rel="noopener noreferrer">Andrew Ng, Agentic Design Patterns Part 2: Reflection</a> (2024).</li>
+            <li><a href="https://arxiv.org/abs/2310.11324" class="citation" target="_blank" rel="noopener noreferrer">Sclar et al., Quantifying Language Models' Sensitivity to Spurious Features in Prompt Design</a> (2024). <span class="note">The unsettling result that trivial formatting changes (e.g., choice of separator) can swing benchmark accuracy by 76 percentage points on some models. Required reading.</span></li>
+            <li><a href="https://arxiv.org/abs/2311.10054" class="citation" target="_blank" rel="noopener noreferrer">Zheng et al., When "A Helpful Assistant" Is Not Really Helpful: Personas in System Prompts Do Not Improve Performances of Large Language Models</a> (2024). <span class="note">Required reading as a corrective to persona folklore.</span></li>
+            <li><a href="https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview" class="citation" target="_blank" rel="noopener noreferrer">Anthropic, Prompt engineering overview</a> <span class="note">&mdash; the current practitioner guidance from a frontier lab.</span></li>
+            <li><a href="https://platform.openai.com/docs/guides/prompt-engineering" class="citation" target="_blank" rel="noopener noreferrer">OpenAI, Prompt engineering guide</a> <span class="note">&mdash; the parallel guidance from another.</span></li>
           </ol>
         </div>
       </article>
 
-      <article class="module harness" id="h8">
+      <article class="module prompt" id="p8">
         <div class="module-header">
           <span class="module-num ui">Module 08</span>
-          <h3>Safety, Sandboxing, and Permissions</h3>
+          <h3>Structured Output and Constrained Decoding</h3>
         </div>
-        <p class="framing">Once tools execute real code, blast radius dominates design. Cover prompt injection (direct and indirect), tool permission models, capability gating, and approval contracts.</p>
+        <p class="framing">When the consumer of the output is a machine, not a human, prompting alone is insufficient and constrained decoding takes over. Cover the spectrum from "ask nicely for JSON" to logit-masking with grammars.</p>
         <div class="readings">
           <p class="readings-title ui">Canonical readings</p>
           <ol>
-            <li><a href="https://arxiv.org/abs/2302.12173" class="citation" target="_blank" rel="noopener noreferrer">Greshake et al., Not what you've signed up for: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection</a> (2023). <span class="note">The seminal IPI paper.</span></li>
-            <li><a href="https://arxiv.org/abs/2406.13352" class="citation" target="_blank" rel="noopener noreferrer">Debenedetti et al., AgentDojo: A Dynamic Environment to Evaluate Prompt Injection Attacks and Defenses for LLM Agents</a>, NeurIPS 2024.</li>
-            <li><a href="https://www.google.com/search?q=Chennabasappa%20et%20al.%2C%20LlamaFirewall%3A%20An%20open%20source%20guardrail%20system%20for%20building%20secure%20AI%20agents" class="citation" target="_blank" rel="noopener noreferrer">Chennabasappa et al., LlamaFirewall: An open source guardrail system for building secure AI agents</a> (Meta, 2025).</li>
-            <li><a href="https://owasp.org/www-project-top-10-for-large-language-model-applications/" class="citation" target="_blank" rel="noopener noreferrer">OWASP Top 10 for LLM Applications.</a> <span class="note">The practitioner reference.</span></li>
-            <li><a href="https://simonwillison.net/tags/prompt-injection/" class="citation" target="_blank" rel="noopener noreferrer">Simon Willison's blog tag on prompt injection</a> <span class="note">&mdash; the running narrative.</span></li>
+            <li><a href="https://arxiv.org/abs/2307.09702" class="citation" target="_blank" rel="noopener noreferrer">Willard &amp; Louf, Efficient Guided Generation for Large Language Models</a> (2023). <span class="note">The Outlines paper &mdash; FSM-based constrained decoding.</span></li>
+            <li><a href="https://www.google.com/search?q=Geng%20et%20al.%2C%20JSONSchemaBench%3A%20A%20Rigorous%20Benchmark%20of%20Structured%20Outputs%20for%20Language%20Models" class="citation" target="_blank" rel="noopener noreferrer">Geng et al., JSONSchemaBench: A Rigorous Benchmark of Structured Outputs for Language Models</a> (2025). <span class="note">Comparative evaluation of Outlines, Guidance, XGrammar, OpenAI structured outputs, Gemini.</span></li>
+            <li><a href="https://arxiv.org/abs/2408.02442" class="citation" target="_blank" rel="noopener noreferrer">Tam et al., Let Me Speak Freely? A Study on the Impact of Format Restrictions on Performance of Large Language Models</a>, EMNLP 2024. <span class="note">The cautionary result: constraining format can degrade reasoning quality on the same task. Assign together with the Outlines paper to keep students honest.</span></li>
+            <li><a href="https://docs.anthropic.com/en/docs/build-with-claude/tool-use" class="citation" target="_blank" rel="noopener noreferrer">Anthropic, Tool use overview.</a> <span class="note">Function calling as the production manifestation.</span></li>
           </ol>
         </div>
       </article>
 
-      <article class="module harness" id="h9">
+      <article class="module prompt" id="p9">
         <div class="module-header">
           <span class="module-num ui">Module 09</span>
-          <h3>Human-in-the-Loop and Approval Contracts</h3>
+          <h3>Adversarial Prompting: Jailbreaks and Injection</h3>
         </div>
-        <p class="framing">When the loop deliberately yields control. Cover the design space (HITL vs HOTL, tool-level vs request-level approval, suspension vs approval) and the durable-execution problem (waits of hours/days).</p>
+        <p class="framing">Cover both attacker- and defender-side prompting. The defender side belongs in a prompt engineering course because the system-prompt design space is where most production defenses live (or fail).</p>
         <div class="readings">
           <p class="readings-title ui">Canonical readings</p>
           <ol>
-            <li><a href="https://www.anthropic.com/engineering/building-effective-agents" class="citation" target="_blank" rel="noopener noreferrer">Anthropic Building Effective Agents</a>, <span class="note">"Combining and customizing these patterns" section.</span></li>
-            <li><a href="https://www.google.com/search?q=Mastra%2C%20Human-in-the-Loop%3A%20When%20to%20Use%20Agent%20Approval" class="citation" target="_blank" rel="noopener noreferrer">Mastra, Human-in-the-Loop: When to Use Agent Approval</a> (2026). <span class="note">Clean taxonomy of approval vs. suspension.</span></li>
-            <li><a href="https://docs.langchain.com/oss/python/langchain/middleware" class="citation" target="_blank" rel="noopener noreferrer">LangChain, Human-in-the-loop middleware.</a> <span class="note">The four decision types (approve / edit / reject / respond).</span></li>
-            <li><a href="https://developers.cloudflare.com/agents/concepts/human-in-the-loop/" class="citation" target="_blank" rel="noopener noreferrer">Cloudflare, Agents SDK Human in the Loop patterns.</a> <span class="note">Five patterns including durable approvals via Workflows.</span></li>
+            <li><a href="https://arxiv.org/abs/2211.09527" class="citation" target="_blank" rel="noopener noreferrer">Perez &amp; Ribeiro, Ignore Previous Prompt: Attack Techniques for Language Models</a> (2022). <span class="note">The original prompt-injection paper.</span></li>
+            <li><a href="https://arxiv.org/abs/2307.02483" class="citation" target="_blank" rel="noopener noreferrer">Wei, Haghtalab &amp; Steinhardt, Jailbroken: How Does LLM Safety Training Fail?</a>, NeurIPS 2023. <span class="note">The clearest theoretical account; the "competing objectives" and "mismatched generalization" categories are the right vocabulary.</span></li>
+            <li><a href="https://arxiv.org/abs/2302.12173" class="citation" target="_blank" rel="noopener noreferrer">Greshake et al., Not What You've Signed Up For: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection</a>, AISec 2023. <span class="note">The IPI paper, which makes the case that the attack surface is data flow, not prompts.</span></li>
+            <li><a href="https://arxiv.org/abs/2307.15043" class="citation" target="_blank" rel="noopener noreferrer">Zou et al., Universal and Transferable Adversarial Attacks on Aligned Language Models</a> (2023). <span class="note">GCG &mdash; gradient-based suffix attacks, the white-box bound on what prompt-level defenses can stop.</span></li>
+            <li><a href="https://arxiv.org/abs/2311.16119" class="citation" target="_blank" rel="noopener noreferrer">Schulhoff et al., Ignore This Title and HackAPrompt</a>, EMNLP 2023. <span class="note">The largest crowd-sourced jailbreak dataset; useful for labs.</span></li>
           </ol>
         </div>
       </article>
 
-      <article class="module harness" id="h10">
+      <article class="module prompt" id="p10">
         <div class="module-header">
           <span class="module-num ui">Module 10</span>
-          <h3>Observability and Tracing</h3>
+          <h3>Automatic Prompt Optimization</h3>
         </div>
-        <p class="framing">Without traces you cannot debug a harness. Cover span hierarchy, OpenTelemetry as the substrate, and the OpenInference semantic conventions that specialize OTel for LLM workloads.</p>
+        <p class="framing">The case against hand-authored prompts, treated as a discipline in its own right. The arc from APE to GEPA tracks the same intellectual move the rest of the field has made: from natural-language artifacts to programs that produce them.</p>
         <div class="readings">
           <p class="readings-title ui">Canonical readings</p>
           <ol>
-            <li><a href="https://github.com/Arize-ai/openinference" class="citation" target="_blank" rel="noopener noreferrer">OpenInference Specification.</a> <span class="note">The semantic conventions reference.</span></li>
-            <li><a href="https://phoenix.arize.com/" class="citation" target="_blank" rel="noopener noreferrer">Arize, Phoenix.</a> <span class="note">OSS reference implementation; spin one up in lab.</span></li>
-            <li><a href="https://www.anthropic.com/engineering/multi-agent-research-system" class="citation" target="_blank" rel="noopener noreferrer">Anthropic's multi-agent post</a>, <span class="note">"Production reliability and engineering challenges" section, which discusses non-deterministic debugging and how to make agent execution legible.</span></li>
+            <li><a href="https://arxiv.org/abs/2211.01910" class="citation" target="_blank" rel="noopener noreferrer">Zhou et al., Large Language Models Are Human-Level Prompt Engineers (APE)</a>, ICLR 2023.</li>
+            <li><a href="https://arxiv.org/abs/2309.03409" class="citation" target="_blank" rel="noopener noreferrer">Yang et al., Large Language Models as Optimizers (OPRO)</a>, ICLR 2024. <span class="note">The "take a deep breath" result is the canonical demonstration.</span></li>
+            <li><a href="https://arxiv.org/abs/2305.03495" class="citation" target="_blank" rel="noopener noreferrer">Pryzant et al., Automatic Prompt Optimization with "Gradient Descent" and Beam Search (ProTeGi)</a>, EMNLP 2023.</li>
+            <li><a href="https://arxiv.org/abs/2406.07496" class="citation" target="_blank" rel="noopener noreferrer">Yuksekgonul et al., TextGrad: Automatic "Differentiation" via Text</a> (2024). <span class="note">The textual-backprop framing.</span></li>
+            <li><a href="https://arxiv.org/abs/2310.03714" class="citation" target="_blank" rel="noopener noreferrer">Khattab et al., DSPy: Compiling Declarative Language Model Calls into Self-Improving Pipelines</a>, ICLR 2024.</li>
+            <li><a href="https://www.google.com/search?q=Agrawal%20et%20al.%2C%20GEPA%3A%20Reflective%20Prompt%20Evolution%20Can%20Outperform%20Reinforcement%20Learning" class="citation" target="_blank" rel="noopener noreferrer">Agrawal et al., GEPA: Reflective Prompt Evolution Can Outperform Reinforcement Learning</a> (2025). <span class="note">The current frontier.</span></li>
           </ol>
         </div>
-        <div class="lab"><span class="lab-tag ui">Lab</span><span class="lab-body">Instrument the Module 2 ReAct agent end-to-end with OpenInference, then deliberately introduce a bug and find it in the trace.</span></div>
+        <div class="lab"><span class="lab-tag ui">Lab</span><span class="lab-body">Take a hand-tuned prompt from Module 4 or 5 and optimize it with at least two different methods (e.g., APE + DSPy's MIPRO), reporting accuracy delta and search cost.</span></div>
       </article>
 
-      <article class="module harness" id="h11">
+      <article class="module prompt" id="p11">
         <div class="module-header">
           <span class="module-num ui">Module 11</span>
-          <h3>Evaluation and Benchmarks</h3>
+          <h3>Multimodal Prompting</h3>
         </div>
-        <p class="framing">How to measure a harness. Cover end-to-end task benchmarks, the variance problem, the rigor problem, and tool-level evaluation as distinct from end-to-end.</p>
+        <p class="framing">Prompt engineering for images, code, and audio. The discipline rhymes with text prompting but has distinctive failure modes worth a dedicated module.</p>
         <div class="readings">
           <p class="readings-title ui">Canonical readings</p>
           <ol>
-            <li><a href="https://arxiv.org/abs/2310.06770" class="citation" target="_blank" rel="noopener noreferrer">Jimenez et al., SWE-bench: Can Language Models Resolve Real-World GitHub Issues?</a>, ICLR 2024. <span class="note">The canonical coding agent benchmark.</span></li>
-            <li><a href="https://arxiv.org/abs/2406.12045" class="citation" target="_blank" rel="noopener noreferrer">Yao et al., τ-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains</a> (Sierra, 2024). <span class="note">The pass^k reliability metric is the key idea.</span></li>
-            <li><a href="https://arxiv.org/abs/2311.12983" class="citation" target="_blank" rel="noopener noreferrer">Mialon et al., GAIA: A Benchmark for General AI Assistants</a>, ICLR 2024.</li>
-            <li><a href="https://arxiv.org/abs/2307.13854" class="citation" target="_blank" rel="noopener noreferrer">Zhou et al., WebArena: A Realistic Web Environment for Building Autonomous Agents</a>, ICLR 2024.</li>
-            <li><a href="https://www.google.com/search?q=Zhu%20et%20al.%2C%20Establishing%20Best%20Practices%20for%20Building%20Rigorous%20Agentic%20Benchmarks" class="citation" target="_blank" rel="noopener noreferrer">Zhu et al., Establishing Best Practices for Building Rigorous Agentic Benchmarks</a> (2025). <span class="note">Required critical reading &mdash; documents how up to 100% relative error inflates leaderboard claims.</span></li>
+            <li><a href="https://arxiv.org/abs/2203.05557" class="citation" target="_blank" rel="noopener noreferrer">Zhou et al., Conditional Prompt Learning for Vision-Language Models (CoCoOp)</a>, CVPR 2022.</li>
+            <li><a href="https://arxiv.org/abs/2210.03117" class="citation" target="_blank" rel="noopener noreferrer">Khattak et al., MaPLe: Multi-modal Prompt Learning</a>, CVPR 2023.</li>
+            <li><a href="https://arxiv.org/abs/2304.08485" class="citation" target="_blank" rel="noopener noreferrer">Liu et al., Visual Instruction Tuning (LLaVA)</a>, NeurIPS 2023. <span class="note">The instruction-tuning side that conditions how vision-language models respond to prompts.</span></li>
+            <li><a href="https://www.google.com/search?q=Oppenlaender%2C%20A%20Taxonomy%20of%20Prompt%20Modifiers%20for%20Text-to-Image%20Generation" class="citation" target="_blank" rel="noopener noreferrer">Oppenlaender, A Taxonomy of Prompt Modifiers for Text-to-Image Generation</a> (2022). <span class="note">Image prompting is its own folk-knowledge tradition; this is the closest thing to a systematic account.</span></li>
+            <li><a href="https://arxiv.org/abs/2406.06608" class="citation" target="_blank" rel="noopener noreferrer">Schulhoff et al., The Prompt Report</a> <span class="note">&mdash; revisit the multimodal taxonomy chapter.</span></li>
           </ol>
         </div>
       </article>
 
-      <article class="module harness" id="h12">
+      <article class="module prompt" id="p12">
         <div class="module-header">
           <span class="module-num ui">Module 12</span>
-          <h3>Case Study and Frontier: Claude Code and Self-Optimizing Harnesses</h3>
+          <h3>Coda: After Prompt Engineering</h3>
         </div>
-        <p class="framing">End with two contemporary anchors. The Claude Code source exposure (March 2026) made a production harness publicly readable; the Meta-Harness paper raised the harness itself to a first-class optimization target.</p>
+        <p class="framing">The pedagogically honest closing module. As models have improved, the marginal return on careful prompt wording has collapsed; many techniques in this syllabus are best understood as historical artifacts of the era when models needed elaborate scaffolding to reason. The skills that endure are the ones that compose into something larger &mdash; exemplar curation feeds into context engineering, CoT becomes a unit of harness control flow, automatic optimization is the bridge to programmatic systems. End the course with this synthesis.</p>
         <div class="readings">
           <p class="readings-title ui">Canonical readings</p>
           <ol>
-            <li><a href="https://www.google.com/search?q=WaveSpeed%2C%20Claude%20Code%20Agent%20Harness%3A%20Architecture%20Breakdown" class="citation" target="_blank" rel="noopener noreferrer">WaveSpeed, Claude Code Agent Harness: Architecture Breakdown</a> (2026).</li>
-            <li><a href="https://www.google.com/search?q=VILA-Lab%2C%20Dive-into-Claude-Code" class="citation" target="_blank" rel="noopener noreferrer">VILA-Lab, Dive-into-Claude-Code</a> <span class="note">&mdash; a curated index of community analyses of the leak, including the systematic "Horse Book" mdBook framing it as a harness engineering case study.</span></li>
-            <li><a href="https://www.google.com/search?q=Lee%20et%20al.%2C%20Meta-Harness%3A%20End-to-End%20Optimization%20of%20Model%20Harnesses" class="citation" target="_blank" rel="noopener noreferrer">Lee et al., Meta-Harness: End-to-End Optimization of Model Harnesses</a> (Stanford, 2026). <span class="note">The harness as a search target. The 6&times; same-model performance gap from harness alone is the headline number.</span></li>
-            <li><a href="https://www.google.com/search?q=Zhang%20et%20al.%2C%20General%20Modular%20Harness%20for%20LLM%20Agents%20in%20Multi-Turn%20Gaming%20Environments" class="citation" target="_blank" rel="noopener noreferrer">Zhang et al., General Modular Harness for LLM Agents in Multi-Turn Gaming Environments</a> (2025). <span class="note">Ablations that quantify the contribution of perception / memory / reasoning modules separately.</span></li>
+            <li><a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents" class="citation" target="_blank" rel="noopener noreferrer">Anthropic, Effective context engineering for AI agents.</a> <span class="note">The explicit thesis that prompt engineering's center of gravity has moved.</span></li>
+            <li><a href="https://www.anthropic.com/engineering/building-effective-agents" class="citation" target="_blank" rel="noopener noreferrer">Schluntz &amp; Zhang, Building Effective Agents</a> <span class="note">&mdash; revisit with attention to the "find the simplest solution first" framing.</span></li>
+            <li><a href="https://www.anthropic.com/research/tracing-thoughts-language-model" class="citation" target="_blank" rel="noopener noreferrer">Anthropic Research, Tracing the thoughts of a large language model</a> (2025). <span class="note">Mechanistic interpretability is starting to give principled explanations for why prompts have the effects they do; worth assigning as a glimpse of what eventually replaces folk practice.</span></li>
+            <li><a href="https://karpathy.medium.com/software-2-0-a64152b37c35" class="citation" target="_blank" rel="noopener noreferrer">Karpathy, Software 2.0</a> (2017) <span class="note">&mdash; reassigned in this context to motivate the framing that the era's discipline migrates upward as the underlying substrate matures.</span></li>
           </ol>
         </div>
-        <div class="lab"><span class="lab-tag ui">Final Lab</span><span class="lab-body">Students take their semester-long harness, instrument it on a small Meta-Harness-style outer loop, and report whether automated edits beat their hand-tuned version.</span></div>
+        <div class="lab"><span class="lab-tag ui">Final Lab</span><span class="lab-body">Students take a single complex task they prompt-engineered earlier in the semester, refactor it as (a) a DSPy program and (b) a small harness in the style of the harness course, and write up which version produced better, more reliable, more maintainable results. The lab is the bridge between this course and the other two.</span></div>
       </article>
 
       <div class="ped-notes">
         <h3 class="ui">A Few Pedagogical Notes</h3>
-        <p>The course works best if labs accumulate one codebase rather than discarding work between modules. By Module 12 students have an instrumented, sandboxed, multi-agent harness with memory and approvals, and they end by submitting it to automated optimization. The arc mirrors the field's actual move: from hand-authored loops to optimized infrastructure.</p>
-        <p>I'd put SWE-bench, τ-bench, and at least one custom domain benchmark on the syllabus from the start, so students re-evaluate the same harness across modules and see numbers move (or not move) as they add components. The Module 12 readings on benchmark rigor land much harder when students have lived with their own numbers all semester.</p>
-        <p>Finally, two readings worth weaving in throughout rather than assigning to a single module: <em>Simon Willison's blog</em> as a running practitioner narrative, and <em>Lilian Weng's LLM-Powered Autonomous Agents</em> (2023) as the historical reference point most of the field still cites.</p>
+        <p>This course is best taught with a note of intellectual honesty about its subject. A 2022-style prompt engineering course would have spent eight weeks on phrasing tricks; a 2026 course should spend most of its time on the techniques that turned out to compose into something larger and on the empirical results that taught the field its limits. The Sclar et al. formatting-sensitivity paper, the Min et al. demonstrations paper, the Huang et al. self-correction paper, and the Tam et al. format-restriction paper are the four readings I'd most insist on, because each one undermines a piece of folk wisdom that practitioners still repeat.</p>
+        <p>A useful organizing question to put to students at the start and revisit at the end: <em>which of these techniques would survive a hypothetical model that was perfectly calibrated and never needed reasoning scaffolding?</em> Working through that question is how students learn to distinguish techniques that exploited capability gaps (most of Modules 4&ndash;7) from techniques that exploit something more structural about how transformers consume sequences (Modules 8 and 10). The first kind ages; the second kind compounds. Students who can tell them apart will be useful builders for the next several years regardless of what specific models they're working with.</p>
+        <p>Finally &mdash; the same continuous reading I recommended for the context course applies here. <em>Simon Willison's blog</em> is the running practitioner narrative, and his <em>prompt-injection</em> tag in particular is the best ongoing chronicle of how the adversarial side of prompt engineering is actually playing out in production.</p>
       </div>
     </section>
 
-    <!-- ============================== -->
     <!-- VOLUME II: CONTEXT ENGINEERING -->
     <!-- ============================== -->
     <section id="context-course">
@@ -1367,239 +1368,238 @@
     </section>
 
     <!-- ============================== -->
-    <!-- VOLUME III: PROMPT ENGINEERING -->
+    <!-- VOLUME III: HARNESS ENGINEERING -->
     <!-- ============================== -->
-    <section id="prompt-course">
-      <div class="course-header prompt">
+    <section id="harness-course">
+      <div class="course-header harness">
         <p class="eyebrow">Volume III</p>
-        <h2>A Graduate Curriculum in Prompt Engineering</h2>
-        <p class="lede">The completing volume of the trilogy. The same one-semester scope and graduate-level pacing, but with a different relationship to its subject than the other two courses. Prompt engineering is older, more empirical, more saturated with folk knowledge, and &mdash; as the field has matured &mdash; increasingly absorbed into the layers above it. A modern course can't just be a tour of techniques; it has to teach what those techniques were responses to, which ones survived the move to capable models, and where the discipline goes once context and harness engineering own most of the leverage. Treat that arc as the spine of the course.</p>
+        <h2>A Graduate Curriculum in Harness Engineering</h2>
+        <p class="lede">A twelve-module curriculum that builds from first principles to the current research frontier, scoped to a one-semester graduate course. Each module is sized for roughly a week (one lecture on theory, one on a paper or codebase, one lab). The readings are ordered by priority &mdash; the first one or two in each list are the canonical entry points; the rest extend the discussion.</p>
       </div>
 
-      <div class="framings prompt">
-        <p class="framings-title ui">Two framing readings for lecture one</p>
-        <p><em class="label">The canonical survey</em> &mdash; Schulhoff et al., <em>The Prompt Report: A Systematic Survey of Prompt Engineering Techniques</em> &mdash; is a PRISMA-style review of 1,565 papers, producing a vocabulary of 33 terms and a taxonomy of 58 text-only techniques (plus 40 multimodal). It's the single most useful reference document for the syllabus and worth assigning early as a map of the territory. The companion site is the navigation aid.</p>
-        <p><em class="label">The historical framing</em> &mdash; Schluntz &amp; Zhang's <em>Building Effective Agents</em> and Anthropic's <em>Effective context engineering for AI agents</em> (revisited from the other two courses) &mdash; together make the case that prompt engineering is the natural progression's first layer, not a destination. Students should leave week one understanding why the discipline exists and why its scope has shrunk.</p>
+      <div class="framings harness">
+        <p class="framings-title ui">Two cross-cutting framings for lecture one</p>
+        <p><em class="label">The externalization frame</em> &mdash; Zhou et al.'s recent survey, <em>Externalization in LLM Agents</em> &mdash; treats memory, skills, protocols, and the harness as cognitive artifacts that offload internal model burden onto deterministic infrastructure. This is the cleanest theoretical lens for the whole course.</p>
+        <p><em class="label">The harness-as-product frame</em> &mdash; Anthropic's <em>Building Effective Agents</em> (Schluntz &amp; Zhang, with reference implementations), MongoDB's <em>The Agent Harness</em>, and LangChain's <em>The Anatomy of an Agent Harness</em> &mdash; establishes that the LLM is a small fraction of any deployed system and that the surrounding code is a first-class engineering artifact.</p>
       </div>
 
-      <article class="module prompt" id="p1">
+      <article class="module harness" id="h1">
         <div class="module-header">
           <span class="module-num ui">Module 01</span>
-          <h3>Foundations: Prompting as the Original Interface</h3>
+          <h3>Foundations: From Prompt to Context to Harness</h3>
         </div>
-        <p class="framing">Define what a prompt is, what it isn't, and how the field arrived at the term. Cover the pre-GPT-3 prompting literature (cloze prompts, PET) briefly, then the discontinuity introduced by in-context learning.</p>
+        <p class="framing">Establish the three layers, the agent definition, the workflow/agent distinction, and the scaffold-vs-harness terminological shift. Set up the throughline: as model capability rises, leverage shifts up the stack.</p>
         <div class="readings">
           <p class="readings-title ui">Canonical readings</p>
           <ol>
-            <li><a href="https://arxiv.org/abs/2406.06608" class="citation" target="_blank" rel="noopener noreferrer">Schulhoff et al., The Prompt Report.</a> <span class="note">Vocabulary and taxonomy chapters.</span></li>
-            <li><a href="https://arxiv.org/abs/2107.13586" class="citation" target="_blank" rel="noopener noreferrer">Liu et al., Pre-train, Prompt, and Predict: A Systematic Survey of Prompting Methods in NLP</a> (2021). <span class="note">The pre-GPT-3 survey, useful for showing that prompting started as a fine-tuning alternative, not an end-user practice.</span></li>
-            <li><a href="https://arxiv.org/abs/2001.07676" class="citation" target="_blank" rel="noopener noreferrer">Schick &amp; Schütze, Exploiting Cloze Questions for Few-Shot Text Classification and Natural Language Inference (PET)</a>, EACL 2021. <span class="note">Assigned for historical grounding.</span></li>
-            <li><a href="https://www.promptingguide.ai/" class="citation" target="_blank" rel="noopener noreferrer">DAIR.AI, Prompt Engineering Guide</a> <span class="note">&mdash; the field's most-used practitioner reference, useful as continuous background.</span></li>
+            <li><a href="https://www.anthropic.com/engineering/building-effective-agents" class="citation" target="_blank" rel="noopener noreferrer">Schluntz &amp; Zhang, Building Effective Agents</a>, Anthropic (2024). <span class="note">The single best entry point.</span></li>
+            <li><a href="https://simonwillison.net/2024/Dec/20/building-effective-agents/" class="citation" target="_blank" rel="noopener noreferrer">Simon Willison, Notes on Building Effective Agents</a> (2024). <span class="note">Useful gloss on the terminology question.</span></li>
+            <li><a href="https://www.google.com/search?q=Zhou%20et%20al.%2C%20Externalization%20in%20LLM%20Agents" class="citation" target="_blank" rel="noopener noreferrer">Zhou et al., Externalization in LLM Agents</a> (2026). <span class="note">Theoretical framing for the course.</span></li>
+            <li><a href="https://karpathy.medium.com/software-2-0-a64152b37c35" class="citation" target="_blank" rel="noopener noreferrer">Karpathy, Software 2.0</a> (2017) <span class="note">&mdash; assigned for the historical analogy: ML code is a tiny fraction of a production ML system. Pair with Sculley et al., Hidden Technical Debt in Machine Learning Systems (NeurIPS 2015).</span></li>
           </ol>
         </div>
       </article>
 
-      <article class="module prompt" id="p2">
+      <article class="module harness" id="h2">
         <div class="module-header">
           <span class="module-num ui">Module 02</span>
-          <h3>In-Context Learning as the Substrate</h3>
+          <h3>The Agent Loop: ReAct and Its Descendants</h3>
         </div>
-        <p class="framing">Prompt engineering only works because of in-context learning, so the discipline's possibilities and limits track ICL's properties. Cover the founding empirical observation, the mechanistic theory, and the unsettling results about what makes ICL work (which is often not what practitioners assume).</p>
+        <p class="framing">The canonical perception-action loop. Cover the original formulation, its few-shot prompting roots, and the move to tool-call APIs as first-class loop primitives.</p>
         <div class="readings">
           <p class="readings-title ui">Canonical readings</p>
           <ol>
-            <li><a href="https://arxiv.org/abs/2005.14165" class="citation" target="_blank" rel="noopener noreferrer">Brown et al., Language Models are Few-Shot Learners</a>, NeurIPS 2020. <span class="note">The GPT-3 paper.</span></li>
-            <li><a href="https://arxiv.org/abs/2202.12837" class="citation" target="_blank" rel="noopener noreferrer">Min et al., Rethinking the Role of Demonstrations: What Makes In-Context Learning Work?</a>, EMNLP 2022. <span class="note">Required critical reading &mdash; the result that label correctness in demonstrations matters less than label distribution changes how you think about every few-shot prompt.</span></li>
-            <li><a href="https://transformer-circuits.pub/2022/in-context-learning-and-induction-heads/index.html" class="citation" target="_blank" rel="noopener noreferrer">Olsson et al., In-context Learning and Induction Heads</a> (Anthropic, 2022). <span class="note">The mechanistic account.</span></li>
-            <li><a href="https://arxiv.org/abs/2111.02080" class="citation" target="_blank" rel="noopener noreferrer">Xie et al., An Explanation of In-Context Learning as Implicit Bayesian Inference</a>, ICLR 2022.</li>
+            <li><a href="https://arxiv.org/abs/2210.03629" class="citation" target="_blank" rel="noopener noreferrer">Yao et al., ReAct: Synergizing Reasoning and Acting in Language Models</a>, ICLR 2023. <span class="note">The foundational paper.</span></li>
+            <li><a href="https://arxiv.org/abs/2312.04511" class="citation" target="_blank" rel="noopener noreferrer">Kim et al., An LLM Compiler for Parallel Function Calling</a>, ICML 2024. <span class="note">Plan-and-execute as a DAG, with reported ~3.6&times; speedup over sequential ReAct.</span></li>
+            <li><a href="https://arxiv.org/abs/2305.10601" class="citation" target="_blank" rel="noopener noreferrer">Yao et al., Tree of Thoughts: Deliberate Problem Solving with Large Language Models</a>, NeurIPS 2023. <span class="note">The branching generalization.</span></li>
           </ol>
         </div>
+        <div class="lab"><span class="lab-tag ui">Lab</span><span class="lab-body">Implement a minimal ReAct loop in ~100 lines, no framework. The point is for students to see that the loop is short and the harness is everything around it.</span></div>
       </article>
 
-      <article class="module prompt" id="p3">
+      <article class="module harness" id="h3">
         <div class="module-header">
           <span class="module-num ui">Module 03</span>
-          <h3>Few-Shot Prompting and Exemplar Design</h3>
+          <h3>Tool Use as the Action Space</h3>
         </div>
-        <p class="framing">The most-used technique in the entire syllabus. Cover exemplar selection, ordering effects, the calibration problem, and the diminishing-but-not-zero returns as models improve.</p>
+        <p class="framing">Tool calls are the agent's action interface; their design dominates reliability. Cover schema design, description-as-prompt, error contracts, tool catalog scaling, and the MCP shift from static tools to dynamic discovery.</p>
         <div class="readings">
           <p class="readings-title ui">Canonical readings</p>
           <ol>
-            <li><a href="https://arxiv.org/abs/2104.08786" class="citation" target="_blank" rel="noopener noreferrer">Lu et al., Fantastically Ordered Prompts and Where to Find Them: Overcoming Few-Shot Prompt Order Sensitivity</a>, ACL 2022. <span class="note">The order-sensitivity result: the same exemplars in different orders can swing accuracy by tens of points.</span></li>
-            <li><a href="https://arxiv.org/abs/2102.09690" class="citation" target="_blank" rel="noopener noreferrer">Zhao et al., Calibrate Before Use: Improving Few-Shot Performance of Language Models</a>, ICML 2021. <span class="note">The recency, majority-label, and common-token biases that few-shot prompts induce, and how to correct for them.</span></li>
-            <li><a href="https://arxiv.org/abs/2101.06660" class="citation" target="_blank" rel="noopener noreferrer">Liu et al., What Makes Good In-Context Examples for GPT-3?</a> (2021). <span class="note">The retrieval-based exemplar selection paper.</span></li>
+            <li><a href="https://docs.anthropic.com/en/docs/build-with-claude/tool-use" class="citation" target="_blank" rel="noopener noreferrer">Anthropic, Tool Use Overview</a> (current docs).</li>
+            <li><a href="https://martinfowler.com/articles/function-call-LLM.html" class="citation" target="_blank" rel="noopener noreferrer">Martin Fowler / Unmesh Joshi, Function calling using LLMs</a> (2025). <span class="note">Best concise treatment, including MCP.</span></li>
+            <li><a href="https://modelcontextprotocol.io/" class="citation" target="_blank" rel="noopener noreferrer">Model Context Protocol specification.</a> <span class="note">The protocol itself.</span></li>
+            <li><a href="https://www.google.com/search?q=Bala%20Priya%20C%2C%20The%20Roadmap%20to%20Mastering%20Tool%20Calling%20in%20AI%20Agents" class="citation" target="_blank" rel="noopener noreferrer">Bala Priya C, The Roadmap to Mastering Tool Calling in AI Agents</a> (2026). <span class="note">Failure modes and catalog scaling.</span></li>
           </ol>
         </div>
-        <div class="lab"><span class="lab-tag ui">Lab</span><span class="lab-body">Replicate a small order-sensitivity experiment on a current model. The result is usually weaker than it was in 2022, which is itself a lesson in how the field has evolved.</span></div>
+        <div class="lab"><span class="lab-tag ui">Lab</span><span class="lab-body">Build a tool registry with three failure modes (bad args, missing resource, timeout) and observe how error message phrasing affects recovery.</span></div>
       </article>
 
-      <article class="module prompt" id="p4">
+      <article class="module harness" id="h4">
         <div class="module-header">
           <span class="module-num ui">Module 04</span>
-          <h3>Chain-of-Thought: The Technique That Reshaped the Field</h3>
+          <h3>Planning and Orchestration Patterns</h3>
         </div>
-        <p class="framing">CoT is the canonical example of a prompt technique that unlocks a model capability rather than just tweaking it. Cover the original paper, the scaling result that gave it weight, and the close-reading of why it works.</p>
+        <p class="framing">The taxonomy of how multiple model calls compose. The Anthropic patterns (prompt chaining, routing, parallelization, orchestrator-workers, evaluator-optimizer) give you the vocabulary; the multi-agent research paper shows them in production.</p>
         <div class="readings">
           <p class="readings-title ui">Canonical readings</p>
           <ol>
-            <li><a href="https://arxiv.org/abs/2201.11903" class="citation" target="_blank" rel="noopener noreferrer">Wei et al., Chain-of-Thought Prompting Elicits Reasoning in Large Language Models</a>, NeurIPS 2022. <span class="note">The founding paper.</span></li>
-            <li><a href="https://arxiv.org/abs/2212.10001" class="citation" target="_blank" rel="noopener noreferrer">Wang et al., Towards Understanding Chain-of-Thought Prompting: An Empirical Study of What Matters</a>, ACL 2023. <span class="note">The decomposition of CoT's contribution into "what part of the prompt actually matters."</span></li>
-            <li><a href="https://arxiv.org/abs/2209.07686" class="citation" target="_blank" rel="noopener noreferrer">Madaan &amp; Yazdanbakhsh, Text and Patterns: For Effective Chain of Thought, It Takes Two to Tango</a> (2022). <span class="note">Adjacent critical reading.</span></li>
+            <li><a href="https://www.anthropic.com/engineering/multi-agent-research-system" class="citation" target="_blank" rel="noopener noreferrer">Anthropic, How we built our multi-agent research system</a> (2025). <span class="note">Required.</span></li>
+            <li><a href="https://www.anthropic.com/engineering/building-effective-agents" class="citation" target="_blank" rel="noopener noreferrer">Schluntz &amp; Zhang patterns</a> <span class="note">(revisit Module 1 reading with focus on the pattern catalog).</span></li>
+            <li><a href="https://github.com/anthropics/anthropic-cookbook/tree/main/patterns/agents" class="citation" target="_blank" rel="noopener noreferrer">Reference implementations:</a> <span class="note">anthropic-cookbook/patterns/agents and the Pydantic AI port.</span></li>
+            <li><a href="https://www.google.com/search?q=Fountaincity%2C%20Anthropic%27s%20Multi-Agent%20Blueprint%3A%20What%20Production%20Adds" class="citation" target="_blank" rel="noopener noreferrer">Fountaincity, Anthropic's Multi-Agent Blueprint: What Production Adds</a> (2026). <span class="note">The cost and SLA realities the original post elides.</span></li>
           </ol>
         </div>
       </article>
 
-      <article class="module prompt" id="p5">
+      <article class="module harness" id="h5">
         <div class="module-header">
           <span class="module-num ui">Module 05</span>
-          <h3>Zero-Shot Reasoning and Decomposition</h3>
+          <h3>Memory and State Externalization</h3>
         </div>
-        <p class="framing">Once CoT showed exemplars weren't strictly necessary, a small zoo of zero-shot reasoning techniques followed. Treat them as a family: each is a different prompted control structure over the model's reasoning trajectory.</p>
+        <p class="framing">The harness is responsible for everything the model cannot remember. Cover the cognitive-science-inspired typology (working / episodic / semantic / procedural), retrieval policies, and the recent push beyond static RAG toward continuum memory.</p>
         <div class="readings">
           <p class="readings-title ui">Canonical readings</p>
           <ol>
-            <li><a href="https://arxiv.org/abs/2205.11916" class="citation" target="_blank" rel="noopener noreferrer">Kojima et al., Large Language Models are Zero-Shot Reasoners</a>, NeurIPS 2022. <span class="note">"Let's think step by step."</span></li>
-            <li><a href="https://arxiv.org/abs/2205.10625" class="citation" target="_blank" rel="noopener noreferrer">Zhou et al., Least-to-Most Prompting Enables Complex Reasoning in Large Language Models</a>, ICLR 2023. <span class="note">Decomposition before solving.</span></li>
-            <li><a href="https://arxiv.org/abs/2305.04091" class="citation" target="_blank" rel="noopener noreferrer">Wang et al., Plan-and-Solve Prompting</a>, ACL 2023. <span class="note">The zero-shot upgrade.</span></li>
-            <li><a href="https://arxiv.org/abs/2305.10601" class="citation" target="_blank" rel="noopener noreferrer">Yao et al., Tree of Thoughts: Deliberate Problem Solving with Large Language Models</a>, NeurIPS 2023. <span class="note">Branching over linear CoT.</span></li>
-            <li><a href="https://arxiv.org/abs/2308.09687" class="citation" target="_blank" rel="noopener noreferrer">Besta et al., Graph of Thoughts</a> (2023). <span class="note">For completeness; assign as optional.</span></li>
+            <li><a href="https://arxiv.org/abs/2304.03442" class="citation" target="_blank" rel="noopener noreferrer">Park et al., Generative Agents: Interactive Simulacra of Human Behavior</a>, UIST 2023. <span class="note">The reference architecture: memory stream + reflection + retrieval scoring.</span></li>
+            <li><a href="https://arxiv.org/abs/2309.02427" class="citation" target="_blank" rel="noopener noreferrer">Sumers et al., Cognitive Architectures for Language Agents (CoALA)</a> (2024). <span class="note">The clearest theoretical taxonomy.</span></li>
+            <li><a href="https://www.google.com/search?q=Continuum%20Memory%20Architectures%20for%20Long-Horizon%20LLM%20Agents" class="citation" target="_blank" rel="noopener noreferrer">Continuum Memory Architectures for Long-Horizon LLM Agents</a> (2026). <span class="note">Critique of stateless RAG.</span></li>
+            <li><a href="https://arxiv.org/abs/2310.08560" class="citation" target="_blank" rel="noopener noreferrer">Packer et al., MemGPT: Towards LLMs as Operating Systems</a> (2024). <span class="note">Memory hierarchy via virtual context management.</span></li>
           </ol>
         </div>
       </article>
 
-      <article class="module prompt" id="p6">
+      <article class="module harness" id="h6">
         <div class="module-header">
           <span class="module-num ui">Module 06</span>
-          <h3>Self-Consistency, Sampling, and Ensembles</h3>
+          <h3>Context Engineering Inside the Harness</h3>
         </div>
-        <p class="framing">When one sampled trajectory isn't reliable, the next move is to draw many and aggregate. This module is where prompt engineering starts pressing against the boundary with harness engineering &mdash; the techniques here are inference-time control structures around the same prompt, not different prompts.</p>
+        <p class="framing">Context engineering as the per-step subroutine of the harness. Compaction, just-in-time loading, tool-description budgeting, progressive disclosure, skill loading.</p>
         <div class="readings">
           <p class="readings-title ui">Canonical readings</p>
           <ol>
-            <li><a href="https://arxiv.org/abs/2203.11171" class="citation" target="_blank" rel="noopener noreferrer">Wang et al., Self-Consistency Improves Chain-of-Thought Reasoning in Language Models</a>, ICLR 2023. <span class="note">The canonical paper; majority-vote over sampled CoT trajectories.</span></li>
-            <li><a href="https://arxiv.org/abs/2303.17651" class="citation" target="_blank" rel="noopener noreferrer">Madaan et al., Self-Refine: Iterative Refinement with Self-Feedback</a>, NeurIPS 2023. <span class="note">Same-model critique-and-revise as a prompting pattern.</span></li>
-            <li><a href="https://arxiv.org/abs/2310.01798" class="citation" target="_blank" rel="noopener noreferrer">Huang et al., Large Language Models Cannot Self-Correct Reasoning Yet</a>, ICLR 2024. <span class="note">The critical counterpoint; without external feedback, self-refinement often degrades.</span></li>
+            <li><a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents" class="citation" target="_blank" rel="noopener noreferrer">Anthropic, Effective context engineering for AI agents</a> <span class="note">(and follow-up posts on context rot and skill systems).</span></li>
+            <li><a href="https://blog.langchain.com/context-engineering-for-agents/" class="citation" target="_blank" rel="noopener noreferrer">Lance Martin / LangChain, Context Engineering for Agents</a>. <span class="note">The clearest practitioner taxonomy (write / select / compress / isolate).</span></li>
+            <li><a href="https://www.anthropic.com/engineering/writing-tools-for-agents" class="citation" target="_blank" rel="noopener noreferrer">Anthropic Engineering, Writing effective tools for AI agents</a> <span class="note">&mdash; including the observation that ~58 tools can consume ~55k tokens, which forces routing-before-loading.</span></li>
           </ol>
         </div>
-        <div class="lab"><span class="lab-tag ui">Lab</span><span class="lab-body">Implement self-consistency on a small reasoning benchmark, vary the sample count, and plot the accuracy/cost curve. Students should leave with a real sense of when ensembling is and isn't worth the bill.</span></div>
+        <div class="lab"><span class="lab-tag ui">Lab</span><span class="lab-body">Implement progressive tool disclosure with a router model selecting from N tool clusters before the main agent sees descriptions.</span></div>
       </article>
 
-      <article class="module prompt" id="p7">
+      <article class="module harness" id="h7">
         <div class="module-header">
           <span class="module-num ui">Module 07</span>
-          <h3>System Prompts, Roles, and Formatting</h3>
+          <h3>Reflection, Self-Correction, and Inner Loops</h3>
         </div>
-        <p class="framing">The "stylistic" half of prompt engineering: how role assignments, output-format directives, delimiter conventions, and structural cues shape behavior. Empirically real, often overstated by practitioners.</p>
+        <p class="framing">Inner loops that revise outputs before the harness commits them. Pair with critical readings: self-correction without external feedback often fails, so the harness usually needs verifiers.</p>
         <div class="readings">
           <p class="readings-title ui">Canonical readings</p>
           <ol>
-            <li><a href="https://arxiv.org/abs/2310.11324" class="citation" target="_blank" rel="noopener noreferrer">Sclar et al., Quantifying Language Models' Sensitivity to Spurious Features in Prompt Design</a> (2024). <span class="note">The unsettling result that trivial formatting changes (e.g., choice of separator) can swing benchmark accuracy by 76 percentage points on some models. Required reading.</span></li>
-            <li><a href="https://arxiv.org/abs/2311.10054" class="citation" target="_blank" rel="noopener noreferrer">Zheng et al., When "A Helpful Assistant" Is Not Really Helpful: Personas in System Prompts Do Not Improve Performances of Large Language Models</a> (2024). <span class="note">Required reading as a corrective to persona folklore.</span></li>
-            <li><a href="https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview" class="citation" target="_blank" rel="noopener noreferrer">Anthropic, Prompt engineering overview</a> <span class="note">&mdash; the current practitioner guidance from a frontier lab.</span></li>
-            <li><a href="https://platform.openai.com/docs/guides/prompt-engineering" class="citation" target="_blank" rel="noopener noreferrer">OpenAI, Prompt engineering guide</a> <span class="note">&mdash; the parallel guidance from another.</span></li>
+            <li><a href="https://arxiv.org/abs/2303.11366" class="citation" target="_blank" rel="noopener noreferrer">Shinn et al., Reflexion: Language Agents with Verbal Reinforcement Learning</a>, NeurIPS 2023.</li>
+            <li><a href="https://arxiv.org/abs/2303.17651" class="citation" target="_blank" rel="noopener noreferrer">Madaan et al., Self-Refine: Iterative Refinement with Self-Feedback</a>, NeurIPS 2023.</li>
+            <li><a href="https://arxiv.org/abs/2310.01798" class="citation" target="_blank" rel="noopener noreferrer">Huang et al., Large Language Models Cannot Self-Correct Reasoning Yet</a>, ICLR 2024. <span class="note">The critical counterpoint &mdash; assigned together with Reflexion.</span></li>
+            <li><a href="https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-2-reflection/" class="citation" target="_blank" rel="noopener noreferrer">Andrew Ng, Agentic Design Patterns Part 2: Reflection</a> (2024).</li>
           </ol>
         </div>
       </article>
 
-      <article class="module prompt" id="p8">
+      <article class="module harness" id="h8">
         <div class="module-header">
           <span class="module-num ui">Module 08</span>
-          <h3>Structured Output and Constrained Decoding</h3>
+          <h3>Safety, Sandboxing, and Permissions</h3>
         </div>
-        <p class="framing">When the consumer of the output is a machine, not a human, prompting alone is insufficient and constrained decoding takes over. Cover the spectrum from "ask nicely for JSON" to logit-masking with grammars.</p>
+        <p class="framing">Once tools execute real code, blast radius dominates design. Cover prompt injection (direct and indirect), tool permission models, capability gating, and approval contracts.</p>
         <div class="readings">
           <p class="readings-title ui">Canonical readings</p>
           <ol>
-            <li><a href="https://arxiv.org/abs/2307.09702" class="citation" target="_blank" rel="noopener noreferrer">Willard &amp; Louf, Efficient Guided Generation for Large Language Models</a> (2023). <span class="note">The Outlines paper &mdash; FSM-based constrained decoding.</span></li>
-            <li><a href="https://www.google.com/search?q=Geng%20et%20al.%2C%20JSONSchemaBench%3A%20A%20Rigorous%20Benchmark%20of%20Structured%20Outputs%20for%20Language%20Models" class="citation" target="_blank" rel="noopener noreferrer">Geng et al., JSONSchemaBench: A Rigorous Benchmark of Structured Outputs for Language Models</a> (2025). <span class="note">Comparative evaluation of Outlines, Guidance, XGrammar, OpenAI structured outputs, Gemini.</span></li>
-            <li><a href="https://arxiv.org/abs/2408.02442" class="citation" target="_blank" rel="noopener noreferrer">Tam et al., Let Me Speak Freely? A Study on the Impact of Format Restrictions on Performance of Large Language Models</a>, EMNLP 2024. <span class="note">The cautionary result: constraining format can degrade reasoning quality on the same task. Assign together with the Outlines paper to keep students honest.</span></li>
-            <li><a href="https://docs.anthropic.com/en/docs/build-with-claude/tool-use" class="citation" target="_blank" rel="noopener noreferrer">Anthropic, Tool use overview.</a> <span class="note">Function calling as the production manifestation.</span></li>
+            <li><a href="https://arxiv.org/abs/2302.12173" class="citation" target="_blank" rel="noopener noreferrer">Greshake et al., Not what you've signed up for: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection</a> (2023). <span class="note">The seminal IPI paper.</span></li>
+            <li><a href="https://arxiv.org/abs/2406.13352" class="citation" target="_blank" rel="noopener noreferrer">Debenedetti et al., AgentDojo: A Dynamic Environment to Evaluate Prompt Injection Attacks and Defenses for LLM Agents</a>, NeurIPS 2024.</li>
+            <li><a href="https://www.google.com/search?q=Chennabasappa%20et%20al.%2C%20LlamaFirewall%3A%20An%20open%20source%20guardrail%20system%20for%20building%20secure%20AI%20agents" class="citation" target="_blank" rel="noopener noreferrer">Chennabasappa et al., LlamaFirewall: An open source guardrail system for building secure AI agents</a> (Meta, 2025).</li>
+            <li><a href="https://owasp.org/www-project-top-10-for-large-language-model-applications/" class="citation" target="_blank" rel="noopener noreferrer">OWASP Top 10 for LLM Applications.</a> <span class="note">The practitioner reference.</span></li>
+            <li><a href="https://simonwillison.net/tags/prompt-injection/" class="citation" target="_blank" rel="noopener noreferrer">Simon Willison's blog tag on prompt injection</a> <span class="note">&mdash; the running narrative.</span></li>
           </ol>
         </div>
       </article>
 
-      <article class="module prompt" id="p9">
+      <article class="module harness" id="h9">
         <div class="module-header">
           <span class="module-num ui">Module 09</span>
-          <h3>Adversarial Prompting: Jailbreaks and Injection</h3>
+          <h3>Human-in-the-Loop and Approval Contracts</h3>
         </div>
-        <p class="framing">Cover both attacker- and defender-side prompting. The defender side belongs in a prompt engineering course because the system-prompt design space is where most production defenses live (or fail).</p>
+        <p class="framing">When the loop deliberately yields control. Cover the design space (HITL vs HOTL, tool-level vs request-level approval, suspension vs approval) and the durable-execution problem (waits of hours/days).</p>
         <div class="readings">
           <p class="readings-title ui">Canonical readings</p>
           <ol>
-            <li><a href="https://arxiv.org/abs/2211.09527" class="citation" target="_blank" rel="noopener noreferrer">Perez &amp; Ribeiro, Ignore Previous Prompt: Attack Techniques for Language Models</a> (2022). <span class="note">The original prompt-injection paper.</span></li>
-            <li><a href="https://arxiv.org/abs/2307.02483" class="citation" target="_blank" rel="noopener noreferrer">Wei, Haghtalab &amp; Steinhardt, Jailbroken: How Does LLM Safety Training Fail?</a>, NeurIPS 2023. <span class="note">The clearest theoretical account; the "competing objectives" and "mismatched generalization" categories are the right vocabulary.</span></li>
-            <li><a href="https://arxiv.org/abs/2302.12173" class="citation" target="_blank" rel="noopener noreferrer">Greshake et al., Not What You've Signed Up For: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection</a>, AISec 2023. <span class="note">The IPI paper, which makes the case that the attack surface is data flow, not prompts.</span></li>
-            <li><a href="https://arxiv.org/abs/2307.15043" class="citation" target="_blank" rel="noopener noreferrer">Zou et al., Universal and Transferable Adversarial Attacks on Aligned Language Models</a> (2023). <span class="note">GCG &mdash; gradient-based suffix attacks, the white-box bound on what prompt-level defenses can stop.</span></li>
-            <li><a href="https://arxiv.org/abs/2311.16119" class="citation" target="_blank" rel="noopener noreferrer">Schulhoff et al., Ignore This Title and HackAPrompt</a>, EMNLP 2023. <span class="note">The largest crowd-sourced jailbreak dataset; useful for labs.</span></li>
+            <li><a href="https://www.anthropic.com/engineering/building-effective-agents" class="citation" target="_blank" rel="noopener noreferrer">Anthropic Building Effective Agents</a>, <span class="note">"Combining and customizing these patterns" section.</span></li>
+            <li><a href="https://www.google.com/search?q=Mastra%2C%20Human-in-the-Loop%3A%20When%20to%20Use%20Agent%20Approval" class="citation" target="_blank" rel="noopener noreferrer">Mastra, Human-in-the-Loop: When to Use Agent Approval</a> (2026). <span class="note">Clean taxonomy of approval vs. suspension.</span></li>
+            <li><a href="https://docs.langchain.com/oss/python/langchain/middleware" class="citation" target="_blank" rel="noopener noreferrer">LangChain, Human-in-the-loop middleware.</a> <span class="note">The four decision types (approve / edit / reject / respond).</span></li>
+            <li><a href="https://developers.cloudflare.com/agents/concepts/human-in-the-loop/" class="citation" target="_blank" rel="noopener noreferrer">Cloudflare, Agents SDK Human in the Loop patterns.</a> <span class="note">Five patterns including durable approvals via Workflows.</span></li>
           </ol>
         </div>
       </article>
 
-      <article class="module prompt" id="p10">
+      <article class="module harness" id="h10">
         <div class="module-header">
           <span class="module-num ui">Module 10</span>
-          <h3>Automatic Prompt Optimization</h3>
+          <h3>Observability and Tracing</h3>
         </div>
-        <p class="framing">The case against hand-authored prompts, treated as a discipline in its own right. The arc from APE to GEPA tracks the same intellectual move the rest of the field has made: from natural-language artifacts to programs that produce them.</p>
+        <p class="framing">Without traces you cannot debug a harness. Cover span hierarchy, OpenTelemetry as the substrate, and the OpenInference semantic conventions that specialize OTel for LLM workloads.</p>
         <div class="readings">
           <p class="readings-title ui">Canonical readings</p>
           <ol>
-            <li><a href="https://arxiv.org/abs/2211.01910" class="citation" target="_blank" rel="noopener noreferrer">Zhou et al., Large Language Models Are Human-Level Prompt Engineers (APE)</a>, ICLR 2023.</li>
-            <li><a href="https://arxiv.org/abs/2309.03409" class="citation" target="_blank" rel="noopener noreferrer">Yang et al., Large Language Models as Optimizers (OPRO)</a>, ICLR 2024. <span class="note">The "take a deep breath" result is the canonical demonstration.</span></li>
-            <li><a href="https://arxiv.org/abs/2305.03495" class="citation" target="_blank" rel="noopener noreferrer">Pryzant et al., Automatic Prompt Optimization with "Gradient Descent" and Beam Search (ProTeGi)</a>, EMNLP 2023.</li>
-            <li><a href="https://arxiv.org/abs/2406.07496" class="citation" target="_blank" rel="noopener noreferrer">Yuksekgonul et al., TextGrad: Automatic "Differentiation" via Text</a> (2024). <span class="note">The textual-backprop framing.</span></li>
-            <li><a href="https://arxiv.org/abs/2310.03714" class="citation" target="_blank" rel="noopener noreferrer">Khattab et al., DSPy: Compiling Declarative Language Model Calls into Self-Improving Pipelines</a>, ICLR 2024.</li>
-            <li><a href="https://www.google.com/search?q=Agrawal%20et%20al.%2C%20GEPA%3A%20Reflective%20Prompt%20Evolution%20Can%20Outperform%20Reinforcement%20Learning" class="citation" target="_blank" rel="noopener noreferrer">Agrawal et al., GEPA: Reflective Prompt Evolution Can Outperform Reinforcement Learning</a> (2025). <span class="note">The current frontier.</span></li>
+            <li><a href="https://github.com/Arize-ai/openinference" class="citation" target="_blank" rel="noopener noreferrer">OpenInference Specification.</a> <span class="note">The semantic conventions reference.</span></li>
+            <li><a href="https://phoenix.arize.com/" class="citation" target="_blank" rel="noopener noreferrer">Arize, Phoenix.</a> <span class="note">OSS reference implementation; spin one up in lab.</span></li>
+            <li><a href="https://www.anthropic.com/engineering/multi-agent-research-system" class="citation" target="_blank" rel="noopener noreferrer">Anthropic's multi-agent post</a>, <span class="note">"Production reliability and engineering challenges" section, which discusses non-deterministic debugging and how to make agent execution legible.</span></li>
           </ol>
         </div>
-        <div class="lab"><span class="lab-tag ui">Lab</span><span class="lab-body">Take a hand-tuned prompt from Module 4 or 5 and optimize it with at least two different methods (e.g., APE + DSPy's MIPRO), reporting accuracy delta and search cost.</span></div>
+        <div class="lab"><span class="lab-tag ui">Lab</span><span class="lab-body">Instrument the Module 2 ReAct agent end-to-end with OpenInference, then deliberately introduce a bug and find it in the trace.</span></div>
       </article>
 
-      <article class="module prompt" id="p11">
+      <article class="module harness" id="h11">
         <div class="module-header">
           <span class="module-num ui">Module 11</span>
-          <h3>Multimodal Prompting</h3>
+          <h3>Evaluation and Benchmarks</h3>
         </div>
-        <p class="framing">Prompt engineering for images, code, and audio. The discipline rhymes with text prompting but has distinctive failure modes worth a dedicated module.</p>
+        <p class="framing">How to measure a harness. Cover end-to-end task benchmarks, the variance problem, the rigor problem, and tool-level evaluation as distinct from end-to-end.</p>
         <div class="readings">
           <p class="readings-title ui">Canonical readings</p>
           <ol>
-            <li><a href="https://arxiv.org/abs/2203.05557" class="citation" target="_blank" rel="noopener noreferrer">Zhou et al., Conditional Prompt Learning for Vision-Language Models (CoCoOp)</a>, CVPR 2022.</li>
-            <li><a href="https://arxiv.org/abs/2210.03117" class="citation" target="_blank" rel="noopener noreferrer">Khattak et al., MaPLe: Multi-modal Prompt Learning</a>, CVPR 2023.</li>
-            <li><a href="https://arxiv.org/abs/2304.08485" class="citation" target="_blank" rel="noopener noreferrer">Liu et al., Visual Instruction Tuning (LLaVA)</a>, NeurIPS 2023. <span class="note">The instruction-tuning side that conditions how vision-language models respond to prompts.</span></li>
-            <li><a href="https://www.google.com/search?q=Oppenlaender%2C%20A%20Taxonomy%20of%20Prompt%20Modifiers%20for%20Text-to-Image%20Generation" class="citation" target="_blank" rel="noopener noreferrer">Oppenlaender, A Taxonomy of Prompt Modifiers for Text-to-Image Generation</a> (2022). <span class="note">Image prompting is its own folk-knowledge tradition; this is the closest thing to a systematic account.</span></li>
-            <li><a href="https://arxiv.org/abs/2406.06608" class="citation" target="_blank" rel="noopener noreferrer">Schulhoff et al., The Prompt Report</a> <span class="note">&mdash; revisit the multimodal taxonomy chapter.</span></li>
+            <li><a href="https://arxiv.org/abs/2310.06770" class="citation" target="_blank" rel="noopener noreferrer">Jimenez et al., SWE-bench: Can Language Models Resolve Real-World GitHub Issues?</a>, ICLR 2024. <span class="note">The canonical coding agent benchmark.</span></li>
+            <li><a href="https://arxiv.org/abs/2406.12045" class="citation" target="_blank" rel="noopener noreferrer">Yao et al., τ-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains</a> (Sierra, 2024). <span class="note">The pass^k reliability metric is the key idea.</span></li>
+            <li><a href="https://arxiv.org/abs/2311.12983" class="citation" target="_blank" rel="noopener noreferrer">Mialon et al., GAIA: A Benchmark for General AI Assistants</a>, ICLR 2024.</li>
+            <li><a href="https://arxiv.org/abs/2307.13854" class="citation" target="_blank" rel="noopener noreferrer">Zhou et al., WebArena: A Realistic Web Environment for Building Autonomous Agents</a>, ICLR 2024.</li>
+            <li><a href="https://www.google.com/search?q=Zhu%20et%20al.%2C%20Establishing%20Best%20Practices%20for%20Building%20Rigorous%20Agentic%20Benchmarks" class="citation" target="_blank" rel="noopener noreferrer">Zhu et al., Establishing Best Practices for Building Rigorous Agentic Benchmarks</a> (2025). <span class="note">Required critical reading &mdash; documents how up to 100% relative error inflates leaderboard claims.</span></li>
           </ol>
         </div>
       </article>
 
-      <article class="module prompt" id="p12">
+      <article class="module harness" id="h12">
         <div class="module-header">
           <span class="module-num ui">Module 12</span>
-          <h3>Coda: After Prompt Engineering</h3>
+          <h3>Case Study and Frontier: Claude Code and Self-Optimizing Harnesses</h3>
         </div>
-        <p class="framing">The pedagogically honest closing module. As models have improved, the marginal return on careful prompt wording has collapsed; many techniques in this syllabus are best understood as historical artifacts of the era when models needed elaborate scaffolding to reason. The skills that endure are the ones that compose into something larger &mdash; exemplar curation feeds into context engineering, CoT becomes a unit of harness control flow, automatic optimization is the bridge to programmatic systems. End the course with this synthesis.</p>
+        <p class="framing">End with two contemporary anchors. The Claude Code source exposure (March 2026) made a production harness publicly readable; the Meta-Harness paper raised the harness itself to a first-class optimization target.</p>
         <div class="readings">
           <p class="readings-title ui">Canonical readings</p>
           <ol>
-            <li><a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents" class="citation" target="_blank" rel="noopener noreferrer">Anthropic, Effective context engineering for AI agents.</a> <span class="note">The explicit thesis that prompt engineering's center of gravity has moved.</span></li>
-            <li><a href="https://www.anthropic.com/engineering/building-effective-agents" class="citation" target="_blank" rel="noopener noreferrer">Schluntz &amp; Zhang, Building Effective Agents</a> <span class="note">&mdash; revisit with attention to the "find the simplest solution first" framing.</span></li>
-            <li><a href="https://www.anthropic.com/research/tracing-thoughts-language-model" class="citation" target="_blank" rel="noopener noreferrer">Anthropic Research, Tracing the thoughts of a large language model</a> (2025). <span class="note">Mechanistic interpretability is starting to give principled explanations for why prompts have the effects they do; worth assigning as a glimpse of what eventually replaces folk practice.</span></li>
-            <li><a href="https://karpathy.medium.com/software-2-0-a64152b37c35" class="citation" target="_blank" rel="noopener noreferrer">Karpathy, Software 2.0</a> (2017) <span class="note">&mdash; reassigned in this context to motivate the framing that the era's discipline migrates upward as the underlying substrate matures.</span></li>
+            <li><a href="https://www.google.com/search?q=WaveSpeed%2C%20Claude%20Code%20Agent%20Harness%3A%20Architecture%20Breakdown" class="citation" target="_blank" rel="noopener noreferrer">WaveSpeed, Claude Code Agent Harness: Architecture Breakdown</a> (2026).</li>
+            <li><a href="https://www.google.com/search?q=VILA-Lab%2C%20Dive-into-Claude-Code" class="citation" target="_blank" rel="noopener noreferrer">VILA-Lab, Dive-into-Claude-Code</a> <span class="note">&mdash; a curated index of community analyses of the leak, including the systematic "Horse Book" mdBook framing it as a harness engineering case study.</span></li>
+            <li><a href="https://www.google.com/search?q=Lee%20et%20al.%2C%20Meta-Harness%3A%20End-to-End%20Optimization%20of%20Model%20Harnesses" class="citation" target="_blank" rel="noopener noreferrer">Lee et al., Meta-Harness: End-to-End Optimization of Model Harnesses</a> (Stanford, 2026). <span class="note">The harness as a search target. The 6&times; same-model performance gap from harness alone is the headline number.</span></li>
+            <li><a href="https://www.google.com/search?q=Zhang%20et%20al.%2C%20General%20Modular%20Harness%20for%20LLM%20Agents%20in%20Multi-Turn%20Gaming%20Environments" class="citation" target="_blank" rel="noopener noreferrer">Zhang et al., General Modular Harness for LLM Agents in Multi-Turn Gaming Environments</a> (2025). <span class="note">Ablations that quantify the contribution of perception / memory / reasoning modules separately.</span></li>
           </ol>
         </div>
-        <div class="lab"><span class="lab-tag ui">Final Lab</span><span class="lab-body">Students take a single complex task they prompt-engineered earlier in the semester, refactor it as (a) a DSPy program and (b) a small harness in the style of the harness course, and write up which version produced better, more reliable, more maintainable results. The lab is the bridge between this course and the other two.</span></div>
+        <div class="lab"><span class="lab-tag ui">Final Lab</span><span class="lab-body">Students take their semester-long harness, instrument it on a small Meta-Harness-style outer loop, and report whether automated edits beat their hand-tuned version.</span></div>
       </article>
 
       <div class="ped-notes">
         <h3 class="ui">A Few Pedagogical Notes</h3>
-        <p>This course is best taught with a note of intellectual honesty about its subject. A 2022-style prompt engineering course would have spent eight weeks on phrasing tricks; a 2026 course should spend most of its time on the techniques that turned out to compose into something larger and on the empirical results that taught the field its limits. The Sclar et al. formatting-sensitivity paper, the Min et al. demonstrations paper, the Huang et al. self-correction paper, and the Tam et al. format-restriction paper are the four readings I'd most insist on, because each one undermines a piece of folk wisdom that practitioners still repeat.</p>
-        <p>A useful organizing question to put to students at the start and revisit at the end: <em>which of these techniques would survive a hypothetical model that was perfectly calibrated and never needed reasoning scaffolding?</em> Working through that question is how students learn to distinguish techniques that exploited capability gaps (most of Modules 4&ndash;7) from techniques that exploit something more structural about how transformers consume sequences (Modules 8 and 10). The first kind ages; the second kind compounds. Students who can tell them apart will be useful builders for the next several years regardless of what specific models they're working with.</p>
-        <p>Finally &mdash; the same continuous reading I recommended for the context course applies here. <em>Simon Willison's blog</em> is the running practitioner narrative, and his <em>prompt-injection</em> tag in particular is the best ongoing chronicle of how the adversarial side of prompt engineering is actually playing out in production.</p>
+        <p>The course works best if labs accumulate one codebase rather than discarding work between modules. By Module 12 students have an instrumented, sandboxed, multi-agent harness with memory and approvals, and they end by submitting it to automated optimization. The arc mirrors the field's actual move: from hand-authored loops to optimized infrastructure.</p>
+        <p>I'd put SWE-bench, τ-bench, and at least one custom domain benchmark on the syllabus from the start, so students re-evaluate the same harness across modules and see numbers move (or not move) as they add components. The Module 12 readings on benchmark rigor land much harder when students have lived with their own numbers all semester.</p>
+        <p>Finally, two readings worth weaving in throughout rather than assigning to a single module: <em>Simon Willison's blog</em> as a running practitioner narrative, and <em>Lilian Weng's LLM-Powered Autonomous Agents</em> (2023) as the historical reference point most of the field still cites.</p>
       </div>
     </section>
 
+    <!-- ============================== -->
     <!-- ============================== -->
     <!-- CAPSTONE                       -->
     <!-- ============================== -->
