@@ -2,14 +2,14 @@
 
 ## Repository Purpose
 
-This repo is a static curriculum artifact for the Agent Engineering Trilogy. The main source file is `harness-engineering-curriculum.html`.
+This repo is a static curriculum artifact for the Agent Engineering Trilogy. The production page is `index.html`; keep `harness-engineering-curriculum.html` as a stable direct-file copy for local use and older links.
 
 ## Production Site
 
 - Intended production domain: `harnesscourse.com`
 - Repository visibility: public
 - Hosting target: GitHub Pages, deployed from the root of `main`
-- Root entrypoint: `index.html`, which redirects to `harness-engineering-curriculum.html`
+- Root entrypoint: `index.html`, which serves the curriculum directly
 - GitHub Pages custom-domain file: `CNAME`
 
 Porkbun DNS records: apex `ALIAS` to `vivekhaldar.github.io`; `www` `CNAME` to `vivekhaldar.github.io`. Do not put registrar order IDs, billing details, renewal dates, or account settings in this public repository.
@@ -45,6 +45,7 @@ gh api --method PUT repos/vivekhaldar/agent-engineering-trilogy/pages \
 ## Working Rules
 
 - Treat the HTML file as the product. Keep it directly openable in a browser.
+- Keep `index.html` and `harness-engineering-curriculum.html` in sync when changing curriculum content.
 - Do not add a framework, package manager, bundler, or generated asset pipeline unless Vivek explicitly asks for it.
 - Keep the curriculum structure in this order: Prompt Engineering, Context Engineering, Harness Engineering, Capstone.
 - Prefer inline links to stable primary sources. Bibliography-only links are not enough when the prose names a specific paper, article, or project.
@@ -58,7 +59,7 @@ For content-only edits:
 
 ```sh
 git diff --check
-if rg -n "TODO|FIXME|Google search|Graduate Curriculum" harness-engineering-curriculum.html; then
+if rg -n "TODO|FIXME|Google search|Graduate Curriculum" index.html harness-engineering-curriculum.html; then
   echo "Review the matches above before committing."
   exit 1
 else
@@ -72,11 +73,13 @@ For JavaScript or table-of-contents behavior edits, also validate the inline scr
 ```sh
 node - <<'NODE'
 const fs = require('fs');
-const html = fs.readFileSync('harness-engineering-curriculum.html', 'utf8');
-const match = html.match(/<script>([\s\S]*?)<\/script>/);
-if (!match) throw new Error('No inline script found');
-new Function(match[1]);
-console.log('inline script syntax ok');
+for (const path of ['index.html', 'harness-engineering-curriculum.html']) {
+  const html = fs.readFileSync(path, 'utf8');
+  const match = html.match(/<script>([\s\S]*?)<\/script>/);
+  if (!match) throw new Error(`No inline script found in ${path}`);
+  new Function(match[1]);
+  console.log(`${path}: inline script syntax ok`);
+}
 NODE
 ```
 

@@ -18,8 +18,8 @@ The production domain is:
 The repo is public and configured for GitHub Pages from the root of `main`:
 
 - `CNAME` declares the custom domain.
-- `index.html` redirects the site root to the curriculum page.
-- `harness-engineering-curriculum.html` is the canonical curriculum artifact.
+- `index.html` is the production curriculum page served at the site root.
+- `harness-engineering-curriculum.html` is kept as a stable direct-file URL for local use and older links.
 
 DNS status: Porkbun is configured with an apex `ALIAS` record and a `www` `CNAME` record pointing at GitHub Pages.
 
@@ -27,8 +27,8 @@ GitHub Pages status: Pages is enabled for `main` `/` with `harnesscourse.com` as
 
 ## Contents
 
-- [harness-engineering-curriculum.html](./harness-engineering-curriculum.html) - the complete self-contained curriculum page.
-- [index.html](./index.html) - root redirect for GitHub Pages/custom-domain hosting.
+- [index.html](./index.html) - the complete self-contained curriculum page served at the site root.
+- [harness-engineering-curriculum.html](./harness-engineering-curriculum.html) - stable direct-file copy for local use and older links.
 - [CNAME](./CNAME) - GitHub Pages custom-domain declaration.
 
 ## Viewing
@@ -36,7 +36,7 @@ GitHub Pages status: Pages is enabled for `main` `/` with `harnesscourse.com` as
 Open the HTML file directly in a browser:
 
 ```sh
-open harness-engineering-curriculum.html
+open index.html
 ```
 
 There is no build step, package manager, or local server requirement.
@@ -83,4 +83,5 @@ gh api --method PUT repos/vivekhaldar/agent-engineering-trilogy/pages \
 - Keep the page self-contained unless there is a strong reason to introduce a build system.
 - Prefer stable primary-source links inline in the body text, not only in reading lists.
 - Preserve the curriculum order: Prompt Engineering, Context Engineering, Harness Engineering, Capstone.
+- Keep `index.html` and `harness-engineering-curriculum.html` in sync when changing curriculum content.
 - Keep changes reviewable as small logical commits.
