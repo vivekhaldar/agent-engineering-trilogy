@@ -120,6 +120,16 @@
     text-underline-offset: 3px;
   }
 
+  aside.toc a.is-active {
+    color: var(--ink);
+    background: color-mix(in srgb, var(--ink) 8%, transparent);
+    border-radius: 4px;
+    font-weight: 700;
+    margin-left: -6px;
+    padding-left: 6px;
+    text-decoration: none;
+  }
+
   aside.toc .toc-section {
     margin-bottom: 22px;
   }
@@ -132,6 +142,14 @@
     font-weight: 600;
     color: var(--ink);
     font-size: 13px;
+  }
+
+  aside.toc .toc-section.is-active .toc-section-head {
+    color: var(--ink);
+  }
+
+  aside.toc .toc-section.is-active .swatch {
+    transform: scale(1.25);
   }
 
   aside.toc .swatch {
@@ -1684,7 +1702,79 @@
       <p>Each module is sized for one week (one lecture on theory, one on a paper or codebase, one lab). Readings are ordered by priority within each module.</p>
     </footer>
 
-  </main>
+</main>
 </div>
+<script>
+  (() => {
+    const toc = document.querySelector("aside.toc");
+    if (!toc) return;
+
+    const links = Array.from(toc.querySelectorAll('a[href^="#"]'));
+    const items = links
+      .map((link) => {
+        const id = decodeURIComponent(link.getAttribute("href").slice(1));
+        const target = document.getElementById(id);
+        return target ? { id, link, target, section: link.closest(".toc-section") } : null;
+      })
+      .filter(Boolean);
+
+    if (items.length === 0) return;
+
+    let activeId = null;
+    let ticking = false;
+
+    const setActive = (id) => {
+      if (id === activeId) return;
+      activeId = id;
+      const activeItem = items.find((item) => item.id === id);
+
+      items.forEach(({ id: itemId, link }) => {
+        const isActive = itemId === id;
+        link.classList.toggle("is-active", isActive);
+        if (isActive) {
+          link.setAttribute("aria-current", "location");
+          link.scrollIntoView({ block: "nearest", inline: "nearest" });
+        } else {
+          link.removeAttribute("aria-current");
+        }
+      });
+
+      toc.querySelectorAll(".toc-section").forEach((section) => {
+        section.classList.toggle("is-active", section === activeItem?.section);
+      });
+    };
+
+    const updateActiveLink = () => {
+      ticking = false;
+      const activationLine = window.innerHeight * 0.28;
+      let current = items[0];
+
+      for (const item of items) {
+        if (item.target.getBoundingClientRect().top <= activationLine) {
+          current = item;
+        } else {
+          break;
+        }
+      }
+
+      setActive(current.id);
+    };
+
+    const requestUpdate = () => {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(updateActiveLink);
+    };
+
+    window.addEventListener("scroll", requestUpdate, { passive: true });
+    window.addEventListener("resize", requestUpdate);
+    window.addEventListener("hashchange", () => {
+      const id = decodeURIComponent(window.location.hash.slice(1));
+      if (id && items.some((item) => item.id === id)) setActive(id);
+    });
+
+    updateActiveLink();
+  })();
+</script>
 </body>
 </html>
