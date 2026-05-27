@@ -733,10 +733,11 @@
     <div class="toc-section">
       <div class="toc-section-head"><span class="swatch intro"></span> Foundations</div>
       <ol>
-        <li><a href="#q1">Three Nested Layers</a></li>
-        <li><a href="#q2">Context as Harness Subroutine</a></li>
-        <li><a href="#q3">Agents, Scaffolds, Harnesses</a></li>
-        <li><a href="#q4">The Emerging Literature</a></li>
+        <li><a href="#f-motivation">Why This Matters</a></li>
+        <li><a href="#f-layers">Three Nested Layers</a></li>
+        <li><a href="#f-context">Context as Harness Subroutine</a></li>
+        <li><a href="#f-agents">Agents, Scaffolds, Harnesses</a></li>
+        <li><a href="#f-literature">The Emerging Literature</a></li>
       </ol>
     </div>
 
@@ -845,11 +846,18 @@
     <section id="foundations">
       <div class="course-header">
         <p class="eyebrow">Foundations</p>
-        <h2>Three nested layers, distinguished by their unit of work</h2>
-        <p class="lede">A compact orientation to the vocabulary, containment relationship, agent definition, and emerging literature that the trilogy depends on.</p>
+        <h2>Why prompt, context, and harness belong in one curriculum</h2>
+        <p class="lede">The point is not terminology for its own sake. The point is learning where AI engineering leverage actually lives, and how to diagnose failures at the right layer.</p>
       </div>
 
-      <article class="qa" id="q1">
+      <article class="qa" id="f-motivation">
+        <h3>Why This Matters</h3>
+        <p>Most real AI system failures are misdiagnosed. A team blames the prompt when the retrieved context is stale. They blame the model when the tool surface is too broad, the verifier is missing, or the loop has no clean stopping condition. They ask for a larger model when the real problem is that the surrounding system is making the model solve the wrong task.</p>
+        <p>That diagnosis problem is why the trilogy matters. Prompt engineering was the obvious first discipline because early LLM work happened one inference at a time: write a better instruction, get a better answer. Production agent systems are not one inference at a time. They retrieve, compress, route, call tools, inspect state, ask for approval, retry, recover, and terminate. The engineering work has moved from phrasing a request to controlling the operating conditions around repeated model calls.</p>
+        <p>This curriculum teaches that movement as a stack of leverage. Prompts shape a single inference. Contexts shape what the model can know and attend to at each inference. Harnesses shape what the whole system can do over time. Students who learn the stack can debug systems without superstition: they can ask whether the failure is elicitation, context construction, or control flow, then improve the layer that actually failed.</p>
+      </article>
+
+      <article class="qa" id="f-layers">
         <h3>Three Nested Layers Around an LLM Call</h3>
         <p><strong>Prompt engineering</strong> is the craft of the input string itself &mdash; instructions, few-shot exemplars, role framing, output format cues, CoT triggers. The unit is one inference's text and the target is elicitation. As frontier models have grown more robust to phrasing, the marginal value here has become more situational and more dependent on the surrounding system.</p>
         <p><strong>Context engineering</strong> moves the unit up to the entire window as a managed artifact: retrieved documents, distilled memory, tool descriptions, compacted history, examples drawn from a bank. Token budgeting, RAG, semantic caching, memory hierarchies, and context compression all live here. Still a single inference, but the inputs are programmatically assembled rather than authored.</p>
@@ -857,14 +865,14 @@
         <p>The progression is one of scope and determinism. Prompts are nondeterministic strings; contexts are deterministically assembled but consumed nondeterministically; harnesses are deterministic programs that compose model calls into reliable systems. As model capability rises, leverage shifts up the stack &mdash; reliability, cost, and task completion become properties of the harness more than properties of the prompt.</p>
       </article>
 
-      <article class="qa" id="q2">
+      <article class="qa" id="f-context">
         <h3>Context Engineering Is a Harness Subroutine</h3>
         <p>Every step of the loop, the harness has to decide what window to present to the next inference: which tool descriptions to include (all of them blows the budget; route-then-load is the standard move), which prior turns to keep verbatim vs. summarize, which retrieved docs to inject, which scratchpad/memory entries are still live, which skill files (SKILL.md and friends) to load. Those decisions are context engineering, and they're made anew on every iteration. A harness without context engineering would just concatenate history until it OOMs.</p>
         <p>The reverse doesn't hold, though &mdash; you can do context engineering for a single one-shot call (classical RAG pipelines, for instance) without anything that deserves the name "harness." So the containment is strict: <code>harness ⊃ context ⊃ prompt</code>, with the outer layers reducing to the inner ones in the degenerate single-step case.</p>
         <p>The interesting consequence is that as you climb the stack, context engineering stops being a static pipeline and becomes a <em class="tech">policy</em> &mdash; what to load is conditional on the agent's trajectory. That's where things like just-in-time skill loading, progressive disclosure of tools, and dynamic compaction live, and it's also where most of the reliability wins in current agent systems are coming from.</p>
       </article>
 
-      <article class="qa" id="q3">
+      <article class="qa" id="f-agents">
         <h3>Agents, Scaffolds, and Harnesses</h3>
         <p>An <strong>agent</strong>, in the modern sense, is the <em>(model, harness)</em> pair operating over an environment. The model supplies the <em class="tech">policy</em> &mdash; token-level decisions about what to say or which tool to call. The harness supplies everything else needed to turn those decisions into sustained, goal-directed behavior over time: the loop, the tools, the memory, the verifiers, the termination conditions, the recovery logic. Strip the harness away and you have a chat completion. Strip the model away and you have a workflow engine. The agent is the composition.</p>
         <p>This gives you a clean teaching arc. Prompt engineering teaches students to shape a single inference. Context engineering teaches them to shape what the model sees across many inferences, treating the window as a managed resource. Harness engineering teaches them to wrap those inferences in a control program that closes the loop with an environment. By the time you reach agents, the definition almost writes itself: an agent is a harness whose context-engineering policy and tool-use trajectory are conditioned on its own prior outputs and on environmental feedback. The progression mirrors the move from open-loop to closed-loop control.</p>
@@ -877,7 +885,7 @@
         <p>For your course I'd treat them as near-synonyms with a noted shift in framing, and use the shift itself as a teaching moment. The scaffold framing predicts that capability gains erode the surrounding code's value; the harness framing predicts the opposite &mdash; that capability gains <em>increase</em> the leverage of good surrounding code because a more capable model can be pointed at harder problems by a better-designed loop. Which framing turns out to be right is one of the live empirical questions in the field.</p>
       </article>
 
-      <article class="qa" id="q4">
+      <article class="qa" id="f-literature">
         <h3>The Emerging Literature</h3>
         <p>The interesting feature is that the field hasn't fully settled &mdash; there are at least three competing structural framings even among the canonical pieces. Here is the lineage.</p>
 
