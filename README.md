@@ -23,6 +23,8 @@ The repo is configured for GitHub Pages from the root of `main`:
 
 Operational note: the Porkbun API registration attempt for `harnesscourse.com` returned `INSUFFICIENT_FUNDS` because API purchases spend account credit. Add Porkbun account credit or complete web checkout, then configure DNS to GitHub Pages.
 
+GitHub Pages note: enabling Pages for this private repository returned `422 Your current plan does not support GitHub Pages for this repository`. To publish from this repo on GitHub Pages, either make the repository public, use an account/plan that supports private-repo Pages, or move the static site to a public hosting repository.
+
 ## Contents
 
 - [harness-engineering-curriculum.html](./harness-engineering-curriculum.html) - the complete self-contained curriculum page.
