@@ -791,6 +791,7 @@
         <li><a href="#h10">Observability &amp; Tracing</a></li>
         <li><a href="#h11">Evaluation &amp; Benchmarks</a></li>
         <li><a href="#h12">Claude Code &amp; Self-Optimizing Harnesses</a></li>
+        <li><a href="#h-special">Specialized Harness Engineering</a></li>
       </ol>
     </div>
 
@@ -1609,6 +1610,25 @@
           </ol>
         </div>
         <div class="lab"><span class="lab-tag ui">Final Lab</span><span class="lab-body">Students take their semester-long harness, instrument it on a small Meta-Harness-style outer loop, and report whether automated edits beat their hand-tuned version.</span></div>
+      </article>
+
+      <article class="module harness" id="h-special">
+        <div class="module-header">
+          <span class="module-num ui">Addendum</span>
+          <h3>Specialized Harness Engineering</h3>
+        </div>
+        <p class="framing">A closing bridge from general-purpose agent harnesses to domain-specific execution systems. Specialized harness engineering asks what happens when the task family is known well enough that the stable structure can move out of the model and into the runtime.</p>
+        <p>General-purpose harnesses maximize breadth: broad goals, broad tools, open-ended context gathering, and loose stopping conditions. Specialized harnesses live in the productive middle between deterministic workflows and fully open-ended agents. They assume the work has a recognizable skeleton &mdash; steps, branches, allowed actions, approvals, outputs, and failure states &mdash; but still needs model judgment for language understanding, fuzzy matching, exception handling, summarization, and local decisions.</p>
+        <p>The core move is to change the task the model sees. The runtime owns typed state, scoped tools, domain-specific context routing, policy gates, verification checks, structured outputs, and human review surfaces. The model receives a local objective with the smallest useful context and action surface. The result is usually cheaper, more inspectable, easier to audit, and easier to improve than asking a frontier model to improvise the whole procedure from a monolithic prompt.</p>
+        <p>Proceda's SOP execution architecture is the concrete case study. An SOP is parsed into explicit steps; each step receives only its own instructions and relevant tool schemas; the model advances by calling control tools such as <code>complete_step()</code> or <code>request_clarification()</code>; the executor manages transitions, approval gates, context trimming, output extraction, circuit breakers, and trace events. The benchmark lesson is that procedural reliability can come from the harness absorbing planning and state-management burden, not from using a larger model.</p>
+        <div class="readings">
+          <p class="readings-title ui">Canonical readings</p>
+          <ol>
+            <li><a href="https://enchiridionlabs.online/specialized-harness-engineering.html" class="citation" target="_blank" rel="noopener noreferrer">Haldar, Specialized Harness Engineering</a> (2026). <span class="note">The conceptual frame: specialized harnesses as the broad middle between deterministic workflows and general-purpose agents.</span></li>
+            <li><a href="https://enchiridionlabs.online/sop-execution-engine-design.html" class="citation" target="_blank" rel="noopener noreferrer">Haldar, Anatomy of a SOTA Agentic SOP-Execution Engine</a> (2026). <span class="note">The Proceda architecture: SOP as state machine, control tools, context trimming, approval gates, structured extraction, bounded execution, and event traces.</span></li>
+          </ol>
+        </div>
+        <div class="lab"><span class="lab-tag ui">Lab</span><span class="lab-body">Take the Module 2 ReAct loop and specialize it for one bounded SOP-like task family: define typed state, scoped tools, explicit completion and clarification tools, validation checks, and a task-level evaluation metric.</span></div>
       </article>
 
       <div class="ped-notes">
