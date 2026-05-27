@@ -361,19 +361,6 @@
     color: var(--accent-intro);
   }
 
-  .qa blockquote.pull {
-    margin: 18px 0 18px 0;
-    padding: 16px 22px;
-    background: var(--note-bg);
-    border-left: 3px solid var(--accent-intro);
-    font-style: italic;
-    font-size: 18px;
-    line-height: 1.45;
-    color: var(--ink);
-    max-width: 62ch;
-    border-radius: 4px;
-  }
-
   .qa .obs {
     margin: 18px 0;
   }
@@ -709,10 +696,10 @@
     <div class="toc-section">
       <div class="toc-section-head"><span class="swatch intro"></span> Foundations</div>
       <ol>
-        <li><a href="#q1">What is harness engineering?</a></li>
-        <li><a href="#q2">Harness ⊃ Context ⊃ Prompt</a></li>
-        <li><a href="#q3">Agents, scaffolds, and harnesses</a></li>
-        <li><a href="#q4">Existing literature surveyed</a></li>
+        <li><a href="#q1">Three Nested Layers</a></li>
+        <li><a href="#q2">Context as Harness Subroutine</a></li>
+        <li><a href="#q3">Agents, Scaffolds, Harnesses</a></li>
+        <li><a href="#q4">The Emerging Literature</a></li>
       </ol>
     </div>
 
@@ -816,17 +803,16 @@
       </div>
     </header>
 
-    <!-- Q&A Foundations -->
+    <!-- Foundations -->
     <section id="foundations">
       <div class="course-header">
         <p class="eyebrow">Foundations</p>
         <h2>Three nested layers, distinguished by their unit of work</h2>
-        <p class="lede">The conversational origin of the curriculum &mdash; three Q&amp;A exchanges that establish the vocabulary, the containment relationship, and the agent definition that the trilogy depends on.</p>
+        <p class="lede">The conversational origin of the curriculum, reframed as four foundations: the vocabulary, the containment relationship, the agent definition, and the emerging literature that the trilogy depends on.</p>
       </div>
 
       <article class="qa" id="q1">
-        <p class="question ui">Q1 &middot; What is harness engineering? How is it different from context engineering and prompt engineering?</p>
-        <h3>Three nested layers around an LLM call, distinguished by their unit of work.</h3>
+        <h3>Three Nested Layers Around an LLM Call</h3>
         <p><strong>Prompt engineering</strong> is the craft of the input string itself &mdash; instructions, few-shot exemplars, role framing, output format cues, CoT triggers. The unit is one inference's text and the target is elicitation. As frontier models have grown more robust to phrasing, the marginal value here has become more situational and more dependent on the surrounding system.</p>
         <p><strong>Context engineering</strong> moves the unit up to the entire window as a managed artifact: retrieved documents, distilled memory, tool descriptions, compacted history, examples drawn from a bank. Token budgeting, RAG, semantic caching, memory hierarchies, and context compression all live here. Still a single inference, but the inputs are programmatically assembled rather than authored.</p>
         <p><strong>Harness engineering</strong> is the outermost shell &mdash; the program that runs the model in a loop. It owns control flow: when to invoke, which tools to expose, how to route and verify outputs, when to retry, when to spawn subagents, when to terminate, how to sandbox side effects. The harness is deterministic code with the LLM as a subroutine, and prompts, contexts, tool calls, skill loads, and verifiers are all harness state. Claude Code's agent loop, Cursor's editing logic, Devin's planner, Proceda &mdash; these are harnesses.</p>
@@ -834,16 +820,14 @@
       </article>
 
       <article class="qa" id="q2">
-        <p class="question ui">Q2 &middot; A harness necessarily performs context engineering, yes?</p>
-        <h3>Yes &mdash; context engineering is a subroutine of the harness, and arguably the central one.</h3>
+        <h3>Context Engineering Is a Harness Subroutine</h3>
         <p>Every step of the loop, the harness has to decide what window to present to the next inference: which tool descriptions to include (all of them blows the budget; route-then-load is the standard move), which prior turns to keep verbatim vs. summarize, which retrieved docs to inject, which scratchpad/memory entries are still live, which skill files (SKILL.md and friends) to load. Those decisions are context engineering, and they're made anew on every iteration. A harness without context engineering would just concatenate history until it OOMs.</p>
         <p>The reverse doesn't hold, though &mdash; you can do context engineering for a single one-shot call (classical RAG pipelines, for instance) without anything that deserves the name "harness." So the containment is strict: <code>harness ⊃ context ⊃ prompt</code>, with the outer layers reducing to the inner ones in the degenerate single-step case.</p>
         <p>The interesting consequence is that as you climb the stack, context engineering stops being a static pipeline and becomes a <em class="tech">policy</em> &mdash; what to load is conditional on the agent's trajectory. That's where things like just-in-time skill loading, progressive disclosure of tools, and dynamic compaction live, and it's also where most of the reliability wins in current agent systems are coming from.</p>
       </article>
 
       <article class="qa" id="q3">
-        <p class="question ui">Q3 &middot; How does all this relate to an agent? And is "scaffold" different from "harness"?</p>
-        <h3>Where the agent sits</h3>
+        <h3>Agents, Scaffolds, and Harnesses</h3>
         <p>An <strong>agent</strong>, in the modern sense, is the <em>(model, harness)</em> pair operating over an environment. The model supplies the <em class="tech">policy</em> &mdash; token-level decisions about what to say or which tool to call. The harness supplies everything else needed to turn those decisions into sustained, goal-directed behavior over time: the loop, the tools, the memory, the verifiers, the termination conditions, the recovery logic. Strip the harness away and you have a chat completion. Strip the model away and you have a workflow engine. The agent is the composition.</p>
         <p>This gives you a clean teaching arc. Prompt engineering teaches students to shape a single inference. Context engineering teaches them to shape what the model sees across many inferences, treating the window as a managed resource. Harness engineering teaches them to wrap those inferences in a control program that closes the loop with an environment. By the time you reach agents, the definition almost writes itself: an agent is a harness whose context-engineering policy and tool-use trajectory are conditioned on its own prior outputs and on environmental feedback. The progression mirrors the move from open-loop to closed-loop control.</p>
         <p>One pedagogically useful framing: the three layers correspond to three different <em class="tech">loci of programming</em>. In prompt engineering, the artifact is text. In context engineering, the artifact is a data structure (the assembled window) plus the code that assembles it. In harness engineering, the artifact is a program with the model as a callable. Each layer subsumes the previous and adds determinism on the outside while preserving stochasticity on the inside. Agents are what you get when the outer program is structured as a perception-action loop rather than a pipeline.</p>
@@ -856,8 +840,7 @@
       </article>
 
       <article class="qa" id="q4">
-        <p class="question ui">Q4 &middot; Are there existing articles that try to define these terms? Prompt vs context vs harness engineering, and the relation between harness and agent?</p>
-        <h3>Yes &mdash; an emerging literature has been crystallizing rapidly over the last six months.</h3>
+        <h3>The Emerging Literature</h3>
         <p>The interesting feature is that the field hasn't fully settled &mdash; there are at least three competing structural framings even among the canonical pieces. Here is the lineage.</p>
 
         <h4>Context engineering &mdash; well-established canon</h4>
@@ -887,7 +870,7 @@
 
         <h4>On the harness-vs-agent question specifically</h4>
         <p>The clearest direct treatments:</p>
-        <blockquote class="pull">Agent = Model + Harness. The "agent" is the emergent behavior; the harness is the machinery producing it.</blockquote>
+        <p><strong>Agent = Model + Harness.</strong> The "agent" is the emergent behavior; the harness is the machinery producing it.</p>
         <ul class="lit-list">
           <li><strong><a href="https://www.langchain.com/blog/the-anatomy-of-an-agent-harness" target="_blank" rel="noopener noreferrer">LangChain, The Anatomy of an Agent Harness</a></strong> &mdash; the <em>"Agent = Model + Harness"</em> formula. Worth quoting Vivek Trivedy's framing: <em>"The 'agent' is the emergent behavior: the goal-directed, tool-using, self-correcting entity the user interacts with. The harness is the machinery producing that behavior. When someone says 'I built an agent,' they mean they built a harness and pointed it at a model."</em></li>
           <li><strong><a href="https://parallel.ai/articles/what-is-an-agent-harness" target="_blank" rel="noopener noreferrer">Parallel.ai, What is an agent harness in the context of large-language models?</a></strong> &mdash; collects how Anthropic, OpenAI, and LangChain each refer to their products as "harnesses." Anthropic explicitly calls the Claude Agent SDK a <em>"general-purpose agent harness."</em> Useful for a definitional-survey paper.</li>
