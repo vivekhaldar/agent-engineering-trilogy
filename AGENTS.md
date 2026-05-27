@@ -12,15 +12,7 @@ This repo is a static curriculum artifact for the Agent Engineering Trilogy. The
 - Root entrypoint: `index.html`, which redirects to `harness-engineering-curriculum.html`
 - GitHub Pages custom-domain file: `CNAME`
 
-Porkbun registration status as of 2026-05-27: `harnesscourse.com` was registered via the Porkbun API.
-
-- Order ID: `10483845`
-- Registration cost: `$11.08`
-- Expiration: `2027-05-27 21:16:00`
-- Auto-renew: enabled
-- WHOIS privacy: enabled
-- API access: enabled
-- DNS records: apex `ALIAS` to `vivekhaldar.github.io`; `www` `CNAME` to `vivekhaldar.github.io`
+Porkbun DNS records: apex `ALIAS` to `vivekhaldar.github.io`; `www` `CNAME` to `vivekhaldar.github.io`. Do not put registrar order IDs, billing details, renewal dates, or account settings in this public repository.
 
 GitHub Pages status as of 2026-05-27: Pages is enabled for `main` `/` with `harnesscourse.com` as the custom domain. HTTPS enforcement may remain unavailable immediately after DNS setup until GitHub issues the custom-domain certificate. If `https_enforced` is still false later, retry the Pages update after the certificate exists.
 

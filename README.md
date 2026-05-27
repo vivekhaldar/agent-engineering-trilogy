@@ -21,15 +21,6 @@ The repo is public and configured for GitHub Pages from the root of `main`:
 - `index.html` redirects the site root to the curriculum page.
 - `harness-engineering-curriculum.html` is the canonical curriculum artifact.
 
-Porkbun registration status: `harnesscourse.com` was registered on 2026-05-27 via the Porkbun API.
-
-- Order ID: `10483845`
-- Registration cost: `$11.08`
-- Expiration: `2027-05-27 21:16:00`
-- Auto-renew: enabled
-- WHOIS privacy: enabled
-- API access: enabled
-
 DNS status: Porkbun is configured with an apex `ALIAS` record and a `www` `CNAME` record pointing at GitHub Pages.
 
 GitHub Pages status: Pages is enabled for `main` `/` with `harnesscourse.com` as the custom domain. HTTPS enforcement may remain unavailable immediately after DNS setup until GitHub issues the custom-domain certificate.
