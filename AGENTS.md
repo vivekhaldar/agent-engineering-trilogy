@@ -7,6 +7,7 @@ This repo is a static curriculum artifact for the Agent Engineering Trilogy. The
 ## Production Site
 
 - Intended production domain: `harnesscourse.com`
+- Repository visibility: public
 - Hosting target: GitHub Pages, deployed from the root of `main`
 - Root entrypoint: `index.html`, which redirects to `harness-engineering-curriculum.html`
 - GitHub Pages custom-domain file: `CNAME`
@@ -19,13 +20,11 @@ Porkbun registration status as of 2026-05-27: `harnesscourse.com` was registered
 - Auto-renew: enabled
 - WHOIS privacy: enabled
 - API access: enabled
-- DNS records: none configured yet
+- DNS records: apex `ALIAS` to `vivekhaldar.github.io`; `www` `CNAME` to `vivekhaldar.github.io`
 
-Do not configure DNS while GitHub Pages is unavailable for this repository; pointing the domain at Pages before the custom domain is claimed creates an avoidable dangling-DNS risk.
+GitHub Pages status as of 2026-05-27: Pages is enabled for `main` `/` with `harnesscourse.com` as the custom domain. HTTPS enforcement may remain unavailable immediately after DNS setup until GitHub issues the custom-domain certificate. If `https_enforced` is still false later, retry the Pages update after the certificate exists.
 
-GitHub Pages status as of 2026-05-27: enabling Pages for this private repository failed with `422 Your current plan does not support GitHub Pages for this repository`. Do not claim the site is live until one of these is done: make the repo public, use a plan/account that supports private-repo Pages, or deploy the static files to another public hosting target.
-
-Expected Porkbun DNS records after GitHub Pages is enabled and configured with the custom domain:
+Expected Porkbun DNS records:
 
 ```text
 ALIAS  @    vivekhaldar.github.io
@@ -39,6 +38,16 @@ A  @  185.199.108.153
 A  @  185.199.109.153
 A  @  185.199.110.153
 A  @  185.199.111.153
+```
+
+To enable HTTPS once the GitHub Pages certificate exists:
+
+```sh
+gh api --method PUT repos/vivekhaldar/agent-engineering-trilogy/pages \
+  -F cname=harnesscourse.com \
+  -F https_enforced=true \
+  -F 'source[branch]=main' \
+  -F 'source[path]=/'
 ```
 
 ## Working Rules

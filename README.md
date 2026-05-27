@@ -11,11 +11,11 @@ The central thesis is that these are not three independent courses. They are one
 
 ## Site
 
-The intended production domain is:
+The production domain is:
 
 - https://harnesscourse.com
 
-The repo is configured for GitHub Pages from the root of `main`:
+The repo is public and configured for GitHub Pages from the root of `main`:
 
 - `CNAME` declares the custom domain.
 - `index.html` redirects the site root to the curriculum page.
@@ -30,9 +30,9 @@ Porkbun registration status: `harnesscourse.com` was registered on 2026-05-27 vi
 - WHOIS privacy: enabled
 - API access: enabled
 
-DNS status: Porkbun currently has no DNS records for the domain. Leave DNS unconfigured until the hosting target is enabled and has claimed the custom domain.
+DNS status: Porkbun is configured with an apex `ALIAS` record and a `www` `CNAME` record pointing at GitHub Pages.
 
-GitHub Pages note: enabling Pages for this private repository returned `422 Your current plan does not support GitHub Pages for this repository`. To publish from this repo on GitHub Pages, either make the repository public, use an account/plan that supports private-repo Pages, or move the static site to a public hosting repository.
+GitHub Pages status: Pages is enabled for `main` `/` with `harnesscourse.com` as the custom domain. HTTPS enforcement may remain unavailable immediately after DNS setup until GitHub issues the custom-domain certificate.
 
 ## Contents
 
@@ -52,16 +52,16 @@ There is no build step, package manager, or local server requirement.
 
 ## Deployment
 
-Pushing to `main` is the deployment mechanism once GitHub Pages is enabled for the repository.
+Pushing to `main` is the deployment mechanism.
 
-Expected GitHub Pages settings:
+GitHub Pages settings:
 
 - Source: deploy from branch
 - Branch: `main`
 - Folder: `/`
 - Custom domain: `harnesscourse.com`
 
-Expected Porkbun DNS records after GitHub Pages is enabled and configured with the custom domain:
+Porkbun DNS records:
 
 ```text
 ALIAS  @    vivekhaldar.github.io
@@ -75,6 +75,16 @@ A  @  185.199.108.153
 A  @  185.199.109.153
 A  @  185.199.110.153
 A  @  185.199.111.153
+```
+
+If HTTPS enforcement is still disabled after DNS changes, retry after GitHub has issued the Pages certificate:
+
+```sh
+gh api --method PUT repos/vivekhaldar/agent-engineering-trilogy/pages \
+  -F cname=harnesscourse.com \
+  -F https_enforced=true \
+  -F 'source[branch]=main' \
+  -F 'source[path]=/'
 ```
 
 ## Editing Notes
