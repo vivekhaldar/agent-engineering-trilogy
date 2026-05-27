@@ -789,7 +789,7 @@
     <header class="hero">
       <p class="eyebrow">A Graduate Curriculum in Three Volumes</p>
       <h1>The Agent Engineering Trilogy</h1>
-      <p class="subtitle">Three nested layers around an LLM call &mdash; prompt, context, harness &mdash; and what their composition produces.</p>
+      <p class="subtitle">Three nested layers around an LLM call &mdash; prompt, context, harness &mdash; and what their composition produces. This is not three independent courses; it is one argument about where AI engineering leverage has moved.</p>
       <div class="meta ui">
         <div><strong>Format:</strong> Three one-semester graduate courses + capstone</div>
         <div><strong>Modules:</strong> 36 + synthesis</div>
@@ -827,7 +827,7 @@
       <article class="qa" id="q1">
         <p class="question ui">Q1 &middot; What is harness engineering? How is it different from context engineering and prompt engineering?</p>
         <h3>Three nested layers around an LLM call, distinguished by their unit of work.</h3>
-        <p><strong>Prompt engineering</strong> is the craft of the input string itself &mdash; instructions, few-shot exemplars, role framing, output format cues, CoT triggers. The unit is one inference's text and the target is elicitation. As frontier models have grown more robust to phrasing, the marginal value here has fallen.</p>
+        <p><strong>Prompt engineering</strong> is the craft of the input string itself &mdash; instructions, few-shot exemplars, role framing, output format cues, CoT triggers. The unit is one inference's text and the target is elicitation. As frontier models have grown more robust to phrasing, the marginal value here has become more situational and more dependent on the surrounding system.</p>
         <p><strong>Context engineering</strong> moves the unit up to the entire window as a managed artifact: retrieved documents, distilled memory, tool descriptions, compacted history, examples drawn from a bank. Token budgeting, RAG, semantic caching, memory hierarchies, and context compression all live here. Still a single inference, but the inputs are programmatically assembled rather than authored.</p>
         <p><strong>Harness engineering</strong> is the outermost shell &mdash; the program that runs the model in a loop. It owns control flow: when to invoke, which tools to expose, how to route and verify outputs, when to retry, when to spawn subagents, when to terminate, how to sandbox side effects. The harness is deterministic code with the LLM as a subroutine, and prompts, contexts, tool calls, skill loads, and verifiers are all harness state. Claude Code's agent loop, Cursor's editing logic, Devin's planner, Proceda &mdash; these are harnesses.</p>
         <p>The progression is one of scope and determinism. Prompts are nondeterministic strings; contexts are deterministically assembled but consumed nondeterministically; harnesses are deterministic programs that compose model calls into reliable systems. As model capability rises, leverage shifts up the stack &mdash; reliability, cost, and task completion become properties of the harness more than properties of the prompt.</p>
@@ -915,7 +915,7 @@
       <div class="framings prompt">
         <p class="framings-title ui">Two framing readings for lecture one</p>
         <p><em class="label">The canonical survey</em> &mdash; Schulhoff et al., <em>The Prompt Report: A Systematic Survey of Prompt Engineering Techniques</em> &mdash; is a PRISMA-style review of 1,565 papers, producing a vocabulary of 33 terms and a taxonomy of 58 text-only techniques (plus 40 multimodal). It's the single most useful reference document for the syllabus and worth assigning early as a map of the territory. The companion site is the navigation aid.</p>
-        <p><em class="label">The historical framing</em> &mdash; Schluntz &amp; Zhang's <em>Building Effective Agents</em> and Anthropic's <em>Effective context engineering for AI agents</em> (revisited from the other two courses) &mdash; together make the case that prompt engineering is the natural progression's first layer, not a destination. Students should leave week one understanding why the discipline exists and why its scope has shrunk.</p>
+        <p><em class="label">The historical framing</em> &mdash; Schluntz &amp; Zhang's <em>Building Effective Agents</em> and Anthropic's <em>Effective context engineering for AI agents</em> (revisited from the other two courses) &mdash; together make the case that prompt engineering is the natural progression's first layer, not a destination. Students should leave week one understanding why the discipline exists and why its scope has shifted.</p>
       </div>
 
       <article class="module prompt" id="p1">
@@ -1115,7 +1115,7 @@
           <span class="module-num ui">Module 12</span>
           <h3>Coda: After Prompt Engineering</h3>
         </div>
-        <p class="framing">The pedagogically honest closing module. As models have improved, the marginal return on careful prompt wording has collapsed; many techniques in this syllabus are best understood as historical artifacts of the era when models needed elaborate scaffolding to reason. The skills that endure are the ones that compose into something larger &mdash; exemplar curation feeds into context engineering, CoT becomes a unit of harness control flow, automatic optimization is the bridge to programmatic systems. End the course with this synthesis.</p>
+        <p class="framing">The pedagogically honest closing module. As models have improved, the marginal return on careful prompt wording has become more situational; many techniques in this syllabus are best understood as responses to an era when models needed more explicit scaffolding to reason. The skills that endure are the ones that compose into something larger &mdash; exemplar curation feeds into context engineering, CoT becomes a unit of harness control flow, automatic optimization is the bridge to programmatic systems. End the course with this synthesis.</p>
         <div class="readings">
           <p class="readings-title ui">Canonical readings</p>
           <ol>
@@ -1130,7 +1130,7 @@
 
       <div class="ped-notes">
         <h3 class="ui">A Few Pedagogical Notes</h3>
-        <p>This course is best taught with a note of intellectual honesty about its subject. A 2022-style prompt engineering course would have spent eight weeks on phrasing tricks; a 2026 course should spend most of its time on the techniques that turned out to compose into something larger and on the empirical results that taught the field its limits. The Sclar et al. formatting-sensitivity paper, the Min et al. demonstrations paper, the Huang et al. self-correction paper, and the Tam et al. format-restriction paper are the four readings I'd most insist on, because each one undermines a piece of folk wisdom that practitioners still repeat.</p>
+        <p>This course is best taught with a note of intellectual honesty about its subject. A 2022-style prompt engineering course would have spent much more time on phrasing patterns; a 2026 course should spend most of its time on the techniques that turned out to compose into something larger and on the empirical results that taught the field its limits. The Sclar et al. formatting-sensitivity paper, the Min et al. demonstrations paper, the Huang et al. self-correction paper, and the Tam et al. format-restriction paper are the four readings I'd most insist on, because each one undermines a piece of folk wisdom that practitioners still repeat.</p>
         <p>A useful organizing question to put to students at the start and revisit at the end: <em>which of these techniques would survive a hypothetical model that was perfectly calibrated and never needed reasoning scaffolding?</em> Working through that question is how students learn to distinguish techniques that exploited capability gaps (most of Modules 4&ndash;7) from techniques that exploit something more structural about how transformers consume sequences (Modules 8 and 10). The first kind ages; the second kind compounds. Students who can tell them apart will be useful builders for the next several years regardless of what specific models they're working with.</p>
         <p>Finally &mdash; the same continuous reading I recommended for the context course applies here. <em>Simon Willison's blog</em> is the running practitioner narrative, and his <em>prompt-injection</em> tag in particular is the best ongoing chronicle of how the adversarial side of prompt engineering is actually playing out in production.</p>
       </div>
