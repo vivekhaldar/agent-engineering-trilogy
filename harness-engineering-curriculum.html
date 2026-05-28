@@ -1770,6 +1770,22 @@
     let activeId = null;
     let ticking = false;
 
+    const keepLinkVisibleInToc = (link) => {
+      if (toc.scrollHeight <= toc.clientHeight) return;
+
+      const tocRect = toc.getBoundingClientRect();
+      const linkRect = link.getBoundingClientRect();
+      const inset = 16;
+      const topOverflow = linkRect.top - tocRect.top - inset;
+      const bottomOverflow = linkRect.bottom - tocRect.bottom + inset;
+
+      if (topOverflow < 0) {
+        toc.scrollTop += topOverflow;
+      } else if (bottomOverflow > 0) {
+        toc.scrollTop += bottomOverflow;
+      }
+    };
+
     const setActive = (id) => {
       if (id === activeId) return;
       activeId = id;
@@ -1780,7 +1796,7 @@
         link.classList.toggle("is-active", isActive);
         if (isActive) {
           link.setAttribute("aria-current", "location");
-          link.scrollIntoView({ block: "nearest", inline: "nearest" });
+          keepLinkVisibleInToc(link);
         } else {
           link.removeAttribute("aria-current");
         }
