@@ -204,7 +204,7 @@
     font-size: 14px;
     line-height: 1.4;
     color: var(--ink-faint);
-    margin: -6px 0 24px 0;
+    margin: -6px 0 4px 0;
   }
 
   .hero .byline a {
@@ -216,6 +216,14 @@
   .hero .byline a:hover {
     color: var(--ink);
     text-decoration-color: var(--ink-faint);
+  }
+
+  .hero .updated {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 12px;
+    line-height: 1.4;
+    color: var(--ink-faint);
+    margin: 0 0 24px 0;
   }
 
   .hero .subtitle {
@@ -834,6 +842,7 @@
       <p class="eyebrow">Three-Volume Curriculum</p>
       <h1>The Agent Engineering Trilogy</h1>
       <p class="byline"><a href="https://vivekhaldar.com" target="_blank" rel="noopener noreferrer">Vivek Haldar</a> / <a href="https://enchiridionlabs.online/" target="_blank" rel="noopener noreferrer">Enchiridion Labs</a> / <a href="https://github.com/vivekhaldar/agent-engineering-trilogy" target="_blank" rel="noopener noreferrer">Source</a></p>
+      <p class="updated">Last updated July 9, 2026.</p>
       <p class="subtitle">Three nested layers around an LLM call &mdash; prompt, context, harness &mdash; and what their composition produces. Across three courses, one argument: AI engineering work now pays off farther from the raw prompt.</p>
       <div class="meta ui">
         <div><strong>Format:</strong> Three one-semester graduate courses + capstone</div>
@@ -925,7 +934,7 @@
         </ol>
 
         <h4 id="f-harness-optimization">Harness optimization &mdash; the 2026 research turn</h4>
-        <p><strong><a href="https://lilianweng.github.io/posts/2026-07-04-harness/" target="_blank" rel="noopener noreferrer">Lilian Weng's Harness Engineering for Self-Improvement</a></strong> is the current synthesis: a harness surrounds the base model and controls planning, tool use, context, persistent artifacts, and evaluation. Its central progression is an optimization ladder: <code>instruction/prompt → structured context → workflow → harness code → optimizer code</code>. That is the research version of this curriculum's prompt/context/harness stack.</p>
+        <p>Once prompts, contexts, and workflows are represented as editable artifacts, the machinery around the model can itself become the object of optimization. The search target moves outward in stages: <code>instruction/prompt → structured context → workflow → harness code → optimizer code</code>. Each stage asks a more powerful question &mdash; not only how to produce a better answer, but how to improve the system that produces, checks, remembers, and iterates on answers.</p>
         <ul class="lit-list">
           <li><strong><a href="https://arxiv.org/abs/2410.10762" target="_blank" rel="noopener noreferrer">AFlow: Automating Agentic Workflow Generation</a></strong> turns workflow design into search over code-represented graphs, using Monte Carlo Tree Search and execution feedback to refine agentic workflows.</li>
           <li><strong><a href="https://arxiv.org/abs/2603.28052" target="_blank" rel="noopener noreferrer">Meta-Harness: End-to-End Optimization of Model Harnesses</a></strong> makes the executable harness itself the search target, exposing prior code, scores, traces, and state through a queryable file system.</li>
@@ -933,6 +942,7 @@
           <li><strong><a href="https://arxiv.org/abs/2505.22954" target="_blank" rel="noopener noreferrer">Darwin Gödel Machine</a></strong> evolves coding agents by modifying their own code and retaining an archive of successful variants as stepping stones for later improvements.</li>
           <li><strong><a href="https://arxiv.org/abs/2605.21516" target="_blank" rel="noopener noreferrer">Harnesses for Inference-Time Alignment over Execution Trajectories</a></strong> is the necessary counterweight: decomposition and guidance can help, but over-decomposition, over-pruning, and hallucinated execution can make a more elaborate harness worse.</li>
         </ul>
+        <p><strong><a href="https://lilianweng.github.io/posts/2026-07-04-harness/" target="_blank" rel="noopener noreferrer">Lilian Weng, Harness Engineering for Self-Improvement</a></strong> (July 2026). The current synthesis of this optimization ladder, connecting workflow automation, file-backed state, subagents, harness search, and recursive self-improvement.</p>
 
         <h4>The all-three-together pieces</h4>
         <p>These are the articles that try to draw the exact map this curriculum has been building:</p>
