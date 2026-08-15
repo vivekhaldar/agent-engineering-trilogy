@@ -780,7 +780,7 @@
         <li><a href="#p8">Structured Output &amp; Constrained Decoding</a></li>
         <li><a href="#p9">Adversarial Prompting</a></li>
         <li><a href="#p10">Automatic Prompt Optimization</a></li>
-        <li><a href="#p11">Multimodal Prompting</a></li>
+        <li><a href="#p11">Native Multimodal Prompting</a></li>
         <li><a href="#p12">Coda: After Prompt Engineering</a></li>
       </ol>
     </div>
@@ -842,12 +842,12 @@
       <p class="eyebrow">Three-Volume Curriculum</p>
       <h1>The Agent Engineering Trilogy</h1>
       <p class="byline"><a href="https://vivekhaldar.com" target="_blank" rel="noopener noreferrer">Vivek Haldar</a> / <a href="https://enchiridionlabs.online/" target="_blank" rel="noopener noreferrer">Enchiridion Labs</a> / <a href="https://github.com/vivekhaldar/agent-engineering-trilogy" target="_blank" rel="noopener noreferrer">Source</a></p>
-      <p class="updated">Last updated July 9, 2026.</p>
+      <p class="updated">Last updated August 15, 2026.</p>
       <p class="subtitle">Three nested layers around an LLM call &mdash; prompt, context, harness &mdash; and what their composition produces. Across three courses, one argument: AI engineering work now pays off farther from the raw prompt.</p>
       <div class="meta ui">
         <div><strong>Format:</strong> Three one-semester graduate courses + capstone</div>
         <div><strong>Modules:</strong> 36 + synthesis</div>
-        <div><strong>Pacing:</strong> One module per week (lecture / paper / lab)</div>
+        <div><strong>Pacing:</strong> One module per week (theory + reading or codebase; selected labs)</div>
       </div>
 
       <div class="stack-diagram ui" aria-label="Stack diagram">
@@ -923,10 +923,10 @@
         <p>The research follow-up is now concrete. <strong><a href="https://arxiv.org/abs/2510.04618" target="_blank" rel="noopener noreferrer">Agentic Context Engineering</a></strong>, already part of the context course, treats context as an evolving playbook rather than a repeatedly rewritten prompt blob. <strong><a href="https://arxiv.org/abs/2601.21557" target="_blank" rel="noopener noreferrer">Meta Context Engineering</a></strong> moves one level up and co-evolves the context-engineering skill with the context artifacts it produces. Together they turn context construction into an optimization target, not just a hand-tuned retrieval recipe.</p>
 
         <h4>Harness engineering &mdash; much more recent, more contested</h4>
-        <p>This one is six months old and the term entered the mainstream through a specific sequence:</p>
+        <p>The recent harness-engineering literature cluster spans late 2025 and 2026; the sequence below is organized by publication date:</p>
         <ol class="lit-list">
-          <li><strong><a href="https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents" target="_blank" rel="noopener noreferrer">Anthropic, Effective harnesses for long-running agents</a></strong> (Nov 26, 2025). First use of "harness engineering" from a frontier lab in a substantive piece.</li>
-          <li><strong><a href="https://openai.com/index/harness-engineering/" target="_blank" rel="noopener noreferrer">OpenAI, Harness engineering: leveraging Codex in an agent-first world</a></strong> (Feb 11, 2026). The post that put the term in everyone's mouth. The three-engineer, million-line codebase, zero-typed-code anecdote became the field's reference point.</li>
+          <li><strong><a href="https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents" target="_blank" rel="noopener noreferrer">Anthropic, Effective harnesses for long-running agents</a></strong> (Nov 26, 2025). A frontier-lab account of harness design for agents working across multiple context windows.</li>
+          <li><strong><a href="https://openai.com/index/harness-engineering/" target="_blank" rel="noopener noreferrer">OpenAI, Harness engineering: leveraging Codex in an agent-first world</a></strong> (Feb 11, 2026). An explicit frontier-lab use of the label, reporting roughly one million lines and about 1,500 merged pull requests over five months, with no manually written code.</li>
           <li><strong><a href="https://www.langchain.com/blog/improving-deep-agents-with-harness-engineering" target="_blank" rel="noopener noreferrer">LangChain, Improving deep agents with harness engineering</a></strong> (Feb 17, 2026). The Terminal Bench 2.0 result &mdash; same GPT-5.2-Codex, score moves from 52.8% to 66.5% by changing only the harness, agent climbs from rank 30 to top 5. This became the headline empirical claim.</li>
           <li><strong><a href="https://www.langchain.com/blog/the-anatomy-of-an-agent-harness" target="_blank" rel="noopener noreferrer">Vivek Trivedy / LangChain, The Anatomy of an Agent Harness</a></strong> (March 10, 2026). The clearest definitional piece, the source of the canonical model-plus-harness formula, and the best single primary source on the harness-vs-agent relation.</li>
           <li><strong><a href="https://martinfowler.com/articles/harness-engineering.html" target="_blank" rel="noopener noreferrer">Birgitta Böckeler, Harness engineering for coding agent users</a></strong> deserves separate treatment because it uses a different framing: a user harness for coding agents as a specific form of context engineering, organized around feedforward guides, feedback sensors, computational vs. inferential controls, and regulation categories such as maintainability, architecture fitness, and behavior. This is a minority view but it's the most theoretically careful.</li>
@@ -1164,17 +1164,18 @@
       <article class="module prompt" id="p11">
         <div class="module-header">
           <span class="module-num ui">Module 11</span>
-          <h3>Multimodal Prompting</h3>
+          <h3>Native Multimodal Prompting: Images, Documents, Audio, and Video</h3>
         </div>
-        <p class="framing">Prompt engineering for images, code, and audio. The discipline rhymes with text prompting but has distinctive failure modes that warrant a dedicated module.</p>
+        <p class="framing">Modern multimodal prompting concerns native media inputs, not learned prompt vectors or text-to-image style modifiers. Images, PDF pages, audio, and video enter the model through provider-specific preprocessing. Students learn to label media explicitly, ground questions to pages, regions, and timestamps, manage resolution and context budgets, follow each model's input-order contract, and test modality-specific failure modes instead of assuming the model faithfully sees or hears the original.</p>
         <div class="readings">
           <p class="readings-title ui">Canonical readings</p>
           <ol>
-            <li><a href="https://arxiv.org/abs/2203.05557" class="citation" target="_blank" rel="noopener noreferrer">Zhou et al., Conditional Prompt Learning for Vision-Language Models (CoCoOp)</a>, CVPR 2022.</li>
-            <li><a href="https://arxiv.org/abs/2210.03117" class="citation" target="_blank" rel="noopener noreferrer">Khattak et al., MaPLe: Multi-modal Prompt Learning</a>, CVPR 2023.</li>
-            <li><a href="https://arxiv.org/abs/2304.08485" class="citation" target="_blank" rel="noopener noreferrer">Liu et al., Visual Instruction Tuning (LLaVA)</a>, NeurIPS 2023. <span class="note">The instruction-tuning side that conditions how vision-language models respond to prompts.</span></li>
-            <li><a href="https://arxiv.org/abs/2204.13988" class="citation" target="_blank" rel="noopener noreferrer">Oppenlaender, A Taxonomy of Prompt Modifiers for Text-to-Image Generation</a> (2022). <span class="note">Image prompting is its own folk-knowledge tradition; this is the closest thing to a systematic account.</span></li>
-            <li><a href="https://arxiv.org/abs/2406.06608" class="citation" target="_blank" rel="noopener noreferrer">Schulhoff et al., The Prompt Report</a> <span class="note">&mdash; revisit the multimodal taxonomy chapter.</span></li>
+            <li><a href="https://ai.google.dev/gemini-api/docs/prompting-strategies" class="citation" target="_blank" rel="noopener noreferrer">Google, Prompt design strategies.</a> <span class="note">Cross-modal prompting patterns and the need to reference each input coherently.</span></li>
+            <li><a href="https://ai.google.dev/gemini-api/docs/image-understanding" class="citation" target="_blank" rel="noopener noreferrer">Google, Image understanding.</a> <span class="note">Image ordering, resolution, tiling, and token-budget tradeoffs.</span></li>
+            <li><a href="https://ai.google.dev/gemini-api/docs/document-processing" class="citation" target="_blank" rel="noopener noreferrer">Google, Document understanding.</a> <span class="note">Native PDF processing, page images, extracted text, and layout caveats.</span></li>
+            <li><a href="https://ai.google.dev/gemini-api/docs/audio" class="citation" target="_blank" rel="noopener noreferrer">Google, Audio understanding.</a> <span class="note">Timestamp grounding, transcription, diarization, and temporal token costs.</span></li>
+            <li><a href="https://ai.google.dev/gemini-api/docs/video-understanding" class="citation" target="_blank" rel="noopener noreferrer">Google, Video understanding.</a> <span class="note">Frame sampling, audio-visual grounding, and fast-action blind spots.</span></li>
+            <li><a href="https://platform.claude.com/docs/en/build-with-claude/vision" class="citation" target="_blank" rel="noopener noreferrer">Anthropic, Vision.</a> <span class="note">A comparative provider contract for multiple images, input ordering, spatial reasoning, and cost.</span></li>
           </ol>
         </div>
       </article>
@@ -1334,7 +1335,7 @@
         <div class="readings">
           <p class="readings-title ui">Canonical readings</p>
           <ol>
-            <li><a href="https://www.anthropic.com/engineering/writing-tools-for-agents" class="citation" target="_blank" rel="noopener noreferrer">Anthropic Engineering, Writing effective tools for AI agents.</a> <span class="note">The internal observation that ~58 tools can consume ~55k tokens drives much of the design space.</span></li>
+            <li><a href="https://www.anthropic.com/engineering/advanced-tool-use" class="citation" target="_blank" rel="noopener noreferrer">Anthropic Engineering, Introducing advanced tool use on the Claude Developer Platform.</a> <span class="note">Its five-server example totals 58 tools and approximately 55K tokens before the conversation starts, motivating deferred loading and Tool Search.</span></li>
             <li><a href="https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills" class="citation" target="_blank" rel="noopener noreferrer">Anthropic Engineering, Equipping agents for the real world with Agent Skills.</a> <span class="note">Progressive disclosure framing.</span></li>
             <li><a href="https://composio.dev/content/ai-agent-tool-calling-guide" class="citation" target="_blank" rel="noopener noreferrer">Composio, Tool Calling Explained: The Core of AI Agents</a> (2026). <span class="note">Catalog-scale problem with concrete numbers.</span></li>
             <li><a href="https://modelcontextprotocol.io/docs/getting-started/intro" class="citation" target="_blank" rel="noopener noreferrer">Model Context Protocol specification.</a> <span class="note">Dynamic tool discovery as a context-engineering enabler.</span></li>
@@ -1345,13 +1346,13 @@
       <article class="module context" id="c8">
         <div class="module-header">
           <span class="module-num ui">Module 08</span>
-          <h3>KV Caching and the Prefix-Invariance Constraint</h3>
+          <h3>Prompt Caching and Stable-Prefix Design</h3>
         </div>
-        <p class="framing">The production constraint that shapes everything in agentic context engineering: a single token's worth of variation in a long prefix invalidates the KV cache for the whole suffix. Once students see this, many design choices in production agents become legible as cache-preserving moves, even when theory would suggest a different optimum.</p>
+        <p class="framing">Prompt caching reuses exact matching prefix segments. A change prevents reuse from that point forward, while stable earlier cached prefixes may remain reusable. Cover cache-breakpoint placement, stable-prefix ordering, time-to-live choices, and the economics that make many production-agent designs legible as cache-preserving moves.</p>
         <div class="readings">
           <p class="readings-title ui">Canonical readings</p>
           <ol>
-            <li><a href="https://platform.claude.com/docs/en/build-with-claude/prompt-caching" class="citation" target="_blank" rel="noopener noreferrer">Anthropic, Prompt caching documentation.</a> <span class="note">The economics: cache reads at 10% of base cost, writes at 125%, break-even at two hits.</span></li>
+            <li><a href="https://platform.claude.com/docs/en/build-with-claude/prompt-caching" class="citation" target="_blank" rel="noopener noreferrer">Anthropic, Prompt caching documentation.</a> <span class="note">For the reused prefix, five-minute writes cost 1.25&times; base input and reads cost 0.1&times;, so one cache hit more than repays the write premium; one-hour writes cost 2&times; and need two hits to become cheaper than uncached input.</span></li>
             <li><a href="https://manus.im/blog/Context-Engineering-for-AI-Agents-Lessons-from-Building-Manus" class="citation" target="_blank" rel="noopener noreferrer">Manus / Yichao Ji, Context Engineering for AI Agents: Lessons from Building Manus</a> (2025). <span class="note">The 100:1 input-to-output ratio observation, and KV-cache hit rate as "the north star" of production agents.</span></li>
             <li><a href="https://machinelearningmastery.com/the-complete-guide-to-inference-caching-in-llms/" class="citation" target="_blank" rel="noopener noreferrer">Bala Priya C, The Complete Guide to Inference Caching in LLMs</a> (2026). <span class="note">The three-tier story (KV / prefix / semantic) for grounding.</span></li>
             <li><a href="https://arxiv.org/abs/2311.04934" class="citation" target="_blank" rel="noopener noreferrer">Gim et al., Prompt Cache: Modular Attention Reuse for Low-Latency Inference</a> (2024). <span class="note">The foundational paper.</span></li>
@@ -1444,7 +1445,7 @@
       <div class="course-header harness">
         <p class="eyebrow">Volume III</p>
         <h2>Harness Engineering Curriculum</h2>
-        <p class="lede">A twelve-module curriculum that builds from first principles to the current research frontier, scoped to a one-semester graduate course. Each module is sized for roughly a week (one lecture on theory, one on a paper or codebase, one lab). The readings are ordered by priority &mdash; the first one or two in each list are the canonical entry points; the rest extend the discussion.</p>
+        <p class="lede">A twelve-module curriculum that builds from first principles to the current research frontier, scoped to a one-semester graduate course. Each module is sized for roughly a week, combining theory with a paper or codebase; labs appear at selected implementation and evaluation milestones. The readings are ordered by priority &mdash; the first one or two in each list are the canonical entry points; the rest extend the discussion.</p>
       </div>
 
       <div class="framings harness">
@@ -1550,7 +1551,7 @@
           <ol>
             <li><a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents" class="citation" target="_blank" rel="noopener noreferrer">Anthropic, Effective context engineering for AI agents</a> <span class="note">(and follow-up posts on context rot and skill systems).</span></li>
             <li><a href="https://www.langchain.com/blog/context-engineering-for-agents" class="citation" target="_blank" rel="noopener noreferrer">Lance Martin / LangChain, Context Engineering for Agents</a>. <span class="note">The clearest practitioner taxonomy (write / select / compress / isolate).</span></li>
-            <li><a href="https://www.anthropic.com/engineering/writing-tools-for-agents" class="citation" target="_blank" rel="noopener noreferrer">Anthropic Engineering, Writing effective tools for AI agents</a> <span class="note">&mdash; including the observation that ~58 tools can consume ~55k tokens, which forces routing-before-loading.</span></li>
+            <li><a href="https://www.anthropic.com/engineering/advanced-tool-use" class="citation" target="_blank" rel="noopener noreferrer">Anthropic Engineering, Introducing advanced tool use on the Claude Developer Platform.</a> <span class="note">Its five-server example totals 58 tools and approximately 55K tokens before the conversation starts, motivating routing before loading.</span></li>
           </ol>
         </div>
         <div class="lab"><span class="lab-tag ui">Lab</span><span class="lab-body">Implement progressive tool disclosure with a router model selecting from N tool clusters before the main agent sees descriptions.</span></div>
@@ -1596,14 +1597,14 @@
           <span class="module-num ui">Module 09</span>
           <h3>Human-in-the-Loop and Approval Contracts</h3>
         </div>
-        <p class="framing">When the loop deliberately yields control. Cover the design space (HITL vs HOTL, tool-level vs request-level approval, suspension vs approval), the durable-execution problem (waits of hours/days), and the principle that humans should move up the stack to review consequential decisions at the right abstraction rather than babysit every tool call.</p>
+        <p class="framing">When the loop deliberately yields control. Cover HITL vs. HOTL, tool-level vs. request-level approval, approval vs. suspension, and the durable-execution problem &mdash; from minute-scale elicitation to Workflow approvals that can wait months or years. Humans should review consequential decisions at the right abstraction rather than babysit every tool call.</p>
         <div class="readings">
           <p class="readings-title ui">Canonical readings</p>
           <ol>
             <li><a href="https://www.anthropic.com/engineering/building-effective-agents" class="citation" target="_blank" rel="noopener noreferrer">Anthropic Building Effective Agents</a>, <span class="note">"Combining and customizing these patterns" section.</span></li>
             <li><a href="https://mastra.ai/blog/hitl-where-to-put-approval-in-agents-and-workflows" class="citation" target="_blank" rel="noopener noreferrer">Mastra, Human-in-the-Loop: When to Use Agent Approval</a> (2026). <span class="note">Clean taxonomy of approval vs. suspension.</span></li>
             <li><a href="https://docs.langchain.com/oss/python/langchain/middleware/overview" class="citation" target="_blank" rel="noopener noreferrer">LangChain, Human-in-the-loop middleware.</a> <span class="note">The four decision types (approve / edit / reject / respond).</span></li>
-            <li><a href="https://developers.cloudflare.com/agents/concepts/human-in-the-loop/" class="citation" target="_blank" rel="noopener noreferrer">Cloudflare, Agents SDK Human in the Loop patterns.</a> <span class="note">Five patterns including durable approvals via Workflows.</span></li>
+            <li><a href="https://developers.cloudflare.com/agents/concepts/agentic-patterns/human-in-the-loop/" class="citation" target="_blank" rel="noopener noreferrer">Cloudflare, Human-in-the-loop patterns.</a> <span class="note">Three patterns organized by who introduces the pause and where it occurs: MCP elicitation, durable Workflow approval, and Code Mode connector approval.</span></li>
           </ol>
         </div>
       </article>
@@ -1718,7 +1719,7 @@
 
         <p>Everything in the three courses has been preparation for understanding why that definition is non-trivial. The model is what the prompt engineering course studied: a fixed function from a context to a distribution over next tokens. The harness is what the harness engineering course studied: a program that wraps that function in a loop, with tools, memory, control flow, and termination logic. The environment is whatever the harness reaches into through its tools &mdash; a file system, a browser, a database, an API surface, a human collaborator. The context engineering course studied the interface between model and harness: how the harness assembles, manages, and refreshes the token sequence the model sees on every step.</p>
 
-        <p>The definition has sharp consequences. Agent names the whole composition: model, harness, and environment together. A frontier model dropped into the wrong harness produces a worse agent than a weaker model in a well-designed one; the <em><a href="https://arxiv.org/abs/2603.28052" target="_blank" rel="noopener noreferrer">Meta-Harness</a></em> paper's six-fold same-model performance gap is the empirical anchor for that claim. The environment is part of the definition: changing the environment changes what the agent <em>is</em>, as well as what it <em>does</em>. Improving any one component in isolation can still leave the agent worse, because the composition has dynamics that none of the parts have alone.</p>
+        <p>The definition has sharp consequences. Agent names the whole composition: model, harness, and environment together. The same model can perform very differently when paired with different agent designs; <em><a href="https://arxiv.org/abs/2602.09540" target="_blank" rel="noopener noreferrer">SWE-Bench Mobile</a></em> reports an up-to-six-fold within-model performance gap across four coding agents in 22 agent-model configurations on a production-iOS benchmark. That result is benchmark-specific &mdash; the best configuration solved only 12% of tasks &mdash; but it isolates agent design as a material variable. The environment is part of the definition: changing the environment changes what the agent <em>is</em>, as well as what it <em>does</em>. Improving any one component in isolation can still leave the agent worse, because the composition has dynamics that none of the parts have alone.</p>
 
         <p>The clearest theoretical articulation of this composition is <strong><a href="https://arxiv.org/abs/2309.02427" target="_blank" rel="noopener noreferrer">Sumers et al., Cognitive Architectures for Language Agents (CoALA)</a></strong> (2024), which formalizes language agents in terms of memory modules, action space, and decision procedure. It is the integrative reading for this lecture, with its diagrams providing the structure. <strong><a href="https://aima.cs.berkeley.edu/contents.htm" target="_blank" rel="noopener noreferrer">Russell &amp; Norvig, Artificial Intelligence: A Modern Approach, Chapter 2: Intelligent Agents</a></strong> supplies the older percept-action-environment vocabulary the field eventually rediscovered.</p>
 
@@ -1749,7 +1750,7 @@
         <ul>
           <li><strong>Trajectory-dependence.</strong> The same agent on the same task can take different paths through the environment depending on stochastic choices, environmental responses, and which retrieved or compacted artifacts the context policy surfaced. Reliability becomes a distribution, which is why τ-bench's pass^k metric is the right way to measure production agents.</li>
           <li><strong>Closed-loop failure modes.</strong> Agents exhibit pathologies absent from single inferences: loops, goal drift, capability erosion under context rot, sub-agent cascade failures. These emerge from the dynamics of the composition, beyond what a prompt, context window, or static harness diagram can show.</li>
-          <li><strong>Emergent capability above the parts.</strong> The Manus team's observation that they "rebuilt the framework four times" while keeping the model fixed is evidence that agent capability is largely a harness-and-context property. The <a href="https://arxiv.org/abs/2603.28052" target="_blank" rel="noopener noreferrer">Meta-Harness</a> six-fold gap is the same observation, formalized.</li>
+          <li><strong>Emergent capability above the parts.</strong> The Manus team's observation that they "rebuilt the framework four times" while keeping the model fixed is practitioner evidence that harness and context choices matter. <a href="https://arxiv.org/abs/2603.28052" target="_blank" rel="noopener noreferrer">Meta-Harness</a> provides a related controlled result with frozen base models: its selected harness improved online text-classification accuracy by 7.7 points over ACE while using roughly four times fewer context tokens, and improved math-reasoning accuracy by 4.7 points on average across five held-out models.</li>
         </ul>
 
         <p>The clearest single reading on this synthesis is <strong><a href="https://lilianweng.github.io/posts/2023-06-23-agent/" target="_blank" rel="noopener noreferrer">Lilian Weng's LLM-Powered Autonomous Agents</a></strong> (2023), now somewhat dated but still the cleanest narrative bridge from "LLM" to "agent" in the literature. <strong><a href="https://arxiv.org/abs/2308.11432" target="_blank" rel="noopener noreferrer">Wang et al., A Survey on Large Language Model based Autonomous Agents</a></strong> (2024) supplies breadth, and <strong><a href="https://arxiv.org/abs/2305.16291" target="_blank" rel="noopener noreferrer">Wang et al., Voyager: An Open-Ended Embodied Agent with Large Language Models</a></strong> (2024) supplies the cleanest case study of an agent that does the integrative thing &mdash; accumulating skills the harness can later retrieve, blurring the line between context, harness, and model.</p>
@@ -1780,7 +1781,7 @@
 
     <footer class="ui">
       <p>A curriculum in three volumes plus capstone.</p>
-      <p>Each module is sized for one week (one lecture on theory, one on a paper or codebase, one lab). Readings are ordered by priority within each module.</p>
+      <p>Each module is sized for one week, combining theory with a paper or codebase. Explicit labs appear at selected milestones, with a culminating lab in each volume. Readings are ordered by priority within each module.</p>
     </footer>
 
 </main>
