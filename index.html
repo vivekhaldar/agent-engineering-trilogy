@@ -842,7 +842,7 @@
       <p class="eyebrow">Three-Volume Curriculum</p>
       <h1>The Agent Engineering Trilogy</h1>
       <p class="byline"><a href="https://vivekhaldar.com" target="_blank" rel="noopener noreferrer">Vivek Haldar</a> / <a href="https://enchiridionlabs.online/" target="_blank" rel="noopener noreferrer">Enchiridion Labs</a> / <a href="https://github.com/vivekhaldar/agent-engineering-trilogy" target="_blank" rel="noopener noreferrer">Source</a></p>
-      <p class="updated">Last updated August 15, 2026.</p>
+      <p class="updated">Last updated September 17, 2026.</p>
       <p class="subtitle">Three nested layers around an LLM call &mdash; prompt, context, harness &mdash; and what their composition produces. Across three courses, one argument: AI engineering work now pays off farther from the raw prompt.</p>
       <div class="meta ui">
         <div><strong>Format:</strong> Three one-semester graduate courses + capstone</div>
@@ -931,6 +931,7 @@
           <li><strong><a href="https://www.langchain.com/blog/the-anatomy-of-an-agent-harness" target="_blank" rel="noopener noreferrer">Vivek Trivedy / LangChain, The Anatomy of an Agent Harness</a></strong> (March 10, 2026). The clearest definitional piece, the source of the canonical model-plus-harness formula, and the best single primary source on the harness-vs-agent relation.</li>
           <li><strong><a href="https://martinfowler.com/articles/harness-engineering.html" target="_blank" rel="noopener noreferrer">Birgitta Böckeler, Harness engineering for coding agent users</a></strong> deserves separate treatment because it uses a different framing: a user harness for coding agents as a specific form of context engineering, organized around feedforward guides, feedback sensors, computational vs. inferential controls, and regulation categories such as maintainability, architecture fitness, and behavior. This is a minority view but it's the most theoretically careful.</li>
           <li><strong><a href="https://blog.dailydoseofds.com/p/the-anatomy-of-an-agent-harness" target="_blank" rel="noopener noreferrer">Avi Chawla, The Anatomy of an Agent Harness</a></strong> (April 2026). A different essay with the same title &mdash; synthesizes Anthropic, OpenAI, LangChain, and Perplexity into eleven harness components. Recovers Beren Millidge's 2023 model-as-CPU, context-as-RAM, harness-as-OS analogy as the structural backbone.</li>
+          <li><strong><a href="https://unifiedharnessprotocol.org/" target="_blank" rel="noopener noreferrer">HarnessRouter, Unified Harness Protocol</a></strong> (August 2026). The first attempt to standardize the product-to-harness boundary as a versioned specification with a runnable conformance suite. A vendor-led draft standard from a single startup &mdash; its significance so far is the attempt, not adoption &mdash; but interface standards emerge only once a discipline's central artifact stabilizes, which is itself evidence for the harness framing.</li>
         </ol>
 
         <h4 id="f-harness-optimization">Harness optimization &mdash; the 2026 research turn</h4>
@@ -1338,7 +1339,7 @@
             <li><a href="https://www.anthropic.com/engineering/advanced-tool-use" class="citation" target="_blank" rel="noopener noreferrer">Anthropic Engineering, Introducing advanced tool use on the Claude Developer Platform.</a> <span class="note">Its five-server example totals 58 tools and approximately 55K tokens before the conversation starts, motivating deferred loading and Tool Search.</span></li>
             <li><a href="https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills" class="citation" target="_blank" rel="noopener noreferrer">Anthropic Engineering, Equipping agents for the real world with Agent Skills.</a> <span class="note">Progressive disclosure framing.</span></li>
             <li><a href="https://composio.dev/content/ai-agent-tool-calling-guide" class="citation" target="_blank" rel="noopener noreferrer">Composio, Tool Calling Explained: The Core of AI Agents</a> (2026). <span class="note">Catalog-scale problem with concrete numbers.</span></li>
-            <li><a href="https://modelcontextprotocol.io/docs/getting-started/intro" class="citation" target="_blank" rel="noopener noreferrer">Model Context Protocol specification.</a> <span class="note">Dynamic tool discovery as a context-engineering enabler.</span></li>
+            <li><a href="https://modelcontextprotocol.io/docs/getting-started/intro" class="citation" target="_blank" rel="noopener noreferrer">Model Context Protocol specification.</a> <span class="note">Dynamic tool discovery as a context-engineering enabler. <a href="https://github.com/modelcontextprotocol/modelcontextprotocol/pull/2640" target="_blank" rel="noopener noreferrer">SEP-2640</a> (accepted September 2026, not yet final) binds Agent Skills to MCP resources, so skill files can be served over the same protocol.</span></li>
           </ol>
         </div>
       </article>
@@ -1499,7 +1500,7 @@
           <ol>
             <li><a href="https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview" class="citation" target="_blank" rel="noopener noreferrer">Anthropic, Tool Use Overview</a> (current docs).</li>
             <li><a href="https://martinfowler.com/articles/function-call-LLM.html" class="citation" target="_blank" rel="noopener noreferrer">Kiran Prakash / martinfowler.com, Function calling using LLMs</a> (2025). <span class="note">Best concise treatment, including MCP.</span></li>
-            <li><a href="https://modelcontextprotocol.io/docs/getting-started/intro" class="citation" target="_blank" rel="noopener noreferrer">Model Context Protocol specification.</a> <span class="note">The protocol itself.</span></li>
+            <li><a href="https://modelcontextprotocol.io/docs/getting-started/intro" class="citation" target="_blank" rel="noopener noreferrer">Model Context Protocol specification.</a> <span class="note">The protocol itself. The <a href="https://blog.modelcontextprotocol.io/posts/2026-07-28/" target="_blank" rel="noopener noreferrer">2026-07-28 revision</a> adds a stateless core, cacheable tool lists, and a formal extensions framework, including Tasks for long-running work.</span></li>
             <li><a href="https://machinelearningmastery.com/the-roadmap-to-mastering-tool-calling-in-ai-agents/" class="citation" target="_blank" rel="noopener noreferrer">Bala Priya C, The Roadmap to Mastering Tool Calling in AI Agents</a> (2026). <span class="note">Failure modes and catalog scaling.</span></li>
           </ol>
         </div>
