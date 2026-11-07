@@ -795,7 +795,7 @@
         <li><a href="#c5">Memory &amp; State Representations</a></li>
         <li><a href="#c6">Compression &amp; Brevity-Bias</a></li>
         <li><a href="#c7">Tool &amp; Skill Descriptions as Context</a></li>
-        <li><a href="#c8">KV Caching &amp; Prefix-Invariance</a></li>
+        <li><a href="#c8">Prompt Caching &amp; Stable Prefixes</a></li>
         <li><a href="#c9">Programmatic Context Construction</a></li>
         <li><a href="#c10">Context as Evolving Playbook</a></li>
         <li><a href="#c11">Production Case Studies</a></li>
@@ -846,7 +846,7 @@
       <p class="subtitle">Three nested layers around an LLM call &mdash; prompt, context, harness &mdash; and what their composition produces. Across three courses, one argument: AI engineering work now pays off farther from the raw prompt.</p>
       <div class="meta ui">
         <div><strong>Format:</strong> Three one-semester graduate courses + capstone</div>
-        <div><strong>Modules:</strong> 36 + synthesis</div>
+        <div><strong>Modules:</strong> 36 core + specialized-harness extension + synthesis</div>
         <div><strong>Pacing:</strong> One module per week (theory + reading or codebase; selected labs)</div>
       </div>
 
@@ -1338,7 +1338,7 @@
             <li><a href="https://www.anthropic.com/engineering/advanced-tool-use" class="citation" target="_blank" rel="noopener noreferrer">Anthropic Engineering, Introducing advanced tool use on the Claude Developer Platform.</a> <span class="note">Its five-server example totals 58 tools and approximately 55K tokens before the conversation starts, motivating deferred loading and Tool Search.</span></li>
             <li><a href="https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills" class="citation" target="_blank" rel="noopener noreferrer">Anthropic Engineering, Equipping agents for the real world with Agent Skills.</a> <span class="note">Progressive disclosure framing.</span></li>
             <li><a href="https://composio.dev/content/ai-agent-tool-calling-guide" class="citation" target="_blank" rel="noopener noreferrer">Composio, Tool Calling Explained: The Core of AI Agents</a> (2026). <span class="note">Catalog-scale problem with concrete numbers.</span></li>
-            <li><a href="https://modelcontextprotocol.io/docs/getting-started/intro" class="citation" target="_blank" rel="noopener noreferrer">Model Context Protocol specification.</a> <span class="note">Dynamic tool discovery as a context-engineering enabler.</span></li>
+            <li><a href="https://modelcontextprotocol.io/docs/getting-started/intro" class="citation" target="_blank" rel="noopener noreferrer">Model Context Protocol introduction.</a> <span class="note">Dynamic tool discovery as a context-engineering enabler; use the versioned specification in Harness Module 3 for wire-level behavior.</span></li>
           </ol>
         </div>
       </article>
@@ -1421,10 +1421,10 @@
         <div class="readings">
           <p class="readings-title ui">Canonical readings</p>
           <ol>
-            <li><a href="https://arxiv.org/abs/2410.10813" class="citation" target="_blank" rel="noopener noreferrer">Wu et al., LongMemEval: Benchmarking Chat Assistants on Long-Term Interactive Memory</a>, ICLR 2025. <span class="note">The benchmark that drives much of the memory and compression literature; used in both Chroma's context rot study and the ACE paper.</span></li>
+            <li><a href="https://arxiv.org/abs/2410.10813" class="citation" target="_blank" rel="noopener noreferrer">Wu et al., LongMemEval: Benchmarking Chat Assistants on Long-Term Interactive Memory</a>, ICLR 2025. <span class="note">Evaluates extraction, multi-session and temporal reasoning, knowledge updates, and abstention. Used in Chroma's context-rot study; ACE instead evaluates AppWorld and domain-specific tasks.</span></li>
             <li><a href="https://arxiv.org/abs/2407.18901" class="citation" target="_blank" rel="noopener noreferrer">Trivedi et al., AppWorld: A Controllable World of Apps and People for Benchmarking Interactive Coding Agents</a>, ACL 2024. <span class="note">The agent benchmark most sensitive to context-engineering quality.</span></li>
             <li><a href="https://arxiv.org/abs/2404.06654" class="citation" target="_blank" rel="noopener noreferrer">Hsieh et al., RULER</a> <span class="note">&mdash; revisit for evaluation methodology.</span></li>
-            <li><a href="https://arxiv.org/abs/2507.02825" class="citation" target="_blank" rel="noopener noreferrer">Zhu et al., Establishing Best Practices for Building Rigorous Agentic Benchmarks</a> (2025). <span class="note">The same critical reading as in the harness course &mdash; assigned again because students need to internalize that evaluation results in this field are routinely overstated by 50-100% relative.</span></li>
+            <li><a href="https://arxiv.org/abs/2507.02825" class="citation" target="_blank" rel="noopener noreferrer">Zhu et al., Establishing Best Practices for Building Rigorous Agentic Benchmarks</a> (2025). <span class="note">The same critical reading as in the harness course. Task-setup and reward-design flaws can under- or overestimate performance by up to 100% in relative terms in the examined cases; this is not a field-wide prevalence estimate. Apply the authors' Agentic Benchmark Checklist when designing the final evaluation.</span></li>
           </ol>
         </div>
         <div class="lab"><span class="lab-tag ui">Final Lab</span><span class="lab-body">Students take their semester project (some context-engineering pipeline of their choice &mdash; RAG, compaction, programmatic prompt construction, or a combination) and submit it against a held-out LongMemEval split, reporting variance across at least five runs.</span></div>
@@ -1639,7 +1639,7 @@
             <li><a href="https://arxiv.org/abs/2406.12045" class="citation" target="_blank" rel="noopener noreferrer">Yao et al., τ-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains</a> (Sierra, 2024). <span class="note">The pass^k reliability metric is the important contribution.</span></li>
             <li><a href="https://arxiv.org/abs/2311.12983" class="citation" target="_blank" rel="noopener noreferrer">Mialon et al., GAIA: A Benchmark for General AI Assistants</a>, ICLR 2024.</li>
             <li><a href="https://arxiv.org/abs/2307.13854" class="citation" target="_blank" rel="noopener noreferrer">Zhou et al., WebArena: A Realistic Web Environment for Building Autonomous Agents</a>, ICLR 2024.</li>
-            <li><a href="https://arxiv.org/abs/2507.02825" class="citation" target="_blank" rel="noopener noreferrer">Zhu et al., Establishing Best Practices for Building Rigorous Agentic Benchmarks</a> (2025). <span class="note">Required critical reading &mdash; documents how up to 100% relative error inflates leaderboard claims.</span></li>
+            <li><a href="https://arxiv.org/abs/2507.02825" class="citation" target="_blank" rel="noopener noreferrer">Zhu et al., Establishing Best Practices for Building Rigorous Agentic Benchmarks</a> (2025). <span class="note">Required critical reading &mdash; in the examined cases, task and reward flaws can under- or overestimate performance by up to 100% in relative terms; this is not a typical error rate.</span></li>
             <li><a href="https://arxiv.org/abs/2605.26340" class="citation" target="_blank" rel="noopener noreferrer">Meng et al., ScientistOne: Towards Human-Level Autonomous Research via Chain-of-Evidence</a> (2026). <span class="note">The evidence-chain reading: its audit found hallucinated-reference rates up to 21%, score verification as low as 42%, and method-code alignment between 20% and 80% in baseline research agents.</span></li>
             <li><a href="https://arxiv.org/abs/2504.01848" class="citation" target="_blank" rel="noopener noreferrer">Starace et al., PaperBench</a> (2025). <span class="note">Long-horizon research replication with author-developed rubrics; useful for testing whether the harness preserves evidence and executable artifacts.</span></li>
           </ol>
