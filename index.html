@@ -1043,7 +1043,7 @@
           <span class="module-num ui">Module 04</span>
           <h3>Chain-of-Thought: The Technique That Reshaped the Field</h3>
         </div>
-        <p class="framing">CoT is the canonical example of a prompt technique that elicits a model capability. Cover the original paper, the scaling result that gave it weight, and the close-reading of why it works.</p>
+        <p class="framing">CoT is a foundational example of prompting that elicits reasoning behavior. Read the historical demonstrations, then distinguish prompted reasoning from models trained to reason internally. <a href="https://developers.openai.com/api/docs/guides/reasoning-best-practices" target="_blank" rel="noopener noreferrer">OpenAI's reasoning guidance</a> recommends direct instructions and warns that step-by-step prompting can be unnecessary or counterproductive for its reasoning models. Treat this as model-specific guidance to test, not a universal rule about every model.</p>
         <div class="readings">
           <p class="readings-title ui">Canonical readings</p>
           <ol>
@@ -1155,7 +1155,8 @@
             <li><a href="https://arxiv.org/abs/2305.03495" class="citation" target="_blank" rel="noopener noreferrer">Pryzant et al., Automatic Prompt Optimization with "Gradient Descent" and Beam Search (ProTeGi)</a>, EMNLP 2023.</li>
             <li><a href="https://arxiv.org/abs/2406.07496" class="citation" target="_blank" rel="noopener noreferrer">Yuksekgonul et al., TextGrad: Automatic "Differentiation" via Text</a> (2024). <span class="note">The textual-backprop framing.</span></li>
             <li><a href="https://arxiv.org/abs/2310.03714" class="citation" target="_blank" rel="noopener noreferrer">Khattab et al., DSPy: Compiling Declarative Language Model Calls into Self-Improving Pipelines</a>, ICLR 2024.</li>
-            <li><a href="https://arxiv.org/abs/2507.19457" class="citation" target="_blank" rel="noopener noreferrer">Agrawal et al., GEPA: Reflective Prompt Evolution Can Outperform Reinforcement Learning</a> (2025). <span class="note">The current frontier.</span></li>
+            <li><a href="https://arxiv.org/abs/2507.19457" class="citation" target="_blank" rel="noopener noreferrer">Agrawal et al., GEPA: Reflective Prompt Evolution Can Outperform Reinforcement Learning</a> (2025). <span class="note">A foundational reflective optimizer; use as a baseline rather than an undated claim about the frontier.</span></li>
+            <li><a href="https://arxiv.org/abs/2609.04197" class="citation" target="_blank" rel="noopener noreferrer">Liu et al., ESPO: Error-Structured Prompt Optimization via Diagnose, Diversify, and Stabilize</a> (September 2026, preprint). <span class="note">A critical follow-up on prompt bloat: structured error diagnosis, diverse proposals, and bootstrap-based selection. Its reported gains cover seven NLP benchmarks; tool use and multi-turn agents are outside the study's scope.</span></li>
           </ol>
         </div>
         <div class="lab"><span class="lab-tag ui">Lab</span><span class="lab-body">Take a hand-tuned prompt from Module 4 or 5 and optimize it with at least two different methods (e.g., APE + DSPy's MIPRO), reporting accuracy delta and search cost.</span></div>
@@ -1305,6 +1306,7 @@
             <li><a href="https://arxiv.org/abs/2304.03442" class="citation" target="_blank" rel="noopener noreferrer">Park et al., Generative Agents: Interactive Simulacra of Human Behavior</a>, UIST 2023. <span class="note">The memory stream with importance/recency/relevance scoring.</span></li>
             <li><a href="https://arxiv.org/abs/2310.08560" class="citation" target="_blank" rel="noopener noreferrer">Packer et al., MemGPT: Towards LLMs as Operating Systems</a> (2024). <span class="note">Memory hierarchy via virtual context management.</span></li>
             <li><a href="https://arxiv.org/abs/2305.10250" class="citation" target="_blank" rel="noopener noreferrer">Zhong et al., MemoryBank: Enhancing Large Language Models with Long-Term Memory</a> (2024). <span class="note">Forgetting curves as a design primitive.</span></li>
+            <li><a href="https://www.anthropic.com/research/components-of-agent-memory" class="citation" target="_blank" rel="noopener noreferrer">Anthropic, The components of agent memory</a> (November 6, 2026). <span class="note">Distinguishes retained transcripts, memory notes, derived representations, and injected context. Offline consolidation ("dreaming") can check notes against transcripts and repair stale or mistaken memory. The experiments also show that memory-writing rules interact with model capability; recording only failures can weaken results.</span></li>
           </ol>
         </div>
       </article>
@@ -1321,7 +1323,7 @@
             <li><a href="https://arxiv.org/abs/2510.04618" class="citation" target="_blank" rel="noopener noreferrer">Zhang et al., Agentic Context Engineering: Evolving Contexts for Self-Improving Language Models</a> (2025). <span class="note">The ACE paper &mdash; required for its critical observation about context collapse (an 18k-token context dropping to 122 tokens in a single rewrite pass) and its grow-and-refine alternative.</span></li>
             <li><a href="https://arxiv.org/abs/2510.00615" class="citation" target="_blank" rel="noopener noreferrer">Kang et al., ACON: Optimizing Context Compression for Long-Horizon LLM Agents</a> (2025). <span class="note">Compression specifically tuned to agent trajectories.</span></li>
             <li><a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents" class="citation" target="_blank" rel="noopener noreferrer">Anthropic, Effective context engineering for AI agents</a> <span class="note">&mdash; revisit, now reading the compaction and summarization sections closely.</span></li>
-            <li><a href="https://www.mejba.me/blog/claude-code-1m-context-management" class="citation" target="_blank" rel="noopener noreferrer">Mejba, Claude Code 1M Context: How I Stop Context Rot</a> (2026). <span class="note">Practitioner-level, but useful because it grounds the abstractions in a tool many students have used.</span></li>
+            <li><a href="https://arxiv.org/abs/2512.24601" class="citation" target="_blank" rel="noopener noreferrer">Zhang, Kraska &amp; Khattab, Recursive Language Models</a> (2025; revised May 2026). <span class="note">An alternative to repeatedly summarizing the window: expose long input as an external environment, inspect it programmatically, and invoke models on selected subproblems. Compare against compaction and retrieval under matched budgets; the reported gains are task- and implementation-dependent.</span></li>
           </ol>
         </div>
       </article>
@@ -1371,7 +1373,8 @@
           <ol>
             <li><a href="https://arxiv.org/abs/2310.03714" class="citation" target="_blank" rel="noopener noreferrer">Khattab et al., DSPy: Compiling Declarative Language Model Calls into Self-Improving Pipelines</a>, ICLR 2024. <span class="note">The framework paper.</span></li>
             <li><a href="https://arxiv.org/abs/2406.11695" class="citation" target="_blank" rel="noopener noreferrer">Opsahl-Ong et al., Optimizing Instructions and Demonstrations for Multi-Stage Language Model Programs (MIPRO)</a> (2024). <span class="note">The optimizer that made DSPy practical.</span></li>
-            <li><a href="https://arxiv.org/abs/2507.19457" class="citation" target="_blank" rel="noopener noreferrer">Agrawal et al., GEPA: Reflective Prompt Evolution Can Outperform Reinforcement Learning</a> (2025). <span class="note">The current frontier of declarative prompt optimization.</span></li>
+            <li><a href="https://arxiv.org/abs/2507.19457" class="citation" target="_blank" rel="noopener noreferrer">Agrawal et al., GEPA: Reflective Prompt Evolution Can Outperform Reinforcement Learning</a> (2025). <span class="note">The reflective-optimization baseline for the newer agentic studies.</span></li>
+            <li><a href="https://arxiv.org/abs/2610.37651" class="citation" target="_blank" rel="noopener noreferrer">Yu et al., GEPA-Curator: Curated Learning for Self Improving Agents</a> (October 2026, preprint). <span class="note">Task curation and retrieval of prior successes improve the feedback supplied to the optimizer. A failure may come from the prompt, the harness, execution noise, or the judge; it is not automatically a useful instruction-update signal.</span></li>
             <li><a href="https://arxiv.org/abs/2305.03495" class="citation" target="_blank" rel="noopener noreferrer">Pryzant et al., Automatic Prompt Optimization with "Gradient Descent" and Beam Search</a> (2023). <span class="note">The "textual gradients" line of work.</span></li>
           </ol>
         </div>
