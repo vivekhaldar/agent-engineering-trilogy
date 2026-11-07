@@ -842,7 +842,7 @@
       <p class="eyebrow">Three-Volume Curriculum</p>
       <h1>The Agent Engineering Trilogy</h1>
       <p class="byline"><a href="https://vivekhaldar.com" target="_blank" rel="noopener noreferrer">Vivek Haldar</a> / <a href="https://enchiridionlabs.online/" target="_blank" rel="noopener noreferrer">Enchiridion Labs</a> / <a href="https://github.com/vivekhaldar/agent-engineering-trilogy" target="_blank" rel="noopener noreferrer">Source</a></p>
-      <p class="updated">Last updated August 15, 2026.</p>
+      <p class="updated">Last updated November 6, 2026.</p>
       <p class="subtitle">Three nested layers around an LLM call &mdash; prompt, context, harness &mdash; and what their composition produces. Across three courses, one argument: AI engineering work now pays off farther from the raw prompt.</p>
       <div class="meta ui">
         <div><strong>Format:</strong> Three one-semester graduate courses + capstone</div>
@@ -1502,7 +1502,7 @@
           <ol>
             <li><a href="https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview" class="citation" target="_blank" rel="noopener noreferrer">Anthropic, Tool Use Overview</a> (current docs).</li>
             <li><a href="https://martinfowler.com/articles/function-call-LLM.html" class="citation" target="_blank" rel="noopener noreferrer">Kiran Prakash / martinfowler.com, Function calling using LLMs</a> (2025). <span class="note">Best concise treatment, including MCP.</span></li>
-            <li><a href="https://modelcontextprotocol.io/docs/getting-started/intro" class="citation" target="_blank" rel="noopener noreferrer">Model Context Protocol specification.</a> <span class="note">The protocol itself.</span></li>
+            <li><a href="https://modelcontextprotocol.io/specification/2026-07-28" class="citation" target="_blank" rel="noopener noreferrer">Model Context Protocol, 2026-07-28 specification.</a> <span class="note">Study the stateless request model, per-request capabilities, cacheable tool lists, Multi Round-Trip Requests, and the Tasks extension. Pin protocol and SDK versions in the lab. Compare the shipped specification with the <a href="https://blog.modelcontextprotocol.io/posts/mcp-roadmap/" target="_blank" rel="noopener noreferrer">August 22 roadmap</a>; agent identity and messaging priorities are not blanket guarantees of deployed support.</span></li>
             <li><a href="https://machinelearningmastery.com/the-roadmap-to-mastering-tool-calling-in-ai-agents/" class="citation" target="_blank" rel="noopener noreferrer">Bala Priya C, The Roadmap to Mastering Tool Calling in AI Agents</a> (2026). <span class="note">Failure modes and catalog scaling.</span></li>
           </ol>
         </div>
@@ -1514,14 +1514,15 @@
           <span class="module-num ui">Module 04</span>
           <h3>Planning and Orchestration Patterns</h3>
         </div>
-        <p class="framing">The taxonomy of how multiple model calls compose. The Anthropic patterns (prompt chaining, routing, parallelization, orchestrator-workers, evaluator-optimizer) provide the vocabulary; the multi-agent research paper shows them in production.</p>
+        <p class="framing">The taxonomy of how multiple model calls compose. The Anthropic patterns (prompt chaining, routing, parallelization, orchestrator-workers, evaluator-optimizer) provide the vocabulary. Pair its production case study with <a href="https://arxiv.org/abs/2512.08296v3" target="_blank" rel="noopener noreferrer">Kim et al., Towards a Science of Scaling Agent Systems</a> (revised April 2026): controlled comparisons show that coordination can help decomposable tasks and harm sequential ones. Treat agent count and topology as measured design choices.</p>
+        <div class="lab"><span class="lab-tag ui">Lab</span><span class="lab-body">Compare a single agent, independent parallel workers, and an orchestrator-workers system on one decomposable task and one sequential task. Hold the model, tools, and total inference budget fixed; report success, latency, token cost, and error propagation.</span></div>
         <div class="readings">
           <p class="readings-title ui">Canonical readings</p>
           <ol>
             <li><a href="https://www.anthropic.com/engineering/multi-agent-research-system" class="citation" target="_blank" rel="noopener noreferrer">Anthropic, How we built our multi-agent research system</a> (2025). <span class="note">Required.</span></li>
             <li><a href="https://www.anthropic.com/engineering/building-effective-agents" class="citation" target="_blank" rel="noopener noreferrer">Schluntz &amp; Zhang patterns</a> <span class="note">(revisit Module 1 reading with focus on the pattern catalog).</span></li>
             <li><a href="https://github.com/anthropics/claude-cookbooks/tree/main/patterns/agents" class="citation" target="_blank" rel="noopener noreferrer">Reference implementations:</a> <span class="note">claude-cookbooks/patterns/agents and the Pydantic AI port.</span></li>
-            <li><a href="https://fountaincity.tech/resources/blog/anthropic-multi-agent-blueprint-production/" class="citation" target="_blank" rel="noopener noreferrer">Fountaincity, Anthropic's Multi-Agent Blueprint: What Production Adds</a> (2026). <span class="note">The cost and SLA realities the original post elides.</span></li>
+            <li><a href="https://a2a-protocol.org/v1.0.0/specification/" class="citation" target="_blank" rel="noopener noreferrer">Agent2Agent Protocol, v1.0 specification (2026).</a> <span class="note">Extend local orchestration to independently operated agents: Agent Cards, task lifecycle, artifacts, cancellation, and asynchronous updates. Compare the <a href="https://a2a-protocol.org/latest/topics/a2a-and-mcp/" target="_blank" rel="noopener noreferrer">A2A and MCP boundaries</a>; protocol interoperability does not establish trust in a delegate or correctness of its result.</span></li>
           </ol>
         </div>
       </article>
@@ -1582,7 +1583,7 @@
           <span class="module-num ui">Module 08</span>
           <h3>Safety, Sandboxing, and Permissions</h3>
         </div>
-        <p class="framing">Once tools execute real code, blast radius dominates design. Cover prompt injection (direct and indirect), tool permission models, capability gating, and approval contracts.</p>
+        <p class="framing">Once tools execute real code, blast radius dominates design. Cover prompt injection (direct and indirect), tool permission models, capability gating, and approval contracts. For remote tools, use the <a href="https://modelcontextprotocol.io/specification/2026-07-28/basic/authorization" target="_blank" rel="noopener noreferrer">MCP authorization specification</a> and its <a href="https://modelcontextprotocol.io/specification/2026-07-28/basic/authorization/security-considerations" target="_blank" rel="noopener noreferrer">security requirements</a> to separate resource authorization from model instructions: validate token audience and issuer, bind credentials to the intended authorization server, and prohibit token passthrough. Authorization to reach a server still needs an application policy for each consequential action.</p>
         <div class="readings">
           <p class="readings-title ui">Canonical readings</p>
           <ol>
@@ -1590,6 +1591,7 @@
             <li><a href="https://arxiv.org/abs/2406.13352" class="citation" target="_blank" rel="noopener noreferrer">Debenedetti et al., AgentDojo: A Dynamic Environment to Evaluate Prompt Injection Attacks and Defenses for LLM Agents</a>, NeurIPS 2024.</li>
             <li><a href="https://arxiv.org/abs/2505.03574" class="citation" target="_blank" rel="noopener noreferrer">Chennabasappa et al., LlamaFirewall: An open source guardrail system for building secure AI agents</a> (Meta, 2025).</li>
             <li><a href="https://owasp.org/www-project-top-10-for-large-language-model-applications/" class="citation" target="_blank" rel="noopener noreferrer">OWASP Top 10 for LLM Applications.</a> <span class="note">The practitioner reference.</span></li>
+            <li><a href="https://www.anthropic.com/news/improving-alignment-security-efforts" class="citation" target="_blank" rel="noopener noreferrer">Anthropic, Improving our alignment and security efforts (August 31, 2026).</a> <span class="note">A containment case study from evaluations with reduced cyber safeguards: distinguish sandbox misconfiguration, deliberate network access, and sandbox escape. Analyze verified isolation, action-blocking monitors, and stronger containment as separate controls. The reported setting is not evidence that ordinary safeguarded deployments have the same failure rate.</span></li>
             <li><a href="https://simonwillison.net/tags/prompt-injection/" class="citation" target="_blank" rel="noopener noreferrer">Simon Willison's blog tag on prompt injection</a> <span class="note">&mdash; the running narrative.</span></li>
           </ol>
         </div>
@@ -1600,7 +1602,8 @@
           <span class="module-num ui">Module 09</span>
           <h3>Human-in-the-Loop and Approval Contracts</h3>
         </div>
-        <p class="framing">When the loop deliberately yields control. Cover HITL vs. HOTL, tool-level vs. request-level approval, approval vs. suspension, and the durable-execution problem &mdash; from minute-scale elicitation to Workflow approvals that can wait months or years. Humans should review consequential decisions at the right abstraction rather than babysit every tool call.</p>
+        <p class="framing">When the loop deliberately yields control. Cover HITL vs. HOTL, tool-level vs. request-level approval, approval vs. suspension, and durable execution. Persistence does not by itself prevent duplicate external actions: resumptions may replay code. Read LangGraph's <a href="https://docs.langchain.com/oss/python/langgraph/interrupts" target="_blank" rel="noopener noreferrer">interrupt semantics</a> and <a href="https://docs.langchain.com/oss/python/langgraph/fault-tolerance" target="_blank" rel="noopener noreferrer">retry boundaries and idempotency</a>. Humans should review consequential decisions at the right abstraction.</p>
+        <div class="lab"><span class="lab-tag ui">Lab</span><span class="lab-body">Use a mock payment or ticket API. Crash after the external action succeeds but before its acknowledgement is stored, then resume the workflow. Add an idempotency key, reconcile unknown outcomes, and demonstrate that retrying does not duplicate the action. Repeat across an approval pause with a persistent checkpointer.</span></div>
         <div class="readings">
           <p class="readings-title ui">Canonical readings</p>
           <ol>
@@ -1617,7 +1620,7 @@
           <span class="module-num ui">Module 10</span>
           <h3>Observability and Tracing</h3>
         </div>
-        <p class="framing">Traces are required for harness debugging and become training data when the harness itself is optimized. Cover span hierarchy, OpenTelemetry as the substrate, the OpenInference semantic conventions that specialize OTel for LLM workloads, and file-backed run histories that preserve successful and failed trajectories.</p>
+        <p class="framing">Traces are required for harness debugging and become training data when the harness itself is optimized. Cover span hierarchy, model and tool calls, and file-backed run histories that preserve successful and failed trajectories. Compare <a href="https://github.com/open-telemetry/semantic-conventions-genai/blob/main/docs/gen-ai/gen-ai-agent-spans.md" target="_blank" rel="noopener noreferrer">OpenTelemetry's GenAI agent conventions</a> with OpenInference instead of treating them as one schema. The GenAI agent conventions remain in Development: record the convention version and test attribute mappings. Treat prompt, response, and tool-argument capture as a separate data-governance decision, with redaction and access controls.</p>
         <div class="readings">
           <p class="readings-title ui">Canonical readings</p>
           <ol>
@@ -1635,6 +1638,7 @@
           <h3>Evaluation and Benchmarks</h3>
         </div>
         <p class="framing">How to measure a harness. Cover end-to-end task benchmarks, the variance problem, the rigor problem, tool-level evaluation as distinct from end-to-end, and evidence chains from claim to source, run, code, and metric. A plausible deliverable is not a verified one.</p>
+        <p>Evaluate the <em>model–harness pair</em>, not a harness in isolation. <a href="https://arxiv.org/abs/2610.32483" target="_blank" rel="noopener noreferrer">Zhang et al., When Agents Fail: Model or Harness—Who's to Blame?</a> (October 2026 preprint) separates task success from valid completion and measures pairing-specific effects. <a href="https://arxiv.org/abs/2609.11987" target="_blank" rel="noopener noreferrer">Arjmandi, Harness or Model?</a> (September 2026 preprint) reports no resolved average native-harness advantage in its paired coding comparisons, and documents a telemetry correction. Neither result licenses a universal ranking. Report model and harness versions, matched budgets, task-level uncertainty, failures to complete, and cost per verified success.</p>
         <div class="readings">
           <p class="readings-title ui">Canonical readings</p>
           <ol>
@@ -1654,13 +1658,13 @@
           <span class="module-num ui">Module 12</span>
           <h3>Frontier: Harnesses as Optimization Targets</h3>
         </div>
-        <p class="framing">End where the field is moving: from hand-authored loops to searched and self-improving harnesses. The Claude Code source exposure (March 2026) made a production harness publicly readable; the recent optimization papers turn context, workflows, and harness code into objects that agents can inspect, mutate, and validate.</p>
+        <p class="framing">End with a research question: which harness changes generalize beyond their development traces? Compare hand-authored, generated, and evolved harnesses using executable artifacts, held-out tasks, fixed runtime models, and explicit cost budgets. The September&ndash;October 2026 readings below distinguish the ability to build a capable harness from the ability to improve it reliably.</p>
         <p class="framing">The ladder for this week is: <code>instruction/prompt → structured context → workflow → harness code → optimizer code</code>. The practical lesson is not to let an agent rewrite everything. Keep evaluators, permissions, held-out tests, and promotion gates outside the editable surface.</p>
         <div class="readings">
           <p class="readings-title ui">Canonical readings</p>
           <ol>
-            <li><a href="https://wavespeed.ai/blog/posts/claude-code-agent-harness-architecture/" class="citation" target="_blank" rel="noopener noreferrer">WaveSpeed, Claude Code Agent Harness: Architecture Breakdown</a> (2026).</li>
-            <li><a href="https://github.com/VILA-Lab/Dive-into-Claude-Code" class="citation" target="_blank" rel="noopener noreferrer">VILA-Lab, Dive-into-Claude-Code</a> <span class="note">&mdash; a curated index of community analyses of the leak, including the systematic "Horse Book" mdBook framing it as a harness engineering case study.</span></li>
+            <li><a href="https://arxiv.org/abs/2609.01437" class="citation" target="_blank" rel="noopener noreferrer">Wu et al., HarnessDev: Can LLMs Create and Evolve Their Own Agent Harness?</a> (September 2026, preprint). <span class="note">Evaluates harness creation and evolution across four domains. Gains vary by domain and executing model; evolution transfers only partially to held-out tasks. Separate creator, optimizer, and runtime-model roles.</span></li>
+            <li><a href="https://arxiv.org/abs/2610.30499" class="citation" target="_blank" rel="noopener noreferrer">Lehmann &amp; Vahdati, Can LLMs Improve Their Own Harness? A Controlled Study on ARC-AGI-3</a> (October 2026, preprint). <span class="note">Across 27 lineages and two revisions, mean held-out improvement was 2.80 RHAE points, with a 95% interval spanning zero. A bounded counterexample to assuming development gains imply reliable self-improvement; limited to one benchmark and two revisions.</span></li>
             <li><a href="https://lilianweng.github.io/posts/2026-07-04-harness/" class="citation" target="_blank" rel="noopener noreferrer">Weng, Harness Engineering for Self-Improvement</a> (2026). <span class="note">The synthesis reading: workflow automation, file-backed memory, subagents, harness optimization, and the recursive self-improvement frame.</span></li>
             <li><a href="https://arxiv.org/abs/2410.10762" class="citation" target="_blank" rel="noopener noreferrer">Zhang et al., AFlow: Automating Agentic Workflow Generation</a>, ICLR 2025. <span class="note">Workflow design as graph/code search with MCTS and execution feedback.</span></li>
             <li><a href="https://arxiv.org/abs/2603.28052" class="citation" target="_blank" rel="noopener noreferrer">Lee et al., Meta-Harness: End-to-End Optimization of Model Harnesses</a> (Stanford, 2026). <span class="note">The harness as a search target, with source code, scores, traces, and state exposed through the file system.</span></li>
@@ -1691,7 +1695,8 @@
             <li><a href="https://arxiv.org/abs/2605.21516" class="citation" target="_blank" rel="noopener noreferrer">Wang et al., Harnesses for Inference-Time Alignment over Execution Trajectories</a> (2026). <span class="note">The counterweight to over-structuring: partial harnesses can outperform fully specified workflows.</span></li>
           </ol>
         </div>
-        <div class="lab"><span class="lab-tag ui">Lab</span><span class="lab-body">Build three versions of the same bounded SOP-like task: raw ReAct, a partial specialized harness, and a fully structured harness. Compare pass^k, token cost, failure categories, traceability, and whether one failure-driven harness edit improves held-out tasks.</span></div>
+        <p>One new alternative to a globally fixed specialized harness is <a href="https://arxiv.org/abs/2609.38912" target="_blank" rel="noopener noreferrer">Kuang et al., Composing Task-specific Agent Harnesses at Test Time with Reusable Primitives</a> (September 2026, preprint). STITCH selects mechanisms from a previously developed library and compiles their contracts into an executable harness. Its reported gains come from sampled coding and terminal tasks; transfer to SOP execution remains a hypothesis to test.</p>
+        <div class="lab"><span class="lab-tag ui">Lab</span><span class="lab-body">Build raw ReAct, a partial specialized harness, and a fully structured harness for the same SOP-like task. Then add a fourth variant that selects from a fixed library of tested primitives. Freeze the library before held-out evaluation. Compare repeated-run success, token cost, failure categories, traceability, and composition failures under matched budgets.</span></div>
       </article>
 
       <div class="ped-notes">
@@ -1751,7 +1756,7 @@
         <p>An <strong>agent</strong> is what emerges when a harness operates over an environment in pursuit of a goal. The composition has properties no individual layer has:</p>
 
         <ul>
-          <li><strong>Trajectory-dependence.</strong> The same agent on the same task can take different paths through the environment depending on stochastic choices, environmental responses, and which retrieved or compacted artifacts the context policy surfaced. Reliability becomes a distribution, which is why τ-bench's pass^k metric is the right way to measure production agents.</li>
+          <li><strong>Trajectory-dependence.</strong> The same agent can take different paths on the same task. Choose metrics for the question: <code>pass@1</code> for one-attempt success, <code>pass@k</code> for at least one success across k attempts, and <code>pass^k</code> for all k attempts succeeding. Report task-level uncertainty and cost alongside these scores; none alone establishes production reliability. <a href="https://arxiv.org/abs/2610.27889" target="_blank" rel="noopener noreferrer">Kim et al., Elicitation or Expansion?</a> (October 2026, preprint) shows why this matters: an optimized harness's advantage at one attempt can reverse at larger attempt budgets. Better elicitation and broader reachable task coverage are different claims.</li>
           <li><strong>Closed-loop failure modes.</strong> Agents exhibit pathologies absent from single inferences: loops, goal drift, capability erosion under context rot, sub-agent cascade failures. These emerge from the dynamics of the composition, beyond what a prompt, context window, or static harness diagram can show.</li>
           <li><strong>Emergent capability above the parts.</strong> The Manus team's observation that they "rebuilt the framework four times" while keeping the model fixed is practitioner evidence that harness and context choices matter. <a href="https://arxiv.org/abs/2603.28052" target="_blank" rel="noopener noreferrer">Meta-Harness</a> provides a related controlled result with frozen base models: its selected harness improved online text-classification accuracy by 7.7 points over ACE while using roughly four times fewer context tokens, and improved math-reasoning accuracy by 4.7 points on average across five held-out models.</li>
         </ul>
@@ -1770,6 +1775,7 @@
         <p><strong>Third, what scaffolding's prediction would even have looked like, if true.</strong> As a closing exercise, have students articulate what evidence would convince them that the scaffold framing was right: some capability threshold past which the surrounding code becomes more confound than capability. The exercise sharpens their thinking about the relationship between model capability and system capability, and inoculates them against the easy assumption that improvements in either are improvements in both.</p>
 
         <h3 id="cap-lab">Final integrative lab</h3>
+        <p>Before measuring task performance, test the harness contract with a scripted model and controlled tool responses. <a href="https://arxiv.org/abs/2610.20344" target="_blank" rel="noopener noreferrer">Ge et al., Doc2Harness</a> (October 2026 preprint) separates harness construction from deterministic evaluation and checks requests, files, exit codes, and output. Adapt that approach into a small conformance suite for cancellation, budget exhaustion, permission denial, malformed tool output, and restart recovery; include positive controls so that an agent which does nothing cannot pass. These tests establish implementation behavior, not real-world agent competence; retain the end-to-end evaluation below.</p>
         <p>Students bring forward the artifact each course produced &mdash; the prompts from the prompt course, the context-engineering pipeline from the context course, the harness from the harness course &mdash; and compose them into a single agent attacking a non-trivial task in a non-trivial environment. AppWorld or a custom domain works well. The deliverable is a paper about the system: students must report which design decisions belonged to which layer, which decisions cut across layers (and therefore which discipline's vocabulary fails to capture them), where the composition introduced behaviors none of the layers predicted, what their pass^k variance looks like over at least ten runs, and whether one failure-driven harness edit improved or regressed held-out performance. Claims must link back to source material, run artifacts, code revisions, and reproduced metrics.</p>
 
         <p>The paper is the trilogy's exit exam. Students who can write it well will understand something most working practitioners miss: prompt, context, and harness engineering name adjacent regions of a single design surface, and the agent sits on top of all three.</p>
